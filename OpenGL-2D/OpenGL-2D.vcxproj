@@ -73,5 +73,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\3rd-party\freeglut3\freeglut3.vcxproj">
+      <Project>{5a98782e-7027-46f9-91e1-e1ede1e14bf4}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
