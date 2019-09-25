@@ -46,21 +46,21 @@ void Player::moveLeft()
 }
 
 
-int getX()
+int Player::getX()
 {
 	return x;
 }
 
-int getY() {
+int Player::getY() {
 	return y;
 }
 
-int getcoin()
+int Player::getcoin()
 {
 	return coins;
 }
 
-void addcoin()
+void Player::addcoin()
 {
 	coins++;
 }
