@@ -3,7 +3,7 @@
 #include "GameLogic.h"
 #include "System.h"
 #include "World.h"
-
+#include <stdio.h>
 GameLogic::GameLogic(Player& player1, Player& player2, World& world)
 	: m_player1(player1), m_player2(player2), m_world(world)
 {
@@ -69,6 +69,16 @@ bool GameLogic::gameHasEnded()
 {
 	if (m_world.getCoins() == 0)
 	{
+		if (m_player1.getcoin() > m_player2.getcoin())
+		{
+			std::cout << "Winner player 1";
+		}
+		else if (m_player1.getcoin() == m_player2.getcoin())
+		{
+			std::cout << "Tie";
+		}
+		else
+			std::cout << "Winner player2";
 		return true;
 	}
 		//TODO: We need to check it the game has ended	

@@ -2,7 +2,7 @@
 #include "Timer.h"
 #include <string>
 #include <vector>
-#include "Player.h";
+#include "Player.h"
 using namespace std;
 
 class World
