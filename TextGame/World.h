@@ -24,5 +24,5 @@ public:
 	void draw();
 	int getCoins();
 	char getCell(int x, int y);
-	void changeCells(int x1, int y1, int x2, int y2);
+	void changeCells(Player playerB, Player playerA, char ch);
 };

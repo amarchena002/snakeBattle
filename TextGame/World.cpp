@@ -51,10 +51,10 @@ char World::getCell(int x, int y)
 	return m_cells.at(y*m_y + x);
 }
 
-void World::changeCells(int x1, int y1, int x2, int y2)
+void World::changeCells(Player playerB, Player playerA, char ch)
 {
-	m_cells.assign(y1*m_y + x1, ' ');
-	m_cells.assign(y2*m_y + x2, 2);
+	m_cells.assign(playerB.getY()*m_y + playerB.getX(), ' ');
+	m_cells.assign(playerA.getY*m_y + playerA.getX(), ch);
 }
 
 
