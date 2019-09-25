@@ -43,12 +43,18 @@ void World::draw()
 
 int World::getCoins()
 {
-	return 0;
+	return m_coins;
 }
 
 char World::getCell(int x, int y)
 {
-	return 0;
+	return m_cells.at(y*m_y + x);
+}
+
+void World::changeCells(int x1, int y1, int x2, int y2)
+{
+	m_cells.assign(y1*m_y + x1, ' ');
+	m_cells.assign(y2*m_y + x2, 2);
 }
 
 
