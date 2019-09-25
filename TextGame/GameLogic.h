@@ -6,7 +6,7 @@
 class GameLogic
 {
 
-	Player m_player1, m_player2;
+	Player m_player1, m_player2,m_playerB;
 	World m_world;
 
 public:
