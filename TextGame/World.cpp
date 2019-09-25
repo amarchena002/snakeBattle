@@ -41,6 +41,16 @@ void World::draw()
 	std::cout << m_timer.getElapsedTime() << "   ";
 }
 
+int World::getCoins()
+{
+	return 0;
+}
+
+char World::getCell(int x, int y)
+{
+	return 0;
+}
+
 
 void World::drawMaze()
 {
