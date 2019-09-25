@@ -10,7 +10,7 @@ int coins;
 
 Player::Player()
 {
-
+	
 }
 
 
@@ -25,9 +25,6 @@ Player::~Player()
 void Player::moveUp()
 {
 	x = x - 1;
-	if (true) { //m_cell.hasCoin --> tiene que indicar el world si la casilla contiene moneda o no
-		coins++;
-	}
 }
 
 void Player::moveDown()
@@ -46,21 +43,21 @@ void Player::moveLeft()
 }
 
 
-int getX()
+int Player::getX()
 {
 	return x;
 }
 
-int getY() {
+int Player::getY() {
 	return y;
 }
 
-int getcoin()
+int Player::getcoin()
 {
 	return coins;
 }
 
-void addcoin()
+void Player::addcoin()
 {
 	coins++;
 }
