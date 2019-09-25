@@ -90,3 +90,5 @@ void World::drawMaze()
 	//we sleep for a while
 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
+//TODO: comprobar movimiento
+//TODO: cargar fichero
