@@ -18,6 +18,7 @@ class World
 	void drawMaze();
 
 public:
+	World(int x, int y, vector<char> vector);
 	World(string nameFile);
 	~World();
 
