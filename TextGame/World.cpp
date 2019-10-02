@@ -12,6 +12,8 @@
 #include <istream>
 
 
+
+
 World::World(int x, int y, vector<char> vector)
 {
 	m_x = x;
@@ -92,3 +94,10 @@ void World::drawMaze()
 }
 //TODO: comprobar movimiento
 //TODO: cargar fichero
+
+// Comprobar movimiento:
+
+
+
+
+

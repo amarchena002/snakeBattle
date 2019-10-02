@@ -48,7 +48,8 @@ int Player::getX()
 	return x;
 }
 
-int Player::getY() {
+int Player::getY()
+{
 	return y;
 }
 
