@@ -28,6 +28,19 @@ World::World(std::string nameFile)
 
 	//TODO: initalize everything else
 	//...
+	int datos[9];
+	char delimiter;
+	ifstream inputFile(nameFile, fstream::in);
+	if (inputFile.is_open())
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			inputFile >> datos[i];
+			inputFile >> delimiter;
+		}
+
+		inputFile.close();
+	}
 
 	
 }
