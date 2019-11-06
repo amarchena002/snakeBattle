@@ -14,10 +14,7 @@ Control::~Control()
 
 void Control::processInput()
 {
-	if (!System::keyHit())
-		return; //Si no se pulsa nada tira para adelante
-
-	while (System::keyHit())
+	while(System::keyHit())
 	{
 		char c = System::getNextKey();
 		switch (c)
