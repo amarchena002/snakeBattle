@@ -2,7 +2,7 @@
 #include "Sprite.h"
 #include "Snake.h"
 
-Snake::Snake(int posX, int posY, string dir, string color)
+Snake::Snake(int posX, int posY, char dir, char color)
 {
 	headPosX = posX;
 	headPosY = posY;
