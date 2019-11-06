@@ -8,7 +8,6 @@
 
 Snake::Snake()
 {
-
 }
 
 Snake::~Snake()
