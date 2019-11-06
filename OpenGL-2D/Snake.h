@@ -24,9 +24,12 @@ public:
 
 	Snake(int posX, int posY, string dir, string color);
 	~Snake();
+
 	void moveUp();
 	void moveRigth();
 	void moveDown();
 	void moveLeft();
+
 	void eatApple(string color);
+	void eatStone();
 };
