@@ -23,5 +23,8 @@ public:
 
 	Snake(int posX, int posY, string dir);
 	~Snake();
-	
+	void moveUp();
+	void moveRigth();
+	void moveDown();
+	void moveLeft();
 };
