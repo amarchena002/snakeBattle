@@ -2,14 +2,14 @@
 #include "Sprite.h"
 #include "Snake.h"
 
-Snake::Snake(int posX, int posY, string dir)
+Snake::Snake(Position position, string dir)
 {
-	headPosX = posX;
-	headPosY = posY;
+	m_headPosition = position;
 	direction = dir;
 	//snake =
 	snakeLength = 2; //initial length
-
+	snake = vector <Position>();
+	snake.push_back(m_headPosition);
 }
 
 Snake::~Snake()
@@ -18,25 +18,25 @@ Snake::~Snake()
 
 void Snake::moveUp()
 {
-	headPosY += 1;
+	m_headPosition.setY(m_headPosition.getY() - 1);
 	direction = dir_up;
 }
 
 void Snake::moveDown()
 {
-	headPosY -= 1;
+	m_headPosition.setY(m_headPosition.getY() + 1);
 	direction = dir_down;
 }
 
 void Snake::moveRigth()
 {
-	headPosX += 1;
+	m_headPosition.setX(m_headPosition.getX() + 1);
 	direction = dir_rigth;
 }
 
 void Snake::moveLeft()
 {
-	headPosX -= 1;
+	m_headPosition.setX(m_headPosition.getX() - 1);
 	direction = dir_left;
 }
 
@@ -49,7 +49,7 @@ void Snake::eatApple(string color)
 	}
 	else
 	{
-
+		snakeLength--;
 	}
 }
 
