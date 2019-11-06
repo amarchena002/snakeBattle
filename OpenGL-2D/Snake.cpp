@@ -6,7 +6,8 @@ Snake::Snake(Position position, string dir)
 {
 	m_headPosition = position;
 	direction = dir;
-	//snake =
+	snakeColor = color;
+	//snake = //inicializar array
 	snakeLength = 2; //initial length
 	snake = vector <Position>();
 	snake.push_back(m_headPosition);
@@ -53,3 +54,8 @@ void Snake::eatApple(string color)
 	}
 }
 
+void Snake::eatStone()
+{
+	//reducir array snake[snakeLength] 
+	snakeLength = snakeLength - 1;
+}
