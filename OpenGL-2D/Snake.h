@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Drawable.h"
-
+#include "vector"
 #include <string>
 using namespace std;
 
@@ -14,6 +14,7 @@ class Snake : public Drawable
 	int snakeLength;
 	char snakeColor;
 	string m_color;
+	vector<Sprite> sprites;
 
 	char const dir_up = 'u';
 	char const dir_down = 'd';
