@@ -12,6 +12,7 @@ class Snake : public Drawable
 	string direction; // Up, Down, Left, Rigth
 	int snake[20]; //max 20 change!
 	int snakeLength;
+	string snakeColor;
 
 	string const dir_up = "up";
 	string const dir_down = "down";
@@ -21,7 +22,7 @@ class Snake : public Drawable
 
 public:
 
-	Snake(int posX, int posY, string dir);
+	Snake(int posX, int posY, string dir, string color);
 	~Snake();
 	void moveUp();
 	void moveRigth();
