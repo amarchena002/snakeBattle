@@ -1,11 +1,13 @@
 #pragma once
 class Apple
 {
-	char color;
-
+	char appleColor;
+	
 public:
-	Apple(char color);
+
+	Apple(char appleColor);
 	~Apple();
 
-	boolean isTheSame();
+	char getColor();
+	bool isTheSameColor(char snakeColor);
 };

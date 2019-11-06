@@ -19,7 +19,9 @@
     <ClCompile Include="Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="Apple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -41,7 +43,9 @@
     <ClInclude Include="Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Apple.h" />
+    <ClInclude Include="Apple.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -52,6 +56,9 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{321f0698-5c88-44a3-9b9c-bbaa9b5da866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test Files">
+      <UniqueIdentifier>{594e06d3-0287-4a89-a4c7-0fd10bd099d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
