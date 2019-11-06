@@ -9,4 +9,5 @@ Snake::Snake()
 
 Snake::~Snake()
 {
+
 }
