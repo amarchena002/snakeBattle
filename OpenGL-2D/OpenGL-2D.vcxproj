@@ -54,6 +54,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="InputHandler.cpp" />
@@ -63,6 +64,7 @@
     <ClCompile Include="Text.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Apple.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Drawable.h" />
@@ -78,6 +80,9 @@
   <ItemGroup>
     <ProjectReference Include="..\3rd-party\freeglut3\freeglut3.vcxproj">
       <Project>{5a98782e-7027-46f9-91e1-e1ede1e14bf4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SnakeTest\SnakeTest.vcxproj">
+      <Project>{524e7038-6e67-4f74-b89c-e8ba1ba33224}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
