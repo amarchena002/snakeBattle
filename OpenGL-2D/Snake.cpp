@@ -39,7 +39,7 @@ void Snake::moveLeft()
 	headPosX -= 1;
 	direction = dir_left;
 }
-}
+
 void Snake::eatApple(string color)
 {
 	if (color == m_color) 
