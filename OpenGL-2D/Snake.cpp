@@ -5,8 +5,16 @@
 #include "Renderer.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 
+Snake::Snake(int posX, int posY, char dir, char color)
+{
+	headPosX = posX;
+	headPosY = posY;
+	direction = dir;
+	snakeColor = color;
+	//snake = //inicializar array
+	snakeLength = 2; //initial length
 
-Snake::Snake()
+Snake::~Snake()
 {
 }
 
@@ -14,36 +22,45 @@ Snake::~Snake()
 {
 }
 
-void Sprite::draw()
+void Snake::moveUp()
 {
-	Renderer renderer;
-	InputHandler inputHandler(renderer);
+	headPosY += 1;
+	direction = dir_up;
+}
 
-	renderer.initialize(argc, argv);
-	inputHandler.initialize();
+void Snake::moveDown()
+{
+	headPosY -= 1;
+	direction = dir_down;
+}
 
-	vector<Sprite> sprites;
-	for (int i = 0; i < snakeLength; i++)
+void Snake::moveRigth()
+{
+	headPosX += 1;
+	direction = dir_rigth;
+}
+
+void Snake::moveLeft()
+{
+	headPosX -= 1;
+	direction = dir_left;
+}
+
+void Snake::eatApple(string color)
+{
+	if (color == m_color) 
 	{
-		Sprite *pSprite = new Sprite();
-		if (m_color = 'red')
-		{
-			pSprite->setColor(1, 0, 0);
-		}
-		else if (m_color = 'green')
-		{
-			pSprite->setColor(0, 1, 0);
-		}
-		pSprite->setPosition(snake.at(i)[0], snake.at(i)[1]);
-		pSprite->setSize(0.02);
-		pSprite->setDepth(-1.5);
-		vect.push_back(pSprite);
-		
-		}
-	for (int i = 0; i < sprites.size(); i++) 
-	{
-		renderer.addObject(sprites.at(i));
+		snakeLength++;
+
 	}
-	
-	
+	else
+	{
+
+	}
+}
+
+void Snake::eatStone()
+{
+	//reducir array snake[snakeLength] 
+	snakeLength = snakeLength - 1;
 }
