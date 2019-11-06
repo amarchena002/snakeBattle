@@ -28,4 +28,5 @@ public:
 	void moveRigth();
 	void moveDown();
 	void moveLeft();
+	void eatApple(string color);
 };
