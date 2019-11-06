@@ -3,10 +3,12 @@
 #include "Control.h"
 
 
-Control::Control(Snake& snake1, Snake& snake2, Worls& world) : m_snake1(snake1), m_snake2(snake2), m_world(world)
+
+Control::Control(Snake& snake1, Snake& snake2, World& world) : m_snake1(snake1), m_snake2(snake2), m_world(world)
 {
 
 }
+
 Control::~Control()
 {
 

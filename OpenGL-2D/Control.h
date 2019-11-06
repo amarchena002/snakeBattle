@@ -2,6 +2,7 @@
 
 #include "Snake.h"
 #include "World.h"
+using namespace std;
 
 class Control
 {
