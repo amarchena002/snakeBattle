@@ -22,23 +22,23 @@ void Control::processInput()
 		switch (c)
 		{
 			//Para Snake1
-		case 'a': snake1.moveLeft();
+		case 'a': m_snake1.moveLeft();
 			break;
-		case 'd': snake1.moveRight();
+		case 'd': m_snake1.moveRight();
 			break;
-		case 'w': snake1.moveUp();
+		case 'w': m_snake1.moveUp();
 			break;
-		case 's': snake1.moveDown();
+		case 's': m_snake1.moveDown();
 			break;
 
 			//Para Snake2
-		case 'j': snake2.moveLeft();
+		case 'j': m_snake2.moveLeft();
 			break;
-		case 'l': snake2.moveRight();
+		case 'l': m_snake2.moveRight();
 			break;
-		case 'i': snake2.moveUp();
+		case 'i': m_snake2.moveUp();
 			break;
-		case 'k': snake2.moveDown();
+		case 'k': m_snake2.moveDown();
 			break;
 
 			//Para salir
