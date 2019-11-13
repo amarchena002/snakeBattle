@@ -14,7 +14,7 @@ class InputHandler
 	World& m_world;
 
 public:
-	InputHandler(Renderer& renderer, Snake& snake1, Snake& snake2, World& world);
+	InputHandler(Renderer& renderer);
 	~InputHandler();
 
 	void initialize();

@@ -27,28 +27,28 @@ void InputHandler::processKeyboard(unsigned char key, int x, int y)
 	//keyboard callback function
 	switch (key)
 	{
-		//Snake1
-	case 'a': m_snake1.moveLeft();
-		break;
-	case 'd': m_snake1.moveRigth();
-		break;
-	case 'w': m_snake1.moveUp();
-		break;
-	case 's': m_snake1.moveDown();
-		break;
+			//Snake1
+		case 'a': m_snake1.moveLeft();
+			break;
+		case 'd': m_snake1.moveRigth();
+			break;
+		case 'w': m_snake1.moveUp();
+			break;
+		case 's': m_snake1.moveDown();
+			break;
 
-		//Snake2
-	case 'j': m_snake2.moveLeft();
-		break;
-	case 'l': m_snake2.moveRigth();
-		break;
-	case 'i': m_snake2.moveUp();
-		break;
-	case 'k': m_snake2.moveDown();
-		break;
+			//Snake2
+		case 'j': m_snake2.moveLeft();
+			break;
+		case 'l': m_snake2.moveRigth();
+			break;
+		case 'i': m_snake2.moveUp();
+			break;
+		case 'k': m_snake2.moveDown();
+			break;
 
-		//Exit
-	case 27: exit(0);
+			//Exit
+		case 27: exit(0);
 	}
 }
 
