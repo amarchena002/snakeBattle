@@ -11,3 +11,8 @@ Stone::Stone(Position pos)
 Stone::~Stone()
 {
 }
+
+Position Stone::GetPosition()
+{
+	return m_pos;
+}

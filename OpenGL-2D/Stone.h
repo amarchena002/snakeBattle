@@ -1,4 +1,6 @@
 #pragma once
+#include "position.h"
+
 class Stone
 {
 	Position m_pos;
@@ -6,4 +8,6 @@ class Stone
 	public:
 		Stone(Position pos);
 		~Stone();
+		
+		Position GetPosition();
 };
