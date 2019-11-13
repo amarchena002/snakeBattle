@@ -20,12 +20,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{524E7038-6E67-4F74-B89C-E8BA1BA33224}</ProjectGuid>
+    <ProjectGuid>{7F5448C9-5A32-4E3B-AC7D-94845322F560}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>SnakeTest</RootNamespace>
+    <RootNamespace>TestStone</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
-    <ProjectName>AppleTest</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -157,15 +156,15 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\OpenGL-2D\Apple.cpp" />
     <ClCompile Include="..\OpenGL-2D\position.cpp" />
+    <ClCompile Include="..\OpenGL-2D\Stone.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="AppleTest.cpp" />
+    <ClCompile Include="testStone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenGL-2D\OpenGL-2D.vcxproj">

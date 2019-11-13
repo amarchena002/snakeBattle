@@ -1,10 +1,13 @@
 #pragma once
+#include "position.h"
+
 class Bomb
 {
-	int posX;
-	int posY;
+	Position m_pos;
 
 public:
-	Bomb(int x, int y);
+	Bomb(Position pos);
 	~Bomb();
+
+	Position GetPosition();
 };

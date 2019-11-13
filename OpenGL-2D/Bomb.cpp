@@ -1,13 +1,18 @@
 #include "stdafx.h"
 #include "Sprite.h"
 #include "Bomb.h"
+#include "position.h"
 
-Bomb::Bomb(int x, int y)
+Bomb::Bomb(Position pos)
 {
-	posX = x;
-	posY = y;
+	m_pos = pos;
 }
 
 Bomb::~Bomb()
 {
+}
+
+Position Bomb::GetPosition()
+{
+	return m_pos;
 }
