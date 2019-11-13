@@ -8,13 +8,16 @@
 
 Snake::Snake(Position position, string dir, string color)
 {
+	//Cambiar a 0.04
 	m_headPosition = position;
+	m_tailPosition = Position(m_headPosition.getX() - 0.041, m_headPosition.getY());
 	m_direction = dir;
 	m_color = color;
 	//snake = //inicializar array
 	m_snakeLength = 2; //initial length
 	m_snake = vector <Position>();
 	m_snake.push_back(m_headPosition);
+	m_snake.push_back(m_tailPosition);
 }
 Snake::~Snake()
 {
@@ -46,16 +49,23 @@ void Snake::moveLeft()
 	m_direction = dir_left;
 }
 
+vector<Position> Snake::getVector()
+{
+	return m_snake;
+}
+
 void Snake::eatApple(string color)
 {
 	if (color == m_color) 
 	{
 		m_snakeLength++;
-
+	    m_tailPosition = Position(m_tailPosition.getX() - 0.041, m_tailPosition.getY());
 	}
 	else
 	{
 		m_snakeLength--;
+		m_snake.pop_back();
+		m_tailPosition = m_snake[m_snakeLength - 1];
 	}
 }
 
