@@ -15,6 +15,7 @@ Snake::Snake(int posX, int posY, char dir, char color)
 	//snake = //inicializar array
 	snakeLength = 2; //initial length
 
+}
 Snake::~Snake()
 {
 	
