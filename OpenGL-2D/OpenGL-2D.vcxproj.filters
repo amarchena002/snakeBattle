@@ -34,6 +34,9 @@
     <ClCompile Include="position.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -70,6 +73,9 @@
     <ClInclude Include="position.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -84,5 +90,8 @@
     <Filter Include="Test Files">
       <UniqueIdentifier>{594e06d3-0287-4a89-a4c7-0fd10bd099d3}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="inputfile.txt" />
   </ItemGroup>
 </Project>
