@@ -2,12 +2,15 @@
 class Apple
 {
 	char appleColor;
-	
+	int posX;
+	int posY;
 public:
 
-	Apple(char appleColor);
+	Apple(char appleColor, int x, int y);
 	~Apple();
 
 	char getColor();
+	int getX();
+	int getY();
 	bool isTheSameColor(char snakeColor);
 };

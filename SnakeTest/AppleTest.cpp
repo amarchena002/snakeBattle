@@ -13,14 +13,14 @@ namespace SnakeTest
 		TEST_METHOD(GetColor)
 		{
 			char color = 'R';
-			Apple apple(color);
+			Apple apple(color,1,1);
 			Assert::AreEqual(color, apple.getColor());
 
 		}
 		TEST_METHOD(isTheSameColor)
 		{
 			char colorRed = 'R';
-			Apple apple(colorRed);
+			Apple apple(colorRed,1,1);
 			Assert::AreEqual(true, apple.isTheSameColor('R'));
 			Assert::AreEqual(false, apple.isTheSameColor('B'));
 
