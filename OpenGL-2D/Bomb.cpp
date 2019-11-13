@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "Sprite.h"
-#include "Stone.h"
+#include "Bomb.h"
 
-Stone::Stone(int x, int y)
+Bomb::Bomb(int x, int y)
 {
 	posX = x;
 	posY = y;
 }
 
-Stone::~Stone()
+Bomb::~Bomb()
 {
 }

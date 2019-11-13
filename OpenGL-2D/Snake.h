@@ -1,18 +1,17 @@
 #pragma once
 
 #include "Drawable.h"
-#include "vector"
+#include "Position.h"
+#include <vector>
 #include <string>
 using namespace std;
 
 class Snake : public Drawable
 {
-	int headPosX;
-	int headPosY;
-	string direction; // Up, Down, Left, Rigth
-	int snake[20]; //max 20 change!
-	int snakeLength;
-	char snakeColor;
+	Position m_headPosition;
+	string m_direction; // Up, Down, Left, Rigth
+	vector<Position> m_snake;
+	int m_snakeLength;
 	string m_color;
 	vector<Sprite> sprites;
 
@@ -24,7 +23,7 @@ class Snake : public Drawable
 
 public:
 
-	Snake(int posX, int posY, char dir, char color);
+	Snake(Position position, string dir,string color);
 	~Snake();
 
 	void moveUp();

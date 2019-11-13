@@ -6,15 +6,15 @@
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "vector"
 
-Snake::Snake(int posX, int posY, char dir, char color)
+Snake::Snake(Position position, string dir, string color)
 {
-	headPosX = posX;
-	headPosY = posY;
-	direction = dir;
-	snakeColor = color;
+	m_headPosition = position;
+	m_direction = dir;
+	m_color = color;
 	//snake = //inicializar array
-	snakeLength = 2; //initial length
-
+	m_snakeLength = 2; //initial length
+	m_snake = vector <Position>();
+	m_snake.push_back(m_headPosition);
 }
 Snake::~Snake()
 {
@@ -24,38 +24,38 @@ Snake::~Snake()
 
 void Snake::moveUp()
 {
-	headPosY += 1;
-	direction = dir_up;
+	m_headPosition.setY(m_headPosition.getY() - 1);
+	m_direction = dir_up;
 }
 
 void Snake::moveDown()
 {
-	headPosY -= 1;
-	direction = dir_down;
+	m_headPosition.setY(m_headPosition.getY() + 1);
+	m_direction = dir_down;
 }
 
 void Snake::moveRigth()
 {
-	headPosX += 1;
-	direction = dir_rigth;
+	m_headPosition.setX(m_headPosition.getX() + 1);
+	m_direction = dir_rigth;
 }
 
 void Snake::moveLeft()
 {
-	headPosX -= 1;
-	direction = dir_left;
+	m_headPosition.setX(m_headPosition.getX() - 1);
+	m_direction = dir_left;
 }
 
 void Snake::eatApple(string color)
 {
 	if (color == m_color) 
 	{
-		snakeLength++;
+		m_snakeLength++;
 
 	}
 	else
 	{
-
+		m_snakeLength--;
 	}
 }
 

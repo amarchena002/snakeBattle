@@ -5,6 +5,6 @@ class Stone
 	int posY;
 
 	public:
-		Stone();
+		Stone(int x, int y);
 		~Stone();
 };
