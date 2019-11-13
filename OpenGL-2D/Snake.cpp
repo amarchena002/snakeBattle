@@ -62,40 +62,38 @@ void Snake::eatApple(string color)
 void Snake::eatStone()
 {
 	//reducir array snake[snakeLength] 
-	snakeLength = snakeLength - 1;
+	m_snakeLength = m_snakeLength - 1;
 }
 
-void Sprite::draw()
+void Snake::draw()
 {
-	Renderer renderer;
-	InputHandler inputHandler(renderer);
-
-	renderer.initialize(argc, argv);
-	inputHandler.initialize();
-
-	vector<Sprite> sprites;
-
-	for (int i = 0; i < snakeLength; i++)
+	//1. Pass the object's color to OpenGL
+	if (m_color == "red")
 	{
-		Sprite *pSprite = new Sprite();
-		if (m_color == "red")
-		{
-			pSprite->setColor(1, 0, 0);
-		}
-		else if (m_color == "green")
-		{
-			pSprite->setColor(0, 1, 0);
-		}
-		pSprite->setPosition(snake.at(i)[0], snake.at(i)[1]);
-		pSprite->setSize(0.02);
-		pSprite->setDepth(-1.5);
-		sprites.push_back(pSprite);
-
+		glColor3f(1,0,0);
 	}
-	for(int i = 0; i < sprites.size(); i++)
+	else if (m_color == "green")
 	{
-		renderer.addObject(sprites.at(i));
+		glColor3f(0,1,0);
 	}
-
+	for (int i = 0; i < m_snakeLength; i++)
+	{
+		//2. Save the current transformation matrix
+		glPushMatrix();
+		//3. Set the transformation matrix of the quad using position, size and angle
+		glTranslatef(m_snake.at(i).getX(), m_snake.at(i).getY(), -1.5);
+		glScalef(0.02, 0.02, 1);
+		glRotatef(0.0, 0, 0, 1);
+		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
+		glTranslatef(m_snake.at(i).getX(), m_snake.at(i).getY(), -1.5);
+		glBegin(GL_TRIANGLE_STRIP);
+		glVertex3f(-1, -1, -1.5);
+		glVertex3f(1, -1, -1.5);
+		glVertex3f(-1, 1, -1.5);
+		glVertex3f(1, 1, -1.5);
+		glEnd();
+		//5. Restore the transformation matrix
+		glPopMatrix();
+	}
 
 }
