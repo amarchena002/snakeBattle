@@ -7,7 +7,7 @@ using namespace std;
 
 class World
 {
-
+	 
 	int m_x;
 	int m_y;
 	vector<char> m_cells;
