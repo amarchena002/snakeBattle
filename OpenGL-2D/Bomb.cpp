@@ -11,3 +11,8 @@ Bomb::Bomb(Position pos)
 Bomb::~Bomb()
 {
 }
+
+Position Bomb::GetPosition()
+{
+	return m_pos;
+}

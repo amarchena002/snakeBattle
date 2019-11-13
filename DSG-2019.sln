@@ -15,6 +15,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml2", "3rd-party\tinyx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SnakeTest", "SnakeTest\SnakeTest.vcxproj", "{524E7038-6E67-4F74-B89C-E8BA1BA33224}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestStone", "TestStone\TestStone.vcxproj", "{7F5448C9-5A32-4E3B-AC7D-94845322F560}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestBomb", "TestBomb\TestBomb.vcxproj", "{DB525E84-12D4-40B7-8849-3FABE822DCCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -55,14 +59,6 @@ Global
 		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|x64.Build.0 = Release|x64
 		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|x86.ActiveCfg = Release|Win32
 		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|x86.Build.0 = Release|Win32
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Debug|x64.ActiveCfg = Debug|x64
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Debug|x64.Build.0 = Debug|x64
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Debug|x86.ActiveCfg = Debug|Win32
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Debug|x86.Build.0 = Debug|Win32
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Release|x64.ActiveCfg = Release|x64
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Release|x64.Build.0 = Release|x64
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Release|x86.ActiveCfg = Release|Win32
-		{524E7038-6E67-4F74-B89C-E8BA1BA33224}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
