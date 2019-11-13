@@ -1,4 +1,6 @@
 #pragma once
+#include "stdafx.h"
+
 class Position
 {
 	int m_x;
