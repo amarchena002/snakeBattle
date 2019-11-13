@@ -24,7 +24,7 @@ void Control::processInput()
 			//Para Snake1
 		case 'a': m_snake1.moveLeft();
 			break;
-		case 'd': m_snake1.moveRight();
+		case 'd': m_snake1.moveRigth();
 			break;
 		case 'w': m_snake1.moveUp();
 			break;
@@ -34,7 +34,7 @@ void Control::processInput()
 			//Para Snake2
 		case 'j': m_snake2.moveLeft();
 			break;
-		case 'l': m_snake2.moveRight();
+		case 'l': m_snake2.moveRigth();
 			break;
 		case 'i': m_snake2.moveUp();
 			break;
