@@ -1,13 +1,18 @@
 #include "stdafx.h"
 #include "Sprite.h"
 #include "Stone.h"
+#include "position.h"
 
-Stone::Stone(int x, int y)
+Stone::Stone(Position pos)
 {
-	posX = x;
-	posY = y;
+	m_pos = pos;
 }
 
 Stone::~Stone()
 {
+}
+
+Position Stone::GetPosition()
+{
+	return m_pos;
 }

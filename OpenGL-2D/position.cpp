@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "position.h"
+#include "Position.h"
+
 
 
 Position::Position()

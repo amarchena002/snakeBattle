@@ -65,6 +65,7 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apple.h" />
@@ -79,6 +80,7 @@
     <ClInclude Include="Stone.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -87,6 +89,9 @@
     <ProjectReference Include="..\3rd-party\freeglut3\freeglut3.vcxproj">
       <Project>{5a98782e-7027-46f9-91e1-e1ede1e14bf4}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="inputfile.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
