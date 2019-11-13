@@ -5,17 +5,14 @@
 
 World::World()
 {
-	m_points1 = 0;
-	m_points2 = 0;
-
-	int m_width = 10;
-	int m_height = 10;
-	
-	for (int x = 0; x < 10; x++)
+	m_width = 10;
+	m_height = 10;	
+	for (int x = 0; x < m_height; x++)
 	{
-		for (int y = 0; y < 10; y++)
+		i = 1;
+		for (int y = 0; y < m_width; y++)
 		{
-			m_world[x][y] = '-'; // empty cell
+			m_world.push_back();
 		}
 	}
 }
@@ -42,60 +39,55 @@ World::World()
 
 }
 */
-
-
-
-
-
-World::World(string nameFile)
-{
-	m_points1 = 0;
-	m_points2 = 0;
-
-	ifstream inputFile(nameFile, fstream::in);
-	if (inputFile.is_open())
-	{
-		char data = ' ';
-		string size = "";
-		while (data != ',')
-		{
-			inputFile >> data;
-			if (data != ',')
-				size += data;
-		}
-		m_x += stoi(size);
-		size = "";
-		data = ' ';
-		while (data != ';')
-		{
-			inputFile >> data;
-			if (data != ';')
-				size += data;
-		}
-		m_y += stoi(size);
-		data = ' ';
-		for (int i = 0; i < m_y; i++)
-		{
-			for (int j = 0; j < m_x; j++)
-			{
-				inputFile >> data;
-				if (data == '?')
-				{
-					//m_coins++;
-				}
-				if (data == '1')
-				{
-					//m_snake1 = Snake(j, i);
-				}
-				if (data == '2')
-				{
-					//m_snake2 = Snake(j, i);
-				}
-				m_cells.push_back(data);
-			}
-		}
-
-		inputFile.close();
-	}
-}
+//World::World(string nameFile)
+//{
+//	m_points1 = 0;
+//	m_points2 = 0;
+//
+//	ifstream inputFile(nameFile, fstream::in);
+//	if (inputFile.is_open())
+//	{
+//		char data = ' ';
+//		string size = "";
+//		while (data != ',')
+//		{
+//			inputFile >> data;
+//			if (data != ',')
+//				size += data;
+//		}
+//		m_x += stoi(size);
+//		size = "";
+//		data = ' ';
+//		while (data != ';')
+//		{
+//			inputFile >> data;
+//			if (data != ';')
+//				size += data;
+//		}
+//		m_y += stoi(size);
+//		data = ' ';
+//		for (int i = 0; i < m_y; i++)
+//		{
+//			for (int j = 0; j < m_x; j++)
+//			{
+//				inputFile >> data;
+//				if (data == '?')
+//				{
+//					//m_coins++;
+//				}
+//				if (data == '1')
+//				{
+//					//m_snake1 = Snake(j, i);
+//				}
+//				if (data == '2')
+//				{
+//					//m_snake2 = Snake(j, i);
+//				}
+//				m_cells.push_back(data);
+//			}
+//		}
+//
+//		inputFile.close();
+//	}
+//}
 

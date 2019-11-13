@@ -1,5 +1,5 @@
 #pragma once
-
+#include "position.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -10,11 +10,11 @@ class World
 	 
 	int m_x;
 	int m_y;
-	vector<char> m_cells;
+	//vector<Position> m_cells;
 
-	//int m_width; //ancho
-	//int m_height; //alto
-	char m_world[10][10];
+	int m_width; //ancho
+	int m_height; //alto
+	vector<Position> m_world;
 	
 	
 	// Snake m_snake1;
