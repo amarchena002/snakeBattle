@@ -19,6 +19,7 @@ void Control::processInput()
 	while(System::keyHit())
 	{
 		char c = System::getNextKey();
+
 		switch (c)
 		{
 			//Para Snake1
