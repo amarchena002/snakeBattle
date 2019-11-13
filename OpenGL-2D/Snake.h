@@ -12,7 +12,7 @@ class Snake : public Drawable
 	string m_direction; // Up, Down, Left, Rigth
 	vector<Position> m_snake;
 	int m_snakeLength;
-	string m_color; 
+	string m_color;   
 
 	char const dir_up = 'u';
 	char const dir_down = 'd';
