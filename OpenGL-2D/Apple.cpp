@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "Apple.h"
 
+
+Apple::Apple() 
+{
+}
+
 Apple::Apple(char color, int x, int y)
 {
 	appleColor = color;

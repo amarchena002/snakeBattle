@@ -1,16 +1,20 @@
-#pragma once
+#include "Drawable.h"
+
+#include "Snake.h"
+#include "Apple.h"
+#include "Stone.h"
 
 #include <string>
 #include <vector>
 using namespace std;
 
 
-class World
+class World // : public Drawable
 {
 	 
 	int m_x;
 	int m_y;
-	vector<char> m_cells;
+	//vector<char> m_cells;
 
 	//int m_width; //ancho
 	//int m_height; //alto
@@ -20,25 +24,23 @@ class World
 	// Snake m_snake1;
 	// Snake m_snake2;
 
-	// Apple m_apple1;
-	// Apple m_apple2;
+	Apple m_apple1;
+	Apple m_apple2;
 
-	int m_points1; //Puntos Snake 1
-	int m_points2; //Puntos Snake 2
+	int m_points1; //Snake1 Points
+	int m_points2; //Snake2 Points
 
 
 public:
 	World();
 	World(string nameFile);
-	//World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/);
+	World(/*Snake snake1, Snake snake2,*/ Apple apple1, Apple apple2);
 	//World(int x, int y, vector<char> vector);
-
-	
 	~World();
 
 	void draw();
 	void changeCells();
-	void addPoint(char snake);
+	//void addPoint(Snake snake);
 
 
 };

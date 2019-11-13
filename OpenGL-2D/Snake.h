@@ -22,6 +22,7 @@ class Snake : public Drawable
 
 public:
 
+	Snake();
 	Snake(Position position, string dir,string color);
 	~Snake();
 

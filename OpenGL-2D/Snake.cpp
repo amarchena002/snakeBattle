@@ -2,6 +2,9 @@
 #include "Sprite.h"
 #include "Snake.h"
 
+Snake::Snake()
+{}
+
 Snake::Snake(Position position, string dir, string color)
 {
 	m_headPosition = position;

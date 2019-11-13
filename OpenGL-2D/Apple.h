@@ -6,6 +6,7 @@ class Apple
 	int posY;
 public:
 
+	Apple();
 	Apple(char appleColor, int x, int y);
 	~Apple();
 
