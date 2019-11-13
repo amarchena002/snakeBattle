@@ -1,10 +1,9 @@
 #pragma once
 class Stone
 {
-	int posX;
-	int posY;
+	Position m_pos;
 
 	public:
-		Stone(int x, int y);
+		Stone(Position pos);
 		~Stone();
 };
