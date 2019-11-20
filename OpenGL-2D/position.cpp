@@ -7,7 +7,7 @@ Position::Position()
 {
 }
 
-Position::Position(float x, float y)
+Position::Position(int x, int y)
 {
 	m_x = x;
 	m_y = y;

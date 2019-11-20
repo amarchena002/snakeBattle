@@ -24,10 +24,10 @@ World::World()
 			m_world.push_back(pos);
 		}
 	}
-	Position pos = Position(m_width, 0);
+	Position pos = Position(m_width-1, 0);
 	m_snake1 = new Snake(pos, "r", "red");
-	pos = Position(0, m_height);
-	m_snake1 = new Snake(pos, "l", "green");
+	pos = Position(1, m_height-1);
+	m_snake2 = new Snake(pos, "l", "green");
 	pos = Position(rand() % m_width, rand() % m_height);
 	m_apple1 = new Apple("red", pos);
 	pos = Position(rand() % m_width, rand() % m_height);
@@ -42,16 +42,16 @@ World::World()
 		pos = Position(rand() % m_width, rand() % m_height);
 	}
 	for (int i = 0; i <sizeof(m_stone); i++) {
-		while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos || m_bomb->getPosition() == pos)
+		while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
 		{			
 			pos = Position(rand() % m_width, rand() % m_height);
 		}
-		int j = 0;
+		/*int j = 0;
 		while (m_stone[j]->getPosition() == pos)
 		{
 			pos = Position(rand() % m_width, rand() % m_height);
 		}
-		m_stone[i] = new Stone(pos);
+		m_stone[i] = new Stone(pos);*/
 	}
 	
 }
@@ -61,7 +61,7 @@ void World::colision(Position posWanted, Snake snake) {
 	Position posApple1 = m_apple1->getPosition();
 	Position posApple2 = m_apple2->getPosition();
 	//Position posStone = m_stone->getPosition();
-	Position posBomb = m_bomb->getPosition();
+	/*Position posBomb = m_bomb->getPosition();*/
 
 	if (posWanted == posApple1)
 	{
@@ -71,10 +71,10 @@ void World::colision(Position posWanted, Snake snake) {
 	{
 		snake.eatApple(m_apple2->getColor());
 	}
-	else if (posWanted == posBomb)
+	/*else if (posWanted == posBomb)
 	{
 		snake.eatBomb();
-	}
+	}*/
 	else
 	{
 		for (int i = 0; i < sizeof(m_stone); i++)
@@ -211,11 +211,11 @@ void World::draw()
 		//2. Save the current transformation matrix
 		glPushMatrix();
 		//3. Set the transformation matrix of the quad using position, size and angle
-		glTranslatef(m_world.at(i).getX(), m_world.at(i).getY(), -2);
+		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glScalef(0.02, 0.02, 1);
 		glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
-		glTranslatef(m_world.at(i).getX(), m_world.at(i).getY(), -2);
+		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glBegin(GL_TRIANGLE_STRIP);
 		glVertex3f(-1, -1, -2);
 		glVertex3f(1, -1, -2);
@@ -225,5 +225,7 @@ void World::draw()
 		//5. Restore the transformation matrix
 		glPopMatrix();
 	}
+	m_snake1->draw();
+	m_snake2->draw();
 }
 

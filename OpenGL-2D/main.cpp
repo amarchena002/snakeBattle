@@ -35,9 +35,9 @@ int main(int argc, char** argv)
 	renderer.addObject(pSprite2);*/
 
 	Position pos = Position(0.5,0.5);
-	Snake *snake = new Snake(pos, "u", "red");
+	/*Snake *snake = new Snake(pos, "u", "red");*/
 	World *world = new World();
-	renderer.addObject(snake);
+	/*renderer.addObject(snake);*/
 	renderer.addObject(world);
 	
 
