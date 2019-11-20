@@ -69,6 +69,11 @@ void Snake::eatApple(string color)
 	}
 }
 
+string Snake::getColor()
+{
+	return m_color;
+}
+
 void Snake::eatStone()
 {
 	//reducir array snake[snakeLength] 
