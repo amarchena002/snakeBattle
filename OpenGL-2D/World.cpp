@@ -16,22 +16,45 @@ World::World()
 			m_world.push_back(pos);
 		}
 	}
+	Position pos = Position(10, 0);
+	m_snake1 = new Snake(pos, "r", "red");
+	pos = Position(0, 10);
+	m_snake1 = new Snake(pos, "l", "green");
+	pos = Position(rand() % 10, rand() % 10);
+	m_apple1 = new Apple('r', pos);
+	pos = Position(rand() % 10, rand() % 10);
+	while (m_apple1->getPosition() == pos)
+	{
+		pos = Position(rand() % 10, rand() % 10);
+	}
+	m_apple2 = new Apple('g', pos);
+	pos = Position(rand() % 10, rand() % 10);
+	while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
+	{
+		pos = Position(rand() % 10, rand() % 10);
+	}
+	m_bomb = new Bomb(pos);
+	while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos || m_apple2->getPosition())
+	{
+		pos = Position(rand() % 10, rand() % 10);
+	}
+	m_stone = Stone();
 }
 
 void World::colision(Position posWanted, Snake snake) {
 	
-	Position posApple1 = m_apple1.getPosition();
-	Position posApple2 = m_apple2.getPosition();
-	Position posStone = m_Stone.getPosition();
-	Position posBomb = m_Bomb.getPosition();
+	Position posApple1 = m_apple1->getPosition();
+	Position posApple2 = m_apple2->getPosition();
+	Position posStone = m_stone->getPosition();
+	Position posBomb = m_bomb->getPosition();
 
 	if (posWanted == posApple1)
 	{
-		snake.eatApple(m_Apple1.getColor());
+		snake.eatApple(m_apple1->getColor());
 	}
 	else if(posWanted == posApple2)
 	{
-		snake.eatApple(m_Apple2.getColor());
+		snake.eatApple(m_apple2->getColor());
 	}
 	else if (posWanted == posStone)
 	{
@@ -41,27 +64,6 @@ void World::colision(Position posWanted, Snake snake) {
 	{
 		snake.eatBomb();
 	}
-	Position pos = Position(10, 0);
-	m_snake1 = new Snake(pos, "r", "red");
-	pos = Position(0, 10);
-	m_snake1 = new Snake(pos, "l", "green");
-	pos = Position(rand() % 10, rand() % 10);
-	m_apple1 = new Apple('r',pos);
-	pos = Position(rand() % 10, rand() % 10);
-	while (m_apple1->getPosition() == pos)
-	{
-		pos = Position(rand() % 10, rand() % 10);
-	}
-	m_apple2 = new Apple('g', pos);
-	pos = Position(rand() % 10, rand() % 10);
-	while (m_apple1->getPosition() == pos)
-	{
-		pos = Position(rand() % 10, rand() % 10);
-	}
-	m_bomb = Bomb(pos);
-	m_stone = Stone();
-	
-	
 }
 //World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
 /*{
