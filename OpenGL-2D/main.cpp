@@ -2,6 +2,8 @@
 #include "InputHandler.h"
 #include "Renderer.h"
 #include "Sprite.h"
+#include "Snake.h"
+#include "World.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "Snake.h"
 
@@ -10,6 +12,8 @@
 int main(int argc, char** argv)
 {
 	Renderer renderer;
+
+	//InputHandler inputHandler(renderer);
 	InputHandler inputHandler(renderer);
 	
 	renderer.initialize(argc, argv);
