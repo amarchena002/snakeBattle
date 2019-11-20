@@ -53,7 +53,7 @@ void World::colision(Position posWanted, Snake snake) {
 	
 	Position posApple1 = m_apple1->getPosition();
 	Position posApple2 = m_apple2->getPosition();
-	Position posStone = m_stone->getPosition();
+	//Position posStone = m_stone->getPosition();
 	Position posBomb = m_bomb->getPosition();
 
 	if (posWanted == posApple1)
@@ -64,13 +64,20 @@ void World::colision(Position posWanted, Snake snake) {
 	{
 		snake.eatApple(m_apple2->getColor());
 	}
-	else if (posWanted == posStone)
-	{
-		snake.eatStone();
-	}
 	else if (posWanted == posBomb)
 	{
 		snake.eatBomb();
+	}
+	else
+	{
+		for (int i = 0; i < sizeof(m_stone); i++)
+		{
+			Position posStone = m_stone[i]->getPosition();
+			if (posWanted == posStone)
+			{
+				snake.eatStone();
+			}
+		}
 	}
 }
 //World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
