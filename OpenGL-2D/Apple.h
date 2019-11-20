@@ -1,17 +1,19 @@
 #pragma once
 #include "position.h"
+#include <string>
+using namespace std;
 
 class Apple
 {
-	char m_appleColor;
+	string m_appleColor;
 	Position m_pos;
 
 public:
 
-	Apple(char appleColor, Position pos);
+	Apple(string appleColor, Position pos);
 	~Apple();
 
-	char getColor();
+	string getColor();
 	Position getPosition();
-	bool isTheSameColor(char snakeColor);
+	bool isTheSameColor(string snakeColor);
 };

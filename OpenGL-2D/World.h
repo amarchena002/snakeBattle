@@ -1,7 +1,13 @@
 #pragma once
 #include "position.h"
+#include "Snake.h"
+#include "Stone.h"
+#include "Apple.h"
+#include "Bomb.h"
 #include <string>
 #include <vector>
+#include "Apple.h"
+#include "Snake.h"
 #include "Drawable.h"
 #include "Position.h"
 using namespace std;
@@ -19,11 +25,13 @@ class World
 	vector<Position> m_world;
 	
 	
-	// Snake m_snake1;
-	// Snake m_snake2;
+	 Snake* m_snake1;
+	 Snake* m_snake2;
 
-	// Apple m_apple1;
-	// Apple m_apple2;
+	 Apple* m_apple1;
+	 Apple* m_apple2;
+	 Stone* m_stone[10];
+	 Bomb* m_bomb;
 
 	int m_points1; //Puntos Snake 1
 	int m_points2; //Puntos Snake 2
@@ -31,16 +39,17 @@ class World
 
 public:
 	World();
-	World(string nameFile);
-	//World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/);
-	//World(int x, int y, vector<char> vector);
-
-	
 	~World();
 
 	void draw();
 	void changeCells();
 	void addPoint(char snake);
+	
+	void colision(Position posWanted, Snake snake);
+
+	//void addPoint(char snake);
+
+	void setApple(Apple apple, Snake snake);
 
 
 };

@@ -69,6 +69,11 @@ void Snake::eatApple(string color)
 	}
 }
 
+string Snake::getColor()
+{
+	return m_color;
+}
+
 void Snake::eatStone()
 {
 	//reducir array snake[snakeLength] 
@@ -106,4 +111,11 @@ void Snake::draw()
 		glPopMatrix();
 	}
 
+}
+}
+
+void Snake::eatBomb()
+{
+	//snake muere
+	m_snakeLength = 0;
 }
