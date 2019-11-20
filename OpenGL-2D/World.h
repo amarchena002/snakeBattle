@@ -1,5 +1,9 @@
 #pragma once
 #include "position.h"
+#include "Snake.h"
+#include "Stone.h"
+#include "Apple.h"
+#include "Bomb.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -17,11 +21,13 @@ class World
 	vector<Position> m_world;
 	
 	
-	// Snake m_snake1;
-	// Snake m_snake2;
+	 Snake m_snake1;
+	 Snake m_snake2;
 
-	// Apple m_apple1;
-	// Apple m_apple2;
+	 Apple m_apple1;
+	 Apple m_apple1;
+	 vector<Stone> m_stone;
+	 Bomb bomb;
 
 	int m_points1; //Puntos Snake 1
 	int m_points2; //Puntos Snake 2

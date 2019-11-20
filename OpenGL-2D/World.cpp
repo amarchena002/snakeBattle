@@ -9,10 +9,10 @@ World::World()
 	m_height = 10;	
 	for (int x = 0; x < m_height; x++)
 	{
-		i = 1;
 		for (int y = 0; y < m_width; y++)
 		{
-			m_world.push_back();
+			Position pos = Position(x, y);
+			m_world.push_back(pos);
 		}
 	}
 }
