@@ -12,7 +12,7 @@ Stone::~Stone()
 {
 }
 
-Position Stone::GetPosition()
+Position Stone::getPosition()
 {
 	return m_pos;
 }

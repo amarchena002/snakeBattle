@@ -9,5 +9,5 @@ public:
 	Bomb(Position pos);
 	~Bomb();
 
-	Position GetPosition();
+	Position getPosition();
 };

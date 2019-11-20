@@ -12,7 +12,7 @@ Bomb::~Bomb()
 {
 }
 
-Position Bomb::GetPosition()
+Position Bomb::getPosition()
 {
 	return m_pos;
 }

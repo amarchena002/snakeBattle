@@ -8,37 +8,45 @@ World::World()
 {
 	m_width = 10;
 	m_height = 10;	
-	for (int x = 0; x < m_height; x++)
+	
+	for (int y = 0; y < m_height; y++)
 	{
-		for (int y = 0; y < m_width; y++)
+		for (int x = 0; x < m_width; x++)
 		{
 			Position pos = Position(x, y);
 			m_world.push_back(pos);
 		}
 	}
-	Position pos = Position(10, 0);
+	Position pos = Position(m_width, 0);
 	m_snake1 = new Snake(pos, "r", "red");
-	pos = Position(0, 10);
+	pos = Position(0, m_height);
 	m_snake1 = new Snake(pos, "l", "green");
-	pos = Position(rand() % 10, rand() % 10);
-	m_apple1 = new Apple('r', pos);
-	pos = Position(rand() % 10, rand() % 10);
+	pos = Position(rand() % m_width, rand() % m_height);
+	m_apple1 = new Apple("red", pos);
+	pos = Position(rand() % m_width, rand() % m_height);
 	while (m_apple1->getPosition() == pos)
 	{
-		pos = Position(rand() % 10, rand() % 10);
+		pos = Position(rand() % m_width, rand() % m_height);
 	}
-	m_apple2 = new Apple('g', pos);
-	pos = Position(rand() % 10, rand() % 10);
+	m_apple2 = new Apple("green", pos);
+	pos = Position(rand() % m_width, rand() % m_height);
 	while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
 	{
-		pos = Position(rand() % 10, rand() % 10);
+		pos = Position(rand() % m_width, rand() % m_height);
 	}
-	m_bomb = new Bomb(pos);
-	while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos || m_apple2->getPosition())
-	{
-		pos = Position(rand() % 10, rand() % 10);
+	for (int i = 0; i <sizeof(m_stone); i++) {
+		while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos || m_bomb->getPosition() == pos)
+		{			
+			pos = Position(rand() % m_width, rand() % m_height);
+		}
+		int j = 0;
+		while (m_stone[j]->getPosition() == pos)
+		{
+			pos = Position(rand() % m_width, rand() % m_height);
+		}
+		m_stone[i] = new Stone(pos);
 	}
-	m_stone = Stone();
+	
 }
 
 void World::colision(Position posWanted, Snake snake) {

@@ -26,7 +26,7 @@ class World
 
 	 Apple* m_apple1;
 	 Apple* m_apple2;
-	 vector<Stone*> m_stone;
+	 Stone* m_stone[10];
 	 Bomb* m_bomb;
 
 	int m_points1; //Puntos Snake 1
