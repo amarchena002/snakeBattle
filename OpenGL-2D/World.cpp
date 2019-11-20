@@ -15,6 +15,23 @@ World::World()
 			m_world.push_back(pos);
 		}
 	}
+	Position pos = Position(10, 0);
+	m_snake1 = new Snake(pos, "r", "red");
+	pos = Position(0, 10);
+	m_snake1 = new Snake(pos, "l", "green");
+	pos = Position(rand() % 10, rand() % 10);
+	m_apple1 = new Apple('r',pos);
+	pos = Position(rand() % 10, rand() % 10);
+	while (m_apple1->getPosition() == pos)
+	{
+		pos = Position(rand() % 10, rand() % 10);
+	}
+	m_apple2 = new Apple('g', pos);
+	m_apple2 = Apple();
+	m_bomb = Bomb(pos);
+	m_stone = Stone();
+	
+	
 }
 //World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
 /*{

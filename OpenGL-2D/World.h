@@ -21,13 +21,13 @@ class World
 	vector<Position> m_world;
 	
 	
-	 Snake m_snake1;
-	 Snake m_snake2;
+	 Snake* m_snake1;
+	 Snake* m_snake2;
 
-	 Apple m_apple1;
-	 Apple m_apple1;
-	 vector<Stone> m_stone;
-	 Bomb bomb;
+	 Apple* m_apple1;
+	 Apple* m_apple2;
+	 vector<Stone*> m_stone;
+	 Bomb* m_bomb;
 
 	int m_points1; //Puntos Snake 1
 	int m_points2; //Puntos Snake 2
