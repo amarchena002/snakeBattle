@@ -1,5 +1,6 @@
 #pragma once
-
+#include "..\OpenGL-2D\Snake.h"
+#include "..\OpenGL-2D\Renderer.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -40,5 +41,5 @@ public:
 	void changeCells();
 	void addPoint(char snake);
 
-	void moveSnake();
+	void moveSnake(string snake, char t);
 };

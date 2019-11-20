@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Snake.h"
+//#include "Snake.h"
 #include "World.h"
+#include "Drawable.h"
 
 class Renderer;
 
@@ -10,7 +11,7 @@ class InputHandler
 	static InputHandler* m_pInputHandler;
 	Renderer& m_renderer;
 
-	Snake &m_snake1, &m_snake2;
+	//Snake &m_snake1, &m_snake2;
 	World& m_world;
 
 public:

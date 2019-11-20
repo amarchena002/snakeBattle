@@ -13,7 +13,6 @@ int main(int argc, char** argv)
 {
 	Renderer renderer;
 
-	//InputHandler inputHandler(renderer);
 	InputHandler inputHandler(renderer);
 	
 	renderer.initialize(argc, argv);
@@ -38,10 +37,12 @@ int main(int argc, char** argv)
 	renderer.addObject(pSprite2);*/
 
 	Position pos = Position(0.25, 0.25);
-	Snake *snake = new Snake(pos, "u", "red");
-	renderer.addObject(snake);
-	
-
+	/*Snake *snake = new Snake(pos, "u", "red");
+	renderer.addObject(snake);*/
+	/*
+	World *world = new World();
+	renderer.addObject(world);
+	*/
 
 	while (1)
 	{

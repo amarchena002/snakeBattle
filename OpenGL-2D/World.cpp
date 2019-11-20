@@ -93,8 +93,26 @@ World::World(string nameFile)
 	}
 }
 
-void moveSnake()
+void moveSnake(string snake, char t)
 {
+	Renderer r;
+	Drawable* d = r.getByName(snake);
 
+	if (t=='u')
+	{
+		((Snake*)d)->moveUp();
+	}
+	else if (t == 'd') 
+	{
+		((Snake*)d)->moveDown();
+	}
+	else if (t == 'r')
+	{
+		((Snake*)d)->moveRight();
+	}
+	else if (t == 'l')
+	{
+		((Snake*)d)->moveLeft();
+	}
 }
 

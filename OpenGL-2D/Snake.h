@@ -17,7 +17,7 @@ class Snake : public Drawable
 
 	char const dir_up = 'u';
 	char const dir_down = 'd';
-	char const dir_rigth = 'r';
+	char const dir_right = 'r';
 	char const dir_left = 'l';
 	
 
@@ -27,7 +27,7 @@ public:
 	~Snake();
 
 	void moveUp();
-	void moveRigth();
+	void moveRight();
 	void moveDown();
 	void moveLeft();
 	vector<Position> getVector();

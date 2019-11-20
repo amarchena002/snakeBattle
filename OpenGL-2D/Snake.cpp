@@ -37,10 +37,10 @@ void Snake::moveDown()
 	m_direction = dir_down;
 }
 
-void Snake::moveRigth()
+void Snake::moveRight()
 {
 	m_headPosition.setX(m_headPosition.getX() + 1);
-	m_direction = dir_rigth;
+	m_direction = dir_right;
 }
 
 void Snake::moveLeft()
