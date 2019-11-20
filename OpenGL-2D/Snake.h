@@ -36,4 +36,6 @@ public:
 	void eatStone();
 	void eatBomb();
 	virtual void draw();
+
+	string getColor();
 };

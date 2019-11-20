@@ -6,6 +6,8 @@
 #include "Bomb.h"
 #include <string>
 #include <vector>
+#include "Apple.h"
+#include "Snake.h"
 using namespace std;
 
 
@@ -35,11 +37,6 @@ class World
 
 public:
 	World();
-	World(string nameFile);
-	//World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/);
-	//World(int x, int y, vector<char> vector);
-
-	
 	~World();
 
 	void draw();
@@ -47,6 +44,10 @@ public:
 	void addPoint(char snake);
 	
 	void colision(Position posWanted, Snake snake);
+
+	//void addPoint(char snake);
+
+	void setApple(Apple apple, Snake snake);
 
 
 };

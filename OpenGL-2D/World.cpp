@@ -73,6 +73,47 @@ void World::colision(Position posWanted, Snake snake) {
 		snake.eatBomb();
 	}
 }
+}
+
+World::~World()
+{
+}
+
+void World::setApple(Apple apple, Snake snake)
+{
+	//comer manzana 
+	//generar nueva manzana
+	string m_color = apple.getColor();
+	string s_color = snake.getColor();
+
+	//comparar si la serpiente es del mismo color que la manzana
+	if (m_color.compare(s_color)==0) { // si: 
+		// eliminar manzana
+		apple.~Apple();
+		//aumentar tamaño?
+
+		// crear nueva manzana del mismo color:
+		// Apple(string color, Position pos)
+
+		//Apple apple(m_color, posit);
+	}
+		
+
+
+	// no: 
+		// dejar manzana
+		// detectar colision?
+
+
+}
+
+
+
+
+
+
+
+
 //World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
 /*{
 	m_points1 = 0;
@@ -94,55 +135,56 @@ void World::colision(Position posWanted, Snake snake) {
 
 }
 */
-//World::World(string nameFile)
-//{
-//	m_points1 = 0;
-//	m_points2 = 0;
-//
-//	ifstream inputFile(nameFile, fstream::in);
-//	if (inputFile.is_open())
-//	{
-//		char data = ' ';
-//		string size = "";
-//		while (data != ',')
-//		{
-//			inputFile >> data;
-//			if (data != ',')
-//				size += data;
-//		}
-//		m_x += stoi(size);
-//		size = "";
-//		data = ' ';
-//		while (data != ';')
-//		{
-//			inputFile >> data;
-//			if (data != ';')
-//				size += data;
-//		}
-//		m_y += stoi(size);
-//		data = ' ';
-//		for (int i = 0; i < m_y; i++)
-//		{
-//			for (int j = 0; j < m_x; j++)
-//			{
-//				inputFile >> data;
-//				if (data == '?')
-//				{
-//					//m_coins++;
-//				}
-//				if (data == '1')
-//				{
-//					//m_snake1 = Snake(j, i);
-//				}
-//				if (data == '2')
-//				{
-//					//m_snake2 = Snake(j, i);
-//				}
-//				m_cells.push_back(data);
-//			}
-//		}
-//
-//		inputFile.close();
-//	}
-//}
+
+World::World(string nameFile)
+{
+	m_points1 = 0;
+	m_points2 = 0;
+
+	ifstream inputFile(nameFile, fstream::in);
+	if (inputFile.is_open())
+	{
+		char data = ' ';
+		string size = "";
+		while (data != ',')
+		{
+			inputFile >> data;
+			if (data != ',')
+				size += data;
+		}
+		m_x += stoi(size);
+		size = "";
+		data = ' ';
+		while (data != ';')
+		{
+			inputFile >> data;
+			if (data != ';')
+				size += data;
+		}
+		m_y += stoi(size);
+		data = ' ';
+		for (int i = 0; i < m_y; i++)
+		{
+			for (int j = 0; j < m_x; j++)
+			{
+				inputFile >> data;
+				if (data == '?')
+				{
+					//m_coins++;
+				}
+				if (data == '1')
+				{
+					//m_snake1 = Snake(j, i);
+				}
+				if (data == '2')
+				{
+					//m_snake2 = Snake(j, i);
+				}
+				m_cells.push_back(data);
+			}
+		}
+
+		inputFile.close();
+	}
+}
 
