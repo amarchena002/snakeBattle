@@ -88,30 +88,39 @@ World::~World()
 
 void World::setApple(Apple apple, Snake snake)
 {
-	//comer manzana 
-	//generar nueva manzana
+	//comer manzana y generar una nueva manzana del mismo color
 	string m_color = apple.getColor();
 	string s_color = snake.getColor();
 
-	//comparar si la serpiente es del mismo color que la manzana
-	if (m_color.compare(s_color)==0) { // si: 
-		// eliminar manzana
-		apple.~Apple();
-		//aumentar tamaño?
-
-		// crear nueva manzana del mismo color:
-		// Apple(string color, Position pos)
-
-		//Apple apple(m_color, posit);
-	}
+	if (m_color.compare(s_color)==0) { //comparar si la serpiente es del mismo color que la manzana
 		
+		apple.~Apple();				// eliminar manzana
+		snake.eatApple(m_color);	//aumentar tamaño?
 
+		//crear una nueva manzana del mismo color en una posición aleatoria, previa comparación si casilla vacía
+		// Apple(string color, Position pos)
+		if (m_color.compare("red")==0) {
+			Position pos = Position(rand() % m_width, rand() % m_height);
+			m_apple1 = new Apple("red", pos);
+			pos = Position(rand() % m_width, rand() % m_height);
+			while (m_apple1->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+			}
+		}
+		else if (m_color.compare("green") == 0) {
+			Position pos = Position(rand() % m_width, rand() % m_height);
+			m_apple2 = new Apple("green", pos);
+			while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+			}
+		}
 
-	// no: 
-		// dejar manzana
-		// detectar colision?
+	} else { // no del mismo color
+		// dejar manzana? detectar colision?
 
-
+	}
 }
 
 
