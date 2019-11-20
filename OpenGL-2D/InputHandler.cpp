@@ -28,25 +28,32 @@ void InputHandler::processKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 			//Snake1
-		case 'a': m_snake1.moveLeft();
+		case 'a': //m_snake1.moveLeft();
+			m_world.moveSnake(m_snake1, "l");
 			break;
-		case 'd': m_snake1.moveRigth();
+		case 'd': //m_snake1.moveRigth();
+			m_world.moveSnake(m_snake1, "r");
 			break;
-		case 'w': m_snake1.moveUp();
+		case 'w': //m_snake1.moveUp();
+			m_world.moveSnake(m_snake1, "u");
 			break;
-		case 's': m_snake1.moveDown();
+		case 's': //m_snake1.moveDown();
+			m_world.moveSnake(m_snake1, "d");
 			break;
 
 			//Snake2
-		case 'j': m_snake2.moveLeft();
+		case 'j': //m_snake2.moveLeft();
+			m_world.moveSnake(m_snake2, "l");
 			break;
-		case 'l': m_snake2.moveRigth();
+		case 'l': //m_snake2.moveRigth();
+			m_world.moveSnake(m_snake2, "r");
 			break;
-		case 'i': m_snake2.moveUp();
+		case 'i': //m_snake2.moveUp();
+			m_world.moveSnake(m_snake2, "u");
 			break;
-		case 'k': m_snake2.moveDown();
+		case 'k': //m_snake2.moveDown();
+			m_world.moveSnake(m_snake2, "d");
 			break;
-
 			//Exit
 		case 27: exit(0);
 	}

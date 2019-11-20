@@ -19,7 +19,7 @@ public:
 	void initialize(int argc, char** argv);
 
 	static Renderer* get(); //this method returns the only instance to the renderer. Needs to be called after the constructor
-	Renderer* getByName(string name);
+	Drawable* getByName(string name);
 
 	void drawScene();
 	void addObject(Drawable* pObj);

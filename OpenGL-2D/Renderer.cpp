@@ -24,21 +24,19 @@ Renderer* Renderer::get()
 	return m_pRenderer;
 }
 
-Renderer* Renderer::getByName(string name)
+Drawable* Renderer::getByName(string name)
 {
-	//Drawable* drw;
+	Drawable* drw;
 	//devolver un puntero con la pos y tiene que ser drawable
 	for (int i = 0; i <= m_objects2D.size(); i++)
 	{
-		if (name == m_objects2D[i].getName())
+		if (name == m_objects2D[i]->getName())
 		{
-			m_pRenderer = m_objects2D[i];
-			//drw = m_objects2D[i];
+			drw = m_objects2D[i];
 		}
 	}
 
-	return m_pRenderer;
-	//return drw
+	return drw;
 }
 
 
