@@ -1,4 +1,5 @@
 #pragma once
+#include "position.h"
 #include <string>
 #include <vector>
 #include "Drawable.h"
@@ -11,10 +12,10 @@ class World
 	 
 	int m_x;
 	int m_y;
-	/*vector<char> m_cells;*/
+	//vector<Position> m_cells;
 
-	//int m_width; //ancho
-	//int m_height; //alto
+	int m_width; //ancho
+	int m_height; //alto
 	vector<Position> m_world;
 	
 	

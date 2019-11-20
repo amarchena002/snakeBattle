@@ -12,17 +12,14 @@
 
 World::World()
 {
-	m_points1 = 0;
-	m_points2 = 0;
-
-	int m_width = 10;
-	int m_height = 10;
-	
-	for (int x = 0; x < 10; x++)
+	m_width = 10;
+	m_height = 10;	
+	for (int x = 0; x < m_height; x++)
 	{
-		for (int y = 0; y < 10; y++)
+		i = 1;
+		for (int y = 0; y < m_width; y++)
 		{
-			//m_world = '-'; // empty cell
+			m_world.push_back();
 		}
 	}
 }
