@@ -16,8 +16,6 @@ World::World()
 		}
 	}
 }
-
-
 //World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
 /*{
 	m_points1 = 0;
