@@ -1,7 +1,8 @@
 #pragma once
-
 #include <string>
 #include <vector>
+#include "Drawable.h"
+#include "Position.h"
 using namespace std;
 
 
@@ -10,11 +11,11 @@ class World
 	 
 	int m_x;
 	int m_y;
-	vector<char> m_cells;
+	/*vector<char> m_cells;*/
 
 	//int m_width; //ancho
 	//int m_height; //alto
-	char m_world[10][10];
+	vector<Position> m_world;
 	
 	
 	// Snake m_snake1;

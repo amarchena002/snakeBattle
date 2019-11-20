@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	pSprite2->setDepth(-1.5);
 	renderer.addObject(pSprite2);*/
 
-	Position pos = Position(0.25, 0.25);
+	Position pos = Position(0.5,0.5);
 	Snake *snake = new Snake(pos, "u", "red");
 	renderer.addObject(snake);
 	
