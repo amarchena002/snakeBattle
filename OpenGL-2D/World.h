@@ -13,7 +13,7 @@
 using namespace std;
 
 
-class World
+class World:public Drawable
 {
 	 
 	int m_x;
@@ -41,7 +41,7 @@ public:
 	World();
 	~World();
 
-	void draw();
+	virtual void draw();
 	void changeCells();
 	void addPoint(char snake);
 	

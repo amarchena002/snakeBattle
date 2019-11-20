@@ -10,8 +10,8 @@ public:
 	Position();
 	Position(float x, float y);
 	~Position();
-	void setX(int x);
-	void setY(int y);
+	void setX(float x);
+	void setY(float y);
 	int getX();
 	int getY();
 	bool operator== (Position& other);

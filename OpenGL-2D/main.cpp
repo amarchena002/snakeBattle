@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "Snake.h"
+#include "World.h"
 
 
 
@@ -35,7 +36,9 @@ int main(int argc, char** argv)
 
 	Position pos = Position(0.5,0.5);
 	Snake *snake = new Snake(pos, "u", "red");
+	World *world = new World();
 	renderer.addObject(snake);
+	renderer.addObject(world);
 	
 
 
