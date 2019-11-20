@@ -1,5 +1,6 @@
 #include "World.h"
 #include <fstream>
+#include "Snake.h"
 
 
 
@@ -14,6 +15,31 @@ World::World()
 			Position pos = Position(x, y);
 			m_world.push_back(pos);
 		}
+	}
+}
+
+void World::colision(Position posWanted, Snake snake) {
+	
+	Position posApple1 = m_apple1.getPosition();
+	Position posApple2 = m_apple2.getPosition();
+	Position posStone = m_Stone.getPosition();
+	Position posBomb = m_Bomb.getPosition();
+
+	if (posWanted == posApple1)
+	{
+		snake.eatApple(m_Apple1.getColor());
+	}
+	else if(posWanted == posApple2)
+	{
+		snake.eatApple(m_Apple2.getColor());
+	}
+	else if (posWanted == posStone)
+	{
+		snake.eatStone();
+	}
+	else if (posWanted == posBomb)
+	{
+		snake.eatBomb();
 	}
 	Position pos = Position(10, 0);
 	m_snake1 = new Snake(pos, "r", "red");

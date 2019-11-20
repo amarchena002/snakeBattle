@@ -107,3 +107,10 @@ void Snake::draw()
 	}
 
 }
+}
+
+void Snake::eatBomb()
+{
+	//snake muere
+	m_snakeLength = 0;
+}
