@@ -39,6 +39,8 @@ public:
 	void draw();
 	void changeCells();
 	void addPoint(char snake);
+	
+	void colision(Position posWanted, Snake snake);
 
 
 };

@@ -37,3 +37,8 @@ int Position::getY()
 {
 	return m_y;
 }
+
+bool Position::operator== (Position& other)
+{
+	return other.getX() == getX() && other.getY() == getY();
+}

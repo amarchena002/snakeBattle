@@ -59,3 +59,9 @@ void Snake::eatStone()
 	//reducir array snake[snakeLength] 
 	m_snakeLength = m_snakeLength - 1;
 }
+
+void Snake::eatBomb()
+{
+	//snake muere
+	m_snakeLength = 0;
+}

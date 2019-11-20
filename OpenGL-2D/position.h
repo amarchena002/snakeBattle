@@ -12,5 +12,6 @@ public:
 	void setY(int y);
 	int getX();
 	int getY();
+	bool operator== (Position& other);
 };
 
