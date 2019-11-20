@@ -27,7 +27,11 @@ World::World()
 		pos = Position(rand() % 10, rand() % 10);
 	}
 	m_apple2 = new Apple('g', pos);
-	m_apple2 = Apple();
+	pos = Position(rand() % 10, rand() % 10);
+	while (m_apple1->getPosition() == pos)
+	{
+		pos = Position(rand() % 10, rand() % 10);
+	}
 	m_bomb = Bomb(pos);
 	m_stone = Stone();
 	
