@@ -93,3 +93,8 @@ World::World(string nameFile)
 	}
 }
 
+void moveSnake()
+{
+
+}
+

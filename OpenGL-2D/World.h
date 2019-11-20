@@ -40,5 +40,5 @@ public:
 	void changeCells();
 	void addPoint(char snake);
 
-
+	void moveSnake();
 };
