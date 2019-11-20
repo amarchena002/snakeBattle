@@ -120,6 +120,8 @@ void World::setApple(Apple apple, Snake snake)
 	} else { // no del mismo color
 		// dejar manzana? detectar colision?
 
+
+
 	}
 }
 
