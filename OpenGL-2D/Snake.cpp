@@ -112,7 +112,7 @@ void Snake::draw()
 	}
 
 }
-}
+
 
 void Snake::eatBomb()
 {

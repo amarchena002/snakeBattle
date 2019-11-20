@@ -18,22 +18,22 @@ Position::~Position()
 {
 }
 
-void Position::setX(float x)
+void Position::setX(int x)
 {
 	m_x = x;
 }
 
-void Position::setY(float y)
+void Position::setY(int y)
 {
 	m_y = y;
 }
 
-float Position::getX()
+int Position::getX()
 {
 	return m_x;
 }
 
-float Position::getY()
+int Position::getY()
 {
 	return m_y;
 }
