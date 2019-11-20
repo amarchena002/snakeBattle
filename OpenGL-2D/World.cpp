@@ -87,7 +87,7 @@ void World::colision(Position posWanted, Snake snake) {
 		}
 	}
 }
-}
+
 
 World::~World()
 {
