@@ -19,6 +19,46 @@ World::World()
 		}
 	}
 }
+
+World::~World()
+{
+}
+
+void World::setApple(Apple apple, Snake snake)
+{
+	//comer manzana 
+	//generar nueva manzana
+	string m_color = apple.getColor();
+	string s_color = snake.getColor();
+
+	//comparar si la serpiente es del mismo color que la manzana
+	if (m_color.compare(s_color)==0) { // si: 
+		// eliminar manzana
+		apple.~Apple();
+		//aumentar tamaño?
+
+		// crear nueva manzana del mismo color:
+		// Apple(string color, Position pos)
+
+		//Apple apple(m_color, posit);
+	}
+		
+
+
+	// no: 
+		// dejar manzana
+		// detectar colision?
+
+
+}
+
+
+
+
+
+
+
+
 //World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
 /*{
 	m_points1 = 0;
@@ -41,7 +81,7 @@ World::World()
 }
 */
 
-World::World(string nameFile)
+/*World::World(string nameFile)
 {
 	m_points1 = 0;
 	m_points2 = 0;
@@ -92,4 +132,4 @@ World::World(string nameFile)
 		inputFile.close();
 	}
 }
-
+*/
