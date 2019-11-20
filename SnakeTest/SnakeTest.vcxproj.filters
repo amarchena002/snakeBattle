@@ -32,5 +32,8 @@
     <ClCompile Include="..\OpenGL-2D\Apple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\OpenGL-2D\position.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

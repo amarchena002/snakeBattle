@@ -12,6 +12,7 @@ class Snake : public Drawable
 	string m_direction; // Up, Down, Left, Rigth
 	vector<Position> m_snake;
 	int m_snakeLength;
+	Position m_tailPosition;
 	string m_color;
 
 	char const dir_up = 'u';
@@ -29,8 +30,10 @@ public:
 	void moveRigth();
 	void moveDown();
 	void moveLeft();
+	vector<Position> getVector();
 
 	void eatApple(string color);
 	void eatStone();
+	virtual void draw();
 	void eatBomb();
 };

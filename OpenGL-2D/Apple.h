@@ -1,16 +1,17 @@
 #pragma once
+#include "position.h"
+
 class Apple
 {
-	char appleColor;
-	int posX;
-	int posY;
+	char m_appleColor;
+	Position m_pos;
+
 public:
 
-	Apple(char appleColor, int x, int y);
+	Apple(char appleColor, Position pos);
 	~Apple();
 
 	char getColor();
-	int getX();
-	int getY();
+	Position getPosition();
 	bool isTheSameColor(char snakeColor);
 };

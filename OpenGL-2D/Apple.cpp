@@ -1,33 +1,31 @@
 #include "stdafx.h"
 #include "Apple.h"
+#include "position.h"
 
-Apple::Apple(char color, int x, int y)
+Apple::Apple(char color, Position pos)
 {
-	appleColor = color;
-	posX = x;
-	posY = y;
+	m_appleColor = color;
+	m_pos = pos;
 }
+
 Apple::~Apple() 
 {
-
 }
+
 char Apple::getColor()
 {
-	return appleColor;
+	return m_appleColor;
 }
 
-int Apple::getX() 
+Position Apple::getPosition() 
 {
-	return posX;
+	
+	return m_pos;
 }
 
-int Apple::getY()
-{
-	return posY;
-}
 bool Apple::isTheSameColor(char snakeColor)
 {
-	if (appleColor == snakeColor)
+	if (m_appleColor == snakeColor)
 		return true;
 	else
 		return false;
