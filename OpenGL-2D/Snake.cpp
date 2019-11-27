@@ -10,7 +10,7 @@ Snake::Snake(Position position, string dir, string color)
 {
 	//Cambiar a 0.04
 	m_headPosition = position;
-	m_tailPosition = Position(m_headPosition.getX() - 0.041, m_headPosition.getY());
+	m_tailPosition = Position(m_headPosition.getX() - 0.042, m_headPosition.getY());
 	m_direction = dir;
 	m_color = color;
 	//snake = //inicializar array
@@ -69,6 +69,11 @@ void Snake::eatApple(string color)
 	}
 }
 
+string Snake::getColor()
+{
+	return m_color;
+}
+
 void Snake::eatStone()
 {
 	//reducir array snake[snakeLength] 
@@ -91,23 +96,23 @@ void Snake::draw()
 		//2. Save the current transformation matrix
 		glPushMatrix();
 		//3. Set the transformation matrix of the quad using position, size and angle
-		glTranslatef(m_snake.at(i).getX(), m_snake.at(i).getY(), -1.5);
+		glTranslatef(m_snake.at(i).getX()*0.042, m_snake.at(i).getY()*0.042, -1);
 		glScalef(0.02, 0.02, 1);
 		glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
-		glTranslatef(m_snake.at(i).getX(), m_snake.at(i).getY(), -1.5);
+		glTranslatef(m_snake.at(i).getX()*0.042, m_snake.at(i).getY()*0.042, -1);
 		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3f(-1, -1, -1.5);
-		glVertex3f(1, -1, -1.5);
-		glVertex3f(-1, 1, -1.5);
-		glVertex3f(1, 1, -1.5);
+		glVertex3f(-1, -1, -1);
+		glVertex3f(1, -1, -1);
+		glVertex3f(-1, 1, -1);
+		glVertex3f(1, 1, -1);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();
 	}
 
 }
-}
+
 
 void Snake::eatBomb()
 {

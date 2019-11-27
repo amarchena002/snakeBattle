@@ -16,8 +16,8 @@ namespace TestBomb
 			Position pos = Position(2, 1);
 			Bomb bomb(pos);
 
-			int bombX = bomb.GetPosition().getX();
-			int bombY = bomb.GetPosition().getY();
+			int bombX = bomb.getPosition().getX();
+			int bombY = bomb.getPosition().getY();
 
 			Assert::AreEqual(2, bombX);
 			Assert::AreEqual(1, bombY);

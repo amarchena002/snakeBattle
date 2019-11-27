@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "Snake.h"
+#include "World.h"
 
 
 
@@ -33,9 +34,11 @@ int main(int argc, char** argv)
 	pSprite2->setDepth(-1.5);
 	renderer.addObject(pSprite2);*/
 
-	Position pos = Position(0.25, 0.25);
-	Snake *snake = new Snake(pos, "u", "red");
-	renderer.addObject(snake);
+	Position pos = Position(0.5,0.5);
+	/*Snake *snake = new Snake(pos, "u", "red");*/
+	World *world = new World();
+	/*renderer.addObject(snake);*/
+	renderer.addObject(world);
 	
 
 
