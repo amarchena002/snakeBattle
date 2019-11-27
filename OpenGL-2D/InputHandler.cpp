@@ -3,14 +3,14 @@
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 //#include "Snake.h"
 #include "World.h"
+#include "Renderer.h"
 
 InputHandler* InputHandler::m_pInputHandler = nullptr;
 
-InputHandler::InputHandler(Renderer& renderer) : m_renderer(renderer) //(Snake& snake1, Snake& snake2, World& world) : , m_snake1(snake1), m_snake2(snake2), m_world(world)
+InputHandler::InputHandler(Renderer& renderer, World& world) : m_renderer(renderer), m_world(world)// : , m_snake1(snake1), m_snake2(snake2), m_world(world)
 {
 	m_pInputHandler = this;
-
-
+	
 }
 
 
@@ -26,6 +26,7 @@ void InputHandler::initialize()
 
 void InputHandler::processKeyboard(unsigned char key, int x, int y)
 {
+	
 	//keyboard callback function
 	switch (key)
 	{

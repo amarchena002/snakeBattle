@@ -102,16 +102,23 @@ void Snake::draw()
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 		glTranslatef(m_snake.at(i).getX()*0.042, m_snake.at(i).getY()*0.042, -1);
 		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3f(-1, -1, -1);
-		glVertex3f(1, -1, -1);
-		glVertex3f(-1, 1, -1);
-		glVertex3f(1, 1, -1);
+		glVertex3f(-11, -11, -1);
+		glVertex3f(-9, -11, -1);
+		glVertex3f(-11, -9, -1);
+		glVertex3f(-9, -9, -1);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();
 	}
 
 }
+
+string Snake::getName()
+{ 
+	return m_color;
+}
+
+
 
 
 void Snake::eatBomb()

@@ -60,6 +60,11 @@ World::World()
 	
 }
 
+string World::getName()
+{
+	return "world";
+}
+
 void World::colision(Position posWanted, Snake snake) {
 	
 	Position posApple1 = m_apple1->getPosition();
@@ -144,14 +149,14 @@ void World::draw()
 		//3. Set the transformation matrix of the quad using position, size and angle
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glScalef(0.02, 0.02, 1);
-		glRotatef(0.0, 0, 0, 1);
+		//glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3f(-1, -1, -2);
-		glVertex3f(1, -1, -2);
-		glVertex3f(-1, 1, -2);
-		glVertex3f(1, 1, -2);
+		glVertex3f(-11, -11, -2);
+		glVertex3f(-9, -11, -2);
+		glVertex3f(-11, -9, -2);
+		glVertex3f(-9, -9, -2);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();
@@ -160,26 +165,43 @@ void World::draw()
 	m_snake2->draw();
 }
 
-void moveSnake(string snake, char t)
+void World::moveSnake(string snake, char t)
 {
-	Renderer r;
-	Drawable* d = r.getByName(snake);
-
-	if (t=='u')
-	{
-		((Snake*)d)->moveUp();
+	if(snake == "m_snake1"){
+		if (t=='u')
+		{
+			m_snake1->moveUp();
+		}
+		else if (t == 'd') 
+		{
+			m_snake1->moveDown();
+		}
+		else if (t == 'r')
+		{
+			m_snake1->moveRight();
+		}
+		else if (t == 'l')
+		{
+			m_snake1->moveLeft();
+		}
 	}
-	else if (t == 'd') 
-	{
-		((Snake*)d)->moveDown();
-	}
-	else if (t == 'r')
-	{
-		((Snake*)d)->moveRight();
-	}
-	else if (t == 'l')
-	{
-		((Snake*)d)->moveLeft();
+	else if (snake == "m_snake2") {
+		if (t == 'u')
+		{
+			m_snake2->moveUp();
+		}
+		else if (t == 'd')
+		{
+			m_snake2->moveDown();
+		}
+		else if (t == 'r')
+		{
+			m_snake2->moveRight();
+		}
+		else if (t == 'l')
+		{
+			m_snake2->moveLeft();
+		}
 	}
 }
 
