@@ -138,8 +138,6 @@ void World::setApple(Apple apple, Snake snake)
 	}
 }
 
-
-
 void World::draw()
 {
 	//1. Pass the object's color to OpenGL
