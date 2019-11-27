@@ -44,12 +44,13 @@ public:
 	virtual void draw();
 	void changeCells();
 	void addPoint(char snake);
-	
+	virtual string getName();
 	void colision(Position posWanted, Snake snake);
 
 	//void addPoint(char snake);
 
 	void setApple(Apple apple, Snake snake);
+	void moveSnake(string snake, char t);
 	void moveSnake(string snake, char t);
 
 

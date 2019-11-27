@@ -41,23 +41,28 @@ World::World()
 	{
 		pos = Position(rand() % m_width, rand() % m_height);
 	}
-	for (int i = 0; i <sizeof(m_stone); i++) {
+	for (int i = 0; i <10; i++) {
+		pos = Position(rand() % m_width, rand() % m_height);
 		while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
 		{			
 			pos = Position(rand() % m_width, rand() % m_height);
-		}
-		for (int j = 1; j < i; j++) 
+		}		
+		for (int j = 0; j < i; j++) 
 		{
-			if (m_stone[j]->getPosition() == pos)
+			if (m_stone[j]->getPosition() == pos && i != j)
 			{
 				pos = Position(rand() % m_width, rand() % m_height);
 				i = 0;
-				j = 0;
 			}
 		}
 		m_stone[i] = new Stone(pos);
 	}
 	
+}
+
+string World::getName()
+{
+	return "world";
 }
 
 void World::colision(Position posWanted, Snake snake) {
@@ -133,87 +138,6 @@ void World::setApple(Apple apple, Snake snake)
 	}
 }
 
-
-
-
-
-
-
-
-//World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
-/*{
-	m_points1 = 0;
-	m_points2 = 0;
-
-	int m_width = 10;
-	int m_height = 10;
-
-	for (int x = 0; x < 10; x++)
-	{
-		for (int y = 0; y < 10; y++)
-		{
-			m_world[x][y] = '-'; // empty cell
-		}
-	}
-
-	//Change the cells with the elements Snakes 1&2 and Apples 1&2
-
-
-}
-*/
-
-//World::World(string nameFile)
-//{
-//	m_points1 = 0;
-//	m_points2 = 0;
-//
-//	ifstream inputFile(nameFile, fstream::in);
-//	if (inputFile.is_open())
-//	{
-//		char data = ' ';
-//		string size = "";
-//		while (data != ',')
-//		{
-//			inputFile >> data;
-//			if (data != ',')
-//				size += data;
-//		}
-//		m_x += stoi(size);
-//		size = "";
-//		data = ' ';
-//		while (data != ';')
-//		{
-//			inputFile >> data;
-//			if (data != ';')
-//				size += data;
-//		}
-//		m_y += stoi(size);
-//		data = ' ';
-//		for (int i = 0; i < m_y; i++)
-//		{
-//			for (int j = 0; j < m_x; j++)
-//			{
-//				inputFile >> data;
-//				if (data == '?')
-//				{
-//					//m_coins++;
-//				}
-//				if (data == '1')
-//				{
-//					//m_snake1 = Snake(j, i);
-//				}
-//				if (data == '2')
-//				{
-//					//m_snake2 = Snake(j, i);
-//				}
-//				m_world.push_back(data);
-//			}
-//		}
-//
-//		inputFile.close();
-//	}
-//}
-
 void World::draw()
 {
 	//1. Pass the object's color to OpenGL
@@ -225,14 +149,14 @@ void World::draw()
 		//3. Set the transformation matrix of the quad using position, size and angle
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glScalef(0.02, 0.02, 1);
-		glRotatef(0.0, 0, 0, 1);
+		//glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3f(-1, -1, -2);
-		glVertex3f(1, -1, -2);
-		glVertex3f(-1, 1, -2);
-		glVertex3f(1, 1, -2);
+		glVertex3f(-11, -11, -2);
+		glVertex3f(-9, -11, -2);
+		glVertex3f(-11, -9, -2);
+		glVertex3f(-9, -9, -2);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();
@@ -243,24 +167,41 @@ void World::draw()
 
 void World::moveSnake(string snake, char t)
 {
-	Renderer r;
-	Drawable* d = r.getByName(snake);
-
-	if (t=='u')
-	{
-		((Snake*)d)->moveUp();
+	if(snake == "m_snake1"){
+		if (t=='u')
+		{
+			m_snake1->moveUp();
+		}
+		else if (t == 'd') 
+		{
+			m_snake1->moveDown();
+		}
+		else if (t == 'r')
+		{
+			m_snake1->moveRight();
+		}
+		else if (t == 'l')
+		{
+			m_snake1->moveLeft();
+		}
 	}
-	else if (t == 'd') 
-	{
-		((Snake*)d)->moveDown();
-	}
-	else if (t == 'r')
-	{
-		((Snake*)d)->moveRight();
-	}
-	else if (t == 'l')
-	{
-		((Snake*)d)->moveLeft();
+	else if (snake == "m_snake2") {
+		if (t == 'u')
+		{
+			m_snake2->moveUp();
+		}
+		else if (t == 'd')
+		{
+			m_snake2->moveDown();
+		}
+		else if (t == 'r')
+		{
+			m_snake2->moveRight();
+		}
+		else if (t == 'l')
+		{
+			m_snake2->moveLeft();
+		}
 	}
 }
 
