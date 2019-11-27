@@ -60,6 +60,11 @@ World::World()
 	
 }
 
+string World::getName()
+{
+	return "world";
+}
+
 void World::colision(Position posWanted, Snake snake) {
 	
 	Position posApple1 = m_apple1->getPosition();
@@ -162,26 +167,43 @@ void World::draw()
 	m_snake2->draw();
 }
 
-void moveSnake(string snake, char t)
+void World::moveSnake(string snake, char t)
 {
-	Renderer r;
-	Drawable* d = r.getByName(snake);
-
-	if (t=='u')
-	{
-		((Snake*)d)->moveUp();
+	if(snake == "m_snake1"){
+		if (t=='u')
+		{
+			m_snake1->moveUp();
+		}
+		else if (t == 'd') 
+		{
+			m_snake1->moveDown();
+		}
+		else if (t == 'r')
+		{
+			m_snake1->moveRight();
+		}
+		else if (t == 'l')
+		{
+			m_snake1->moveLeft();
+		}
 	}
-	else if (t == 'd') 
-	{
-		((Snake*)d)->moveDown();
-	}
-	else if (t == 'r')
-	{
-		((Snake*)d)->moveRight();
-	}
-	else if (t == 'l')
-	{
-		((Snake*)d)->moveLeft();
+	else if (snake == "m_snake2") {
+		if (t == 'u')
+		{
+			m_snake2->moveUp();
+		}
+		else if (t == 'd')
+		{
+			m_snake2->moveDown();
+		}
+		else if (t == 'r')
+		{
+			m_snake2->moveRight();
+		}
+		else if (t == 'l')
+		{
+			m_snake2->moveLeft();
+		}
 	}
 }
 

@@ -113,6 +113,13 @@ void Snake::draw()
 
 }
 
+string Snake::getName()
+{ 
+	return m_color;
+}
+
+
+
 
 void Snake::eatBomb()
 {
