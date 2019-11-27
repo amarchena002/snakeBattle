@@ -10,4 +10,5 @@ class Stone
 		~Stone();
 		
 		Position getPosition();
+		void draw();
 };

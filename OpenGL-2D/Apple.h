@@ -16,4 +16,5 @@ public:
 	string getColor();
 	Position getPosition();
 	bool isTheSameColor(string snakeColor);
+	void draw();
 };

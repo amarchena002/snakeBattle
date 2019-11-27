@@ -143,55 +143,6 @@ void World::setApple(Apple apple, Snake snake)
 
 }
 */
-<<<<<<<<< Temporary merge branch 1
-
-World::World(string nameFile)
-{
-	m_points1 = 0;
-	m_points2 = 0;
-
-	ifstream inputFile(nameFile, fstream::in);
-	if (inputFile.is_open())
-	{
-		char data = ' ';
-		string size = "";
-		while (data != ',')
-		{
-			inputFile >> data;
-			if (data != ',')
-				size += data;
-		}
-		m_x += stoi(size);
-		size = "";
-		data = ' ';
-		while (data != ';')
-		{
-			inputFile >> data;
-			if (data != ';')
-				size += data;
-		}
-		m_y += stoi(size);
-		data = ' ';
-		for (int i = 0; i < m_y; i++)
-		{
-			for (int j = 0; j < m_x; j++)
-			{
-				inputFile >> data;
-				if (data == '?')
-				{
-					//m_coins++;
-				}
-				if (data == '1')
-				{
-					//m_snake1 = Snake(j, i);
-				}
-				if (data == '2')
-				{
-					//m_snake2 = Snake(j, i);
-				}
-				m_cells.push_back(data);
-			}
-		}
 
 //World::World(string nameFile)
 //{
