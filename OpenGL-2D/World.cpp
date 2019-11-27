@@ -213,14 +213,14 @@ void World::draw()
 		//3. Set the transformation matrix of the quad using position, size and angle
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glScalef(0.02, 0.02, 1);
-		glRotatef(0.0, 0, 0, 1);
+		//glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
 		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3f(-1, -1, -2);
-		glVertex3f(1, -1, -2);
-		glVertex3f(-1, 1, -2);
-		glVertex3f(1, 1, -2);
+		glVertex3f(-11, -11, -2);
+		glVertex3f(-9, -11, -2);
+		glVertex3f(-11, -9, -2);
+		glVertex3f(-9, -9, -2);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();
