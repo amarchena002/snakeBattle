@@ -46,12 +46,16 @@ World::World()
 		{			
 			pos = Position(rand() % m_width, rand() % m_height);
 		}
-		/*int j = 0;
-		while (m_stone[j]->getPosition() == pos)
+		for (int j = 1; j < i; j++) 
 		{
-			pos = Position(rand() % m_width, rand() % m_height);
+			if (m_stone[j]->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+				i = 0;
+				j = 0;
+			}
 		}
-		m_stone[i] = new Stone(pos);*/
+		m_stone[i] = new Stone(pos);
 	}
 	
 }
@@ -60,7 +64,6 @@ void World::colision(Position posWanted, Snake snake) {
 	
 	Position posApple1 = m_apple1->getPosition();
 	Position posApple2 = m_apple2->getPosition();
-	//Position posStone = m_stone->getPosition();
 	/*Position posBomb = m_bomb->getPosition();*/
 
 	if (posWanted == posApple1)
@@ -95,112 +98,42 @@ World::~World()
 
 void World::setApple(Apple apple, Snake snake)
 {
-	//comer manzana 
-	//generar nueva manzana
+	//comer manzana y generar una nueva manzana del mismo color
 	string m_color = apple.getColor();
 	string s_color = snake.getColor();
 
-	//comparar si la serpiente es del mismo color que la manzana
-	if (m_color.compare(s_color)==0) { // si: 
-		// eliminar manzana
-		apple.~Apple();
-		//aumentar tamaño?
+	if (m_color.compare(s_color) == 0) {	//comparar si la serpiente es del mismo color que la manzana
+		apple.~Apple();					// eliminar manzana
+		snake.eatApple(m_color);		//aumenta el tamaño al comer la manzana
 
-		// crear nueva manzana del mismo color:
+		//crear una nueva manzana del mismo color en una posición aleatoria, previa comparación si casilla vacía
 		// Apple(string color, Position pos)
-
-		//Apple apple(m_color, posit);
-	}
-		
-
-
-	// no: 
-		// dejar manzana
-		// detectar colision?
-
-
-}
-
-
-
-
-
-
-
-
-//World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
-/*{
-	m_points1 = 0;
-	m_points2 = 0;
-
-	int m_width = 10;
-	int m_height = 10;
-
-	for (int x = 0; x < 10; x++)
-	{
-		for (int y = 0; y < 10; y++)
-		{
-			m_world[x][y] = '-'; // empty cell
+		if (m_color.compare("red") == 0) {
+			Position pos = Position(rand() % m_width, rand() % m_height);
+			m_apple1 = new Apple("red", pos);
+			pos = Position(rand() % m_width, rand() % m_height);
+			while (m_apple1->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+			}
 		}
+		else if (m_color.compare("green") == 0) {
+			Position pos = Position(rand() % m_width, rand() % m_height);
+			m_apple2 = new Apple("green", pos);
+			while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+			}
+		}
+
 	}
-
-	//Change the cells with the elements Snakes 1&2 and Apples 1&2
-
-
+	else { // serpiente no del mismo color
+	 // dejar manzana? detectar colision? --> R: (La serpiente lo hace en otro método)
+	 // NOTHING
+	}
 }
-*/
 
-//World::World(string nameFile)
-//{
-//	m_points1 = 0;
-//	m_points2 = 0;
-//
-//	ifstream inputFile(nameFile, fstream::in);
-//	if (inputFile.is_open())
-//	{
-//		char data = ' ';
-//		string size = "";
-//		while (data != ',')
-//		{
-//			inputFile >> data;
-//			if (data != ',')
-//				size += data;
-//		}
-//		m_x += stoi(size);
-//		size = "";
-//		data = ' ';
-//		while (data != ';')
-//		{
-//			inputFile >> data;
-//			if (data != ';')
-//				size += data;
-//		}
-//		m_y += stoi(size);
-//		data = ' ';
-//		for (int i = 0; i < m_y; i++)
-//		{
-//			for (int j = 0; j < m_x; j++)
-//			{
-//				inputFile >> data;
-//				if (data == '?')
-//				{
-//					//m_coins++;
-//				}
-//				if (data == '1')
-//				{
-//					//m_snake1 = Snake(j, i);
-//				}
-//				if (data == '2')
-//				{
-//					//m_snake2 = Snake(j, i);
-//				}
-//				m_world.push_back(data);
-//			}
-//		}
-//
-//		inputFile.close();
-//	}
-//}
+
 
 void World::draw()
 {
@@ -227,5 +160,28 @@ void World::draw()
 	}
 	m_snake1->draw();
 	m_snake2->draw();
+}
+
+void moveSnake(string snake, char t)
+{
+	Renderer r;
+	Drawable* d = r.getByName(snake);
+
+	if (t=='u')
+	{
+		((Snake*)d)->moveUp();
+	}
+	else if (t == 'd') 
+	{
+		((Snake*)d)->moveDown();
+	}
+	else if (t == 'r')
+	{
+		((Snake*)d)->moveRight();
+	}
+	else if (t == 'l')
+	{
+		((Snake*)d)->moveLeft();
+	}
 }
 
