@@ -32,7 +32,7 @@ void Snake::moveUp()
 	Position pos2;
 	m_headPosition.setY(m_headPosition.getY() - 1);
 	m_direction = dir_up;
-	for (int  i = 1; i < m_snakeLength; i++) {
+	for (int  i = 0; i < m_snakeLength; i++) {
 		pos2 = m_snake[i];
 		m_snake[i] = pos;
 		pos = pos2;
@@ -46,7 +46,7 @@ void Snake::moveDown()
 	Position pos2;
 	m_headPosition.setY(m_headPosition.getY() + 1);
 	m_direction = dir_down;
-	for (int i = 1; i < m_snakeLength; i++) {
+	for (int i = 0; i < m_snakeLength; i++) {
 		pos2 = m_snake[i];
 		m_snake[i] = pos;
 		pos = pos2;
@@ -58,9 +58,9 @@ void Snake::moveRight()
 {
 	Position pos = m_headPosition;
 	Position pos2;
-	m_headPosition.setY(m_headPosition.getX() + 1);
+	m_headPosition.setX(m_headPosition.getX() + 1);
 	m_direction = dir_right;
-	for (int i = 1; i < m_snakeLength; i++) {
+	for (int i = 0; i < m_snakeLength; i++) {
 		pos2 = m_snake[i];
 		m_snake[i] = pos;
 		pos = pos2;
@@ -72,9 +72,9 @@ void Snake::moveLeft()
 {
 	Position pos = m_headPosition;
 	Position pos2;
-	m_headPosition.setY(m_headPosition.getX() - 1);
+	m_headPosition.setX(m_headPosition.getX() - 1);
 	m_direction = dir_left;
-	for (int i = 1; i < m_snakeLength; i++) {
+	for (int i = 0; i < m_snakeLength; i++) {
 		pos2 = m_snake[i];
 		m_snake[i] = pos;
 		pos = pos2;
@@ -144,7 +144,6 @@ void Snake::draw()
 		//5. Restore the transformation matrix
 		glPopMatrix();
 	}
-
 }
 
 string Snake::getName()
