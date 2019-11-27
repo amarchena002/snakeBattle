@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "InputHandler.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
-//#include "Snake.h"
+#include "Snake.h"
 #include "World.h"
+#include "Renderer.h"
 
 InputHandler* InputHandler::m_pInputHandler = nullptr;
 

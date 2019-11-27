@@ -241,7 +241,7 @@ void World::draw()
 	m_snake2->draw();
 }
 
-void moveSnake(string snake, char t)
+void World::moveSnake(string snake, char t)
 {
 	Renderer r;
 	Drawable* d = r.getByName(snake);

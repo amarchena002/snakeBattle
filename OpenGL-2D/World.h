@@ -50,6 +50,7 @@ public:
 	//void addPoint(char snake);
 
 	void setApple(Apple apple, Snake snake);
+	void moveSnake(string snake, char t);
 
 
 };
