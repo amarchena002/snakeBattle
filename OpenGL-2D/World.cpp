@@ -92,10 +92,9 @@ void World::setApple(Apple apple, Snake snake)
 	string m_color = apple.getColor();
 	string s_color = snake.getColor();
 
-	if (m_color.compare(s_color)==0) { //comparar si la serpiente es del mismo color que la manzana
-		
-		apple.~Apple();				// eliminar manzana
-		snake.eatApple(m_color);	//aumentar tamaño?
+	if (m_color.compare(s_color)==0) {	//comparar si la serpiente es del mismo color que la manzana
+		apple.~Apple();					// eliminar manzana
+		snake.eatApple(m_color);		//aumenta el tamaño al comer la manzana
 
 		//crear una nueva manzana del mismo color en una posición aleatoria, previa comparación si casilla vacía
 		// Apple(string color, Position pos)
@@ -117,11 +116,9 @@ void World::setApple(Apple apple, Snake snake)
 			}
 		}
 
-	} else { // no del mismo color
-		// dejar manzana? detectar colision?
-
-
-
+	} else { // serpiente no del mismo color
+		// dejar manzana? detectar colision? --> R: (La serpiente lo hace en otro método)
+		// NOTHING
 	}
 }
 
