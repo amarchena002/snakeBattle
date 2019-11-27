@@ -9,5 +9,5 @@ class Stone
 		Stone(Position pos);
 		~Stone();
 		
-		Position GetPosition();
+		Position getPosition();
 };

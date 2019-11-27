@@ -16,8 +16,8 @@ namespace TestStone
 			Position pos = Position(1, 1);
 			Stone stone(pos);
 
-			int stoneX = stone.GetPosition().getX();
-			int stoneY = stone.GetPosition().getY();
+			int stoneX = stone.getPosition().getX();
+			int stoneY = stone.getPosition().getY();
 
 			Assert::AreEqual(1, stoneX);
 			Assert::AreEqual(1, stoneY);
