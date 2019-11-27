@@ -98,30 +98,39 @@ World::~World()
 
 void World::setApple(Apple apple, Snake snake)
 {
-	//comer manzana 
-	//generar nueva manzana
+	//comer manzana y generar una nueva manzana del mismo color
 	string m_color = apple.getColor();
 	string s_color = snake.getColor();
 
-	//comparar si la serpiente es del mismo color que la manzana
-	if (m_color.compare(s_color)==0) { // si: 
-		// eliminar manzana
-		apple.~Apple();
-		//aumentar tamaño?
+	if (m_color.compare(s_color) == 0) {	//comparar si la serpiente es del mismo color que la manzana
+		apple.~Apple();					// eliminar manzana
+		snake.eatApple(m_color);		//aumenta el tamaño al comer la manzana
 
-		// crear nueva manzana del mismo color:
+		//crear una nueva manzana del mismo color en una posición aleatoria, previa comparación si casilla vacía
 		// Apple(string color, Position pos)
+		if (m_color.compare("red") == 0) {
+			Position pos = Position(rand() % m_width, rand() % m_height);
+			m_apple1 = new Apple("red", pos);
+			pos = Position(rand() % m_width, rand() % m_height);
+			while (m_apple1->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+			}
+		}
+		else if (m_color.compare("green") == 0) {
+			Position pos = Position(rand() % m_width, rand() % m_height);
+			m_apple2 = new Apple("green", pos);
+			while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+			}
+		}
 
-		//Apple apple(m_color, posit);
 	}
-		
-
-
-	// no: 
-		// dejar manzana
-		// detectar colision?
-
-
+	else { // serpiente no del mismo color
+	 // dejar manzana? detectar colision? --> R: (La serpiente lo hace en otro método)
+	 // NOTHING
+	}
 }
 
 
@@ -230,5 +239,28 @@ void World::draw()
 	}
 	m_snake1->draw();
 	m_snake2->draw();
+}
+
+void moveSnake(string snake, char t)
+{
+	Renderer r;
+	Drawable* d = r.getByName(snake);
+
+	if (t=='u')
+	{
+		((Snake*)d)->moveUp();
+	}
+	else if (t == 'd') 
+	{
+		((Snake*)d)->moveDown();
+	}
+	else if (t == 'r')
+	{
+		((Snake*)d)->moveRight();
+	}
+	else if (t == 'l')
+	{
+		((Snake*)d)->moveLeft();
+	}
 }
 

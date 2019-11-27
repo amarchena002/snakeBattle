@@ -1,6 +1,7 @@
 #pragma once
 
 class Drawable;
+#include "Drawable.h"
 #include <vector>
 using namespace std;
 
@@ -19,6 +20,7 @@ public:
 	void initialize(int argc, char** argv);
 
 	static Renderer* get(); //this method returns the only instance to the renderer. Needs to be called after the constructor
+	Drawable* getByName(string name);
 
 	void drawScene();
 	void addObject(Drawable* pObj);
@@ -26,5 +28,6 @@ public:
 
 	static void __drawScene();
 	static void __reshapeWindow(int x, int y);
+	virtual string getName();
 };
 
