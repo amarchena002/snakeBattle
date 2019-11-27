@@ -2,6 +2,8 @@
 #include "Renderer.h"
 #include "Drawable.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
+using namespace std;
+
 
 Renderer* Renderer::m_pRenderer = nullptr;
 
@@ -21,6 +23,22 @@ Renderer* Renderer::get()
 {
 	return m_pRenderer;
 }
+
+Drawable* Renderer::getByName(string name)
+{
+	Drawable* drw;
+	//devolver un puntero con la pos y tiene que ser drawable
+	for (int i = 0; i <= m_objects2D.size(); i++)
+	{
+		if (name == m_objects2D[i]->getName())
+		{
+			drw = m_objects2D[i];
+		}
+	}
+
+	return drw;
+}
+
 
 void Renderer::initialize(int argc, char** argv)
 {
