@@ -9,6 +9,8 @@ InputHandler* InputHandler::m_pInputHandler = nullptr;
 InputHandler::InputHandler(Renderer& renderer) : m_renderer(renderer) //(Snake& snake1, Snake& snake2, World& world) : , m_snake1(snake1), m_snake2(snake2), m_world(world)
 {
 	m_pInputHandler = this;
+
+
 }
 
 
