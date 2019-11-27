@@ -46,12 +46,16 @@ World::World()
 		{			
 			pos = Position(rand() % m_width, rand() % m_height);
 		}
-		/*int j = 0;
-		while (m_stone[j]->getPosition() == pos)
+		for (int j = 1; j < i; j++) 
 		{
-			pos = Position(rand() % m_width, rand() % m_height);
+			if (m_stone[j]->getPosition() == pos)
+			{
+				pos = Position(rand() % m_width, rand() % m_height);
+				i = 0;
+				j = 0;
+			}
 		}
-		m_stone[i] = new Stone(pos);*/
+		m_stone[i] = new Stone(pos);
 	}
 	
 }
@@ -60,7 +64,6 @@ void World::colision(Position posWanted, Snake snake) {
 	
 	Position posApple1 = m_apple1->getPosition();
 	Position posApple2 = m_apple2->getPosition();
-	//Position posStone = m_stone->getPosition();
 	/*Position posBomb = m_bomb->getPosition();*/
 
 	if (posWanted == posApple1)
@@ -157,5 +160,28 @@ void World::draw()
 	}
 	m_snake1->draw();
 	m_snake2->draw();
+}
+
+void moveSnake(string snake, char t)
+{
+	Renderer r;
+	Drawable* d = r.getByName(snake);
+
+	if (t=='u')
+	{
+		((Snake*)d)->moveUp();
+	}
+	else if (t == 'd') 
+	{
+		((Snake*)d)->moveDown();
+	}
+	else if (t == 'r')
+	{
+		((Snake*)d)->moveRight();
+	}
+	else if (t == 'l')
+	{
+		((Snake*)d)->moveLeft();
+	}
 }
 

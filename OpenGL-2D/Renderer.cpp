@@ -110,3 +110,8 @@ void Renderer::__reshapeWindow(int x, int y)
 	if (m_pRenderer)
 		m_pRenderer->reshapeWindow(x, y);
 }
+
+string Renderer::getName()
+{
+	return string();
+}

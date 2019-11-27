@@ -1,6 +1,7 @@
 #pragma once
 
 class Drawable;
+#include "Drawable.h"
 #include <vector>
 using namespace std;
 
@@ -27,5 +28,6 @@ public:
 
 	static void __drawScene();
 	static void __reshapeWindow(int x, int y);
+	virtual string getName();
 };
 

@@ -14,7 +14,6 @@ int main(int argc, char** argv)
 {
 	Renderer renderer;
 
-	//InputHandler inputHandler(renderer);
 	InputHandler inputHandler(renderer);
 	
 	renderer.initialize(argc, argv);
