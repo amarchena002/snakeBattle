@@ -41,18 +41,18 @@ World::World()
 	{
 		pos = Position(rand() % m_width, rand() % m_height);
 	}
-	for (int i = 0; i <sizeof(m_stone); i++) {
+	for (int i = 0; i <10; i++) {
+		pos = Position(rand() % m_width, rand() % m_height);
 		while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
 		{			
 			pos = Position(rand() % m_width, rand() % m_height);
-		}
-		for (int j = 1; j < i; j++) 
+		}		
+		for (int j = 0; j < i; j++) 
 		{
-			if (m_stone[j]->getPosition() == pos)
+			if (m_stone[j]->getPosition() == pos && i != j)
 			{
 				pos = Position(rand() % m_width, rand() % m_height);
 				i = 0;
-				j = 0;
 			}
 		}
 		m_stone[i] = new Stone(pos);

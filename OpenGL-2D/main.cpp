@@ -13,17 +13,17 @@
 int main(int argc, char** argv)
 {
 	Renderer renderer;
-	//Position pos = Position(0.15, 0.15);
+	Position pos = Position(0.15, 0.15);
 	/*Snake *snake = new Snake(pos, "u", "red");*/
-	World *world = new World();
+	World world;
 	/*renderer.addObject(snake);*/
 	
 
-	InputHandler inputHandler(renderer,*world);
+	InputHandler inputHandler(renderer,world);
 	
 	renderer.initialize(argc, argv);
 	inputHandler.initialize();
-	renderer.addObject(world);
+	renderer.addObject(&world);
 	
 	
 
