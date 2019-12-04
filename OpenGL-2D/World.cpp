@@ -127,45 +127,6 @@ void World::setApple(Apple apple, Snake snake)
 }
 
 
-//World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
-/*{
-	m_points1 = 0;
-	m_points2 = 0;
-
-	int m_width = 10;
-	int m_height = 10;
-
-	for (int x = 0; x < 10; x++)
-	{
-		for (int y = 0; y < 10; y++)
-		{
-			m_world[x][y] = '-'; // empty cell
-		}
-	}
-		if (m_color.compare("red") == 0) {
-			Position pos = Position(rand() % m_width, rand() % m_height);
-			m_apple1 = new Apple("red", pos);
-			pos = Position(rand() % m_width, rand() % m_height);
-			while (m_apple1->getPosition() == pos)
-			{
-				pos = Position(rand() % m_width, rand() % m_height);
-			}
-		}
-		else if (m_color.compare("green") == 0) {
-			Position pos = Position(rand() % m_width, rand() % m_height);
-			m_apple2 = new Apple("green", pos);
-			while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
-			{
-				pos = Position(rand() % m_width, rand() % m_height);
-			}
-		}
-
-	}
-	else { // serpiente no del mismo color
-	 // dejar manzana? detectar colision? --> R: (La serpiente lo hace en otro método)
-	 // NOTHING
-	}
-}
 
 void World::draw()
 {
@@ -193,7 +154,6 @@ void World::draw()
 	m_snake1->draw();
 	m_snake2->draw();
 }
-
 void World::moveSnake(string snake, char t)
 {
 

@@ -3,10 +3,12 @@
 class Drawable;
 #include "Drawable.h"
 #include <vector>
+#include "TextureManager.h"
 using namespace std;
 
 class Renderer
 {
+	TextureManager* texturemanager;
 	static Renderer* m_pRenderer;
 	int m_windowWidth = 0, m_windowHeight = 0;
 

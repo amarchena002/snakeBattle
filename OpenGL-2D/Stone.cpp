@@ -9,7 +9,7 @@ Stone::Stone(Position pos)
 {
 	m_pos = pos;
 	//texture
-	TextureManager::getInstance()->create2DTexture("img/Stone.jpg");
+	TextureManager::getInstance()->create2DTexture("img/Stone.png");
 }
 
 Stone::~Stone()

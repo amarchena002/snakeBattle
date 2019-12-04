@@ -994,7 +994,7 @@ unsigned int
 	unsigned int tex_id;
 	unsigned int internal_texture_format = 0, original_texture_format = 0;
 	int DXT_mode = SOIL_CAPABILITY_UNKNOWN;
-	int max_supported_size;
+	int max_supported_size= 1024;
 	/*	If the user wants to use the texture rectangle I kill a few flags	*/
 	if( flags & SOIL_FLAG_TEXTURE_RECTANGLE )
 	{
@@ -1872,6 +1872,7 @@ unsigned int SOIL_direct_load_DDS(
 
 int query_NPOT_capability( void )
 {
+	return 0;
 	/*	check for the capability	*/
 	if( has_NPOT_capability == SOIL_CAPABILITY_UNKNOWN )
 	{

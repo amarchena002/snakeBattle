@@ -29,9 +29,6 @@
     <ClCompile Include="testStone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\OpenGL-2D\Stone.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\OpenGL-2D\position.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -10,6 +10,7 @@ Renderer* Renderer::m_pRenderer = nullptr;
 Renderer::Renderer()
 {
 	m_pRenderer = this;
+	texturemanager = new TextureManager();
 }
 
 

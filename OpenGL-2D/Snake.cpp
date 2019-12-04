@@ -110,7 +110,7 @@ void Snake::moveDown()
 	}
 	else
 	{
-		if (m_direction == dir_left) {
+		if (m_direction == dir_right) {
 			aux.setX((int)aux.getX() + 1);
 			
 		}
