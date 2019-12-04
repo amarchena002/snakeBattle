@@ -3,12 +3,13 @@
 #include "Stone.h"
 #include "position.h"
 #include "../3rd-party/SOIL/src/SOIL.h"
+#include "TextureManager.h"
 
 Stone::Stone(Position pos)
 {
 	m_pos = pos;
 	//texture
-	//TextureManager::getInstance()->create2DTexture("Stone.jpg");
+	TextureManager::getInstance()->create2DTexture("Stone.jpg");
 }
 
 Stone::~Stone()
@@ -23,7 +24,7 @@ Position Stone::getPosition()
 void Stone::draw() 
 {
 	//texture
-	//TextureManager::getInstance()->useTexture("Stone.jpg");
+	TextureManager::getInstance()->useTexture("Stone.jpg");
 	
 	//1. Pass the object's color to OpenGL
 	glColor3f(0.5, 0.5, 0.5); // 1/2 intensity gray
