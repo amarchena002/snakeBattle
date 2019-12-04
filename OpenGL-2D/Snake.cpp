@@ -5,8 +5,9 @@
 #include "Renderer.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "vector"
+using namespace std;
 
-Snake::Snake(Position position, string dir, string color)
+Snake::Snake(Position position, char dir, string color)
 {
 	//Cambiar a 0.04
 	m_headPosition = position;
@@ -27,26 +28,58 @@ Snake::~Snake()
 
 void Snake::moveUp()
 {
+	Position pos = m_headPosition;
+	Position pos2;
 	m_headPosition.setY(m_headPosition.getY() - 1);
 	m_direction = dir_up;
+	for (int  i = 0; i < m_snakeLength; i++) {
+		pos2 = m_snake[i];
+		m_snake[i] = pos;
+		pos = pos2;
+	}
+	m_tailPosition = pos;
 }
 
 void Snake::moveDown()
 {
+	Position pos = m_headPosition;
+	Position pos2;
 	m_headPosition.setY(m_headPosition.getY() + 1);
 	m_direction = dir_down;
+	for (int i = 0; i < m_snakeLength; i++) {
+		pos2 = m_snake[i];
+		m_snake[i] = pos;
+		pos = pos2;
+	}
+	m_tailPosition = pos;
 }
 
 void Snake::moveRight()
 {
+	Position pos = m_headPosition;
+	Position pos2;
 	m_headPosition.setX(m_headPosition.getX() + 1);
 	m_direction = dir_right;
+	for (int i = 0; i < m_snakeLength; i++) {
+		pos2 = m_snake[i];
+		m_snake[i] = pos;
+		pos = pos2;
+	}
+	m_tailPosition = pos;
 }
 
 void Snake::moveLeft()
 {
+	Position pos = m_headPosition;
+	Position pos2;
 	m_headPosition.setX(m_headPosition.getX() - 1);
 	m_direction = dir_left;
+	for (int i = 0; i < m_snakeLength; i++) {
+		pos2 = m_snake[i];
+		m_snake[i] = pos;
+		pos = pos2;
+	}
+	m_tailPosition = pos;
 }
 
 vector<Position> Snake::getVector()
@@ -82,6 +115,7 @@ void Snake::eatStone()
 
 void Snake::draw()
 {
+	updatePos();
 	//1. Pass the object's color to OpenGL
 	if (m_color == "red")
 	{
@@ -110,7 +144,6 @@ void Snake::draw()
 		//5. Restore the transformation matrix
 		glPopMatrix();
 	}
-
 }
 
 string Snake::getName()
@@ -118,6 +151,24 @@ string Snake::getName()
 	return m_color;
 }
 
+void Snake::updatePos() {
+	vector<Position> positions = getVector();
+	switch (m_direction)
+	{
+	case 'l':
+		moveLeft();
+		break;
+	case 'r':
+		moveRight();
+		break;
+	case 'u':
+		moveUp();
+		break;
+	case 'd':
+		moveDown();
+		break;
+	}
+}
 
 
 

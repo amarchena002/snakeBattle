@@ -9,7 +9,7 @@ using namespace std;
 class Snake : public Drawable
 {
 	Position m_headPosition;
-	string m_direction; // Up, Down, Left, Rigth
+	char m_direction; // Up, Down, Left, Rigth
 	vector<Position> m_snake;
 	int m_snakeLength;
 	Position m_tailPosition;
@@ -23,7 +23,7 @@ class Snake : public Drawable
 
 public:
 
-	Snake(Position position, string dir,string color);
+	Snake(Position position, char dir,string color);
 	~Snake();
 
 	void moveUp();
@@ -37,5 +37,7 @@ public:
 	void eatBomb();
 	virtual void draw();
 	virtual string getName();
+	void updatePos();
+
 	string getColor();
 };

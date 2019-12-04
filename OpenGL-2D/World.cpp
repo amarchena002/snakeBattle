@@ -25,9 +25,9 @@ World::World()
 		}
 	}
 	Position pos = Position(m_width-1, 0);
-	m_snake1 = new Snake(pos, "r", "red");
+	m_snake1 = new Snake(pos, 'l', "red");
 	pos = Position(1, m_height-1);
-	m_snake2 = new Snake(pos, "l", "green");
+	m_snake2 = new Snake(pos, 'r', "green");
 	pos = Position(rand() % m_width, rand() % m_height);
 	m_apple1 = new Apple("red", pos);
 	pos = Position(rand() % m_width, rand() % m_height);
