@@ -93,5 +93,9 @@
   <ItemGroup>
     <Text Include="inputfile.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\textura manzana\RedApple.png" />
+    <Image Include="..\..\..\..\Desktop\textura manzana\GreenApple.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
