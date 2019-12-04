@@ -113,6 +113,35 @@ void World::setApple(Apple apple, Snake snake)
 
 		//crear una nueva manzana del mismo color en una posición aleatoria, previa comparación si casilla vacía
 		// Apple(string color, Position pos)
+
+		//Apple apple(m_color, posit);
+	}
+		
+
+
+	// no: 
+		// dejar manzana
+		// detectar colision?
+
+
+}
+
+
+//World::World(/*Snake snake1, Snake snake2, Apple apple1, Apple apple2*/)
+/*{
+	m_points1 = 0;
+	m_points2 = 0;
+
+	int m_width = 10;
+	int m_height = 10;
+
+	for (int x = 0; x < 10; x++)
+	{
+		for (int y = 0; y < 10; y++)
+		{
+			m_world[x][y] = '-'; // empty cell
+		}
+	}
 		if (m_color.compare("red") == 0) {
 			Position pos = Position(rand() % m_width, rand() % m_height);
 			m_apple1 = new Apple("red", pos);

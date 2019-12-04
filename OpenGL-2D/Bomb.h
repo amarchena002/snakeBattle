@@ -10,4 +10,5 @@ public:
 	~Bomb();
 
 	Position getPosition();
+	void draw();
 };
