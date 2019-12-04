@@ -1,3 +1,4 @@
+#define GLEW_STATIC
 #include "../3rd-party/glew-2.0.0/src/glew.h"
 #include "../3rd-party/SOIL/src/SOIL.h"
 #include "TextureManager.h"
