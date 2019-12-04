@@ -13,8 +13,8 @@
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\AnimatedSprite.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\TextureManager.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apple.h" />
@@ -30,13 +30,17 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\AnimatedSprite.h" />
-    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\TextureManager.h" />
+    <ClInclude Include="AnimatedSprite.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputfile.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\textura manzana\RedApple.png" />
+    <Image Include="..\..\..\..\Desktop\textura manzana\GreenApple.jpg" />
   </ItemGroup>
 </Project>
