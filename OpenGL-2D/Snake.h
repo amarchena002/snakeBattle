@@ -14,7 +14,7 @@ class Snake : public Drawable
 	int m_snakeLength;
 	Position m_tailPosition;
 	string m_color;
-
+	char m_directionAfter;
 	char const dir_up = 'u';
 	char const dir_down = 'd';
 	char const dir_right = 'r';

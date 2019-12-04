@@ -7,7 +7,7 @@ Position::Position()
 {
 }
 
-Position::Position(int x, int y)
+Position::Position(float x, float y)
 {
 	m_x = x;
 	m_y = y;
@@ -18,22 +18,22 @@ Position::~Position()
 {
 }
 
-void Position::setX(int x)
+void Position::setX(float x)
 {
 	m_x = x;
 }
 
-void Position::setY(int y)
+void Position::setY(float y)
 {
 	m_y = y;
 }
 
-int Position::getX()
+float Position::getX()
 {
 	return m_x;
 }
 
-int Position::getY()
+float Position::getY()
 {
 	return m_y;
 }
@@ -41,4 +41,32 @@ int Position::getY()
 bool Position::operator== (Position& other)
 {
 	return other.getX() == getX() && other.getY() == getY();
+}
+
+bool Position::hasDecimal(Position& other)
+{
+	if (other.getX() - getX() == 0 && other.getY() - getY() < 0.1 && other.getY() - getY() > 0)
+	{
+		setY(other.getY());
+		return true;
+	}
+	else if (getX() - other.getX() == 0 && getY() - other.getY() < 0.1 && getY() - other.getY() > 0)
+	{
+		setY(other.getY());
+		return true;
+	}
+	else if(other.getX() - getX() < 0.1 && other.getX() - getX() > 0 && other.getY() - getY() == 0)
+	{
+		setX(other.getX());
+		return true;
+	}
+	else if (getX() - other.getX() < 0.1 && getX() - other.getX() > 0 && getY() - other.getY() == 0)
+	{
+		setX(other.getX());
+		return true;
+	}
+	else 
+	{
+		return false;
+	}
 }

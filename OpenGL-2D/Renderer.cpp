@@ -28,7 +28,7 @@ Drawable* Renderer::getByName(string name)
 {
 	Drawable* drw;
 	//devolver un puntero con la pos y tiene que ser drawable
-	for (int i = 0; i <= m_objects2D.size(); i++)
+	for (int i = 0; i < m_objects2D.size(); i++)
 	{
 		if (name == m_objects2D[i]->getName())
 		{

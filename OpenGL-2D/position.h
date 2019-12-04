@@ -8,12 +8,13 @@ class Position
 
 public:
 	Position();
-	Position(int x, int y);
+	Position(float x, float y);
 	~Position();
-	void setX(int x);
-	void setY(int y);
-	int getX();
-	int getY();
+	void setX(float x);
+	void setY(float y);
+	float getX();
+	float getY();
 	bool operator== (Position& other);
+	bool hasDecimal(Position& other);
 };
 

@@ -24,7 +24,7 @@ World::World()
 			m_world.push_back(pos);
 		}
 	}
-	Position pos = Position(m_width-1, 0);
+	Position pos = Position(m_width-2, 0);
 	m_snake1 = new Snake(pos, 'l', "red");
 	pos = Position(1, m_height-1);
 	m_snake2 = new Snake(pos, 'r', "green");
@@ -167,6 +167,7 @@ void World::draw()
 
 void World::moveSnake(string snake, char t)
 {
+
 	if(snake == "m_snake1"){
 		if (t=='u')
 		{
