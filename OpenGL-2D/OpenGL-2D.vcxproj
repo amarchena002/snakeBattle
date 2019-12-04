@@ -54,6 +54,8 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\AnimatedSprite.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\TextureManager.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="position.cpp" />
@@ -68,6 +70,8 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\AnimatedSprite.h" />
+    <ClInclude Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\TextureManager.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="position.h" />
