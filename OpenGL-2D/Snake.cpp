@@ -5,6 +5,8 @@
 #include "Renderer.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "vector"
+#include "Timer.h"
+#include <cmath>
 using namespace std;
 
 Snake::Snake(Position position, char dir, string color)
@@ -13,6 +15,7 @@ Snake::Snake(Position position, char dir, string color)
 	m_headPosition = position;
 	m_tailPosition = Position(m_headPosition.getX() - 0.042, m_headPosition.getY());
 	m_direction = dir;
+	m_directionAfter = dir;
 	m_color = color;
 	//snake = //inicializar array
 	m_snakeLength = 2; //initial length
@@ -28,58 +31,236 @@ Snake::~Snake()
 
 void Snake::moveUp()
 {
+	Timer timer = Timer();
+	timer.start();
 	Position pos = m_headPosition;
 	Position pos2;
-	m_headPosition.setY(m_headPosition.getY() - 1);
-	m_direction = dir_up;
-	for (int  i = 0; i < m_snakeLength; i++) {
-		pos2 = m_snake[i];
-		m_snake[i] = pos;
-		pos = pos2;
+	Position aux = m_headPosition;
+	char directionAfter2 = dir_up;
+	if (directionAfter2 == m_direction)
+	{
+		m_headPosition.setY(m_headPosition.getY() + 1000.0f * timer.getElapsedTime(true));
+		for (int i = 0; i < m_snakeLength; i++)
+		{
+			pos2 = m_snake[i];
+			m_snake[i] = pos;
+			pos2.setY(pos2.getY() - 1);
+			pos = pos2;
+		}
+		m_tailPosition = pos;
 	}
-	m_tailPosition = pos;
+	else
+	{
+		if (m_direction == dir_right) {
+			aux.setX((int)aux.getX() - 1);
+		}
+		else if (m_direction == dir_left) {
+			aux.setX((int)aux.getX());
+			
+		}	
+		if (m_headPosition.hasDecimal(aux))
+		{
+			m_headPosition.setY(m_headPosition.getY() + 1000.0f * timer.getElapsedTime(true));
+			m_direction = m_directionAfter;
+			for (int i = 0; i < m_snakeLength; i++)
+			{
+				pos2 = m_snake[i];
+				m_snake[i] = pos;
+				pos2.setY(pos2.getY() - 1);
+				pos = pos2;
+			}
+			m_tailPosition = pos;
+		}
+		else {
+			if (m_direction == dir_down) {
+				m_directionAfter = dir_up;
+				moveDown();
+			}
+			else if (m_direction == dir_left) {
+				m_directionAfter = dir_up;
+				moveLeft();
+			}
+			else if (m_direction == dir_right) {
+				m_directionAfter = dir_up;
+				moveRight();
+			}
+		}
+	}
 }
 
 void Snake::moveDown()
 {
+	Timer timer = Timer();
+	timer.start();
 	Position pos = m_headPosition;
 	Position pos2;
-	m_headPosition.setY(m_headPosition.getY() + 1);
-	m_direction = dir_down;
-	for (int i = 0; i < m_snakeLength; i++) {
-		pos2 = m_snake[i];
-		m_snake[i] = pos;
-		pos = pos2;
+	Position aux = m_headPosition;
+	char directionAfter2 = dir_down;
+	if (directionAfter2 == m_direction)
+	{
+		m_headPosition.setY(m_headPosition.getY() - 1000.0f * timer.getElapsedTime(true));
+		for (int i = 0; i < m_snakeLength; i++)
+		{
+			pos2 = m_snake[i];
+			m_snake[i] = pos;
+			pos2.setY(pos2.getY() + 1);
+			pos = pos2;
+		}
+		m_tailPosition = pos;
 	}
-	m_tailPosition = pos;
+	else
+	{
+		if (m_direction == dir_left) {
+			aux.setX((int)aux.getX() + 1);
+			
+		}
+		else if (m_direction == dir_left) {
+			aux.setX((int)aux.getX());
+		}
+		if (m_headPosition.hasDecimal(aux))
+		{
+			m_headPosition.setY(m_headPosition.getY() - 1000.0f * timer.getElapsedTime(true));
+			m_direction = m_directionAfter;
+			for (int i = 0; i < m_snakeLength; i++)
+			{
+				pos2 = m_snake[i];
+				m_snake[i] = pos;
+				pos2.setY(pos2.getY() + 1);
+				pos = pos2;
+			}
+			m_tailPosition = pos;
+		}
+		else {
+			if (m_direction == dir_up) {
+				m_directionAfter = dir_down;
+				moveUp();
+			}
+			else if (m_direction == dir_left) {
+				m_directionAfter = dir_down;
+				moveLeft();
+			}
+			else if (m_direction == dir_right) {
+				m_directionAfter = dir_down;
+				moveRight();
+			}
+		}
+	}
 }
 
 void Snake::moveRight()
 {
+	Timer timer = Timer();
+	timer.start();
 	Position pos = m_headPosition;
 	Position pos2;
-	m_headPosition.setX(m_headPosition.getX() + 1);
-	m_direction = dir_right;
-	for (int i = 0; i < m_snakeLength; i++) {
-		pos2 = m_snake[i];
-		m_snake[i] = pos;
-		pos = pos2;
+	Position aux = m_headPosition;
+	char directionAfter2 = dir_right;
+	if (directionAfter2 == m_direction)
+	{
+		m_headPosition.setX(m_headPosition.getX() + 1000.0f * timer.getElapsedTime(true));
+		for (int i = 0; i < m_snakeLength; i++)
+		{
+			pos2 = m_snake[i];
+			m_snake[i] = pos;
+			pos2.setX(pos2.getX() - 1);
+			pos = pos2;
+		}
+		m_tailPosition = pos;
 	}
-	m_tailPosition = pos;
+	else
+	{
+		if (m_direction == dir_up) {
+			aux.setY((int)aux.getY());
+		}
+		else if (m_direction == dir_down) {
+			aux.setY((int)aux.getY() + 1);
+		}
+		if (m_headPosition.hasDecimal(aux))
+		{
+			m_headPosition.setX(m_headPosition.getX() + 1000.0f * timer.getElapsedTime(true));
+			m_direction = m_directionAfter;
+			for (int i = 0; i < m_snakeLength; i++)
+			{
+				pos2 = m_snake[i];
+				m_snake[i] = pos;
+				pos2.setX(pos2.getX() - 1);
+				pos = pos2;
+			}
+			m_tailPosition = pos;
+		}
+		else {
+			if (m_direction == dir_up) {
+				m_directionAfter = dir_right;
+				moveUp();
+			}
+			else if (m_direction == dir_left) {
+				m_directionAfter = dir_right;
+				moveLeft();
+			}
+			else if (m_direction == dir_down) {
+				m_directionAfter = dir_right;
+				moveDown();
+			}
+		}
+	}
 }
 
 void Snake::moveLeft()
 {
+	Timer timer = Timer();
+	timer.start();
 	Position pos = m_headPosition;
 	Position pos2;
-	m_headPosition.setX(m_headPosition.getX() - 1);
-	m_direction = dir_left;
-	for (int i = 0; i < m_snakeLength; i++) {
-		pos2 = m_snake[i];
-		m_snake[i] = pos;
-		pos = pos2;
+	Position aux = m_headPosition;
+	char directionAfter2 = dir_left;
+	if (directionAfter2 == m_direction)
+	{
+		m_headPosition.setX(m_headPosition.getX() - 1000.0f * timer.getElapsedTime(true));
+		for (int i = 0; i < m_snakeLength; i++)
+		{
+			pos2 = m_snake[i];
+			m_snake[i] = pos;
+			pos2.setX(pos2.getX() + 1);
+			pos = pos2;
+		}
+		m_tailPosition = pos;
 	}
-	m_tailPosition = pos;
+	else
+	{
+		if (m_direction == dir_up) {
+			aux.setY((int)aux.getY());
+		}
+		else if (m_direction == dir_down) {
+			aux.setY((int)aux.getY() + 1);
+		}
+		if (m_headPosition.hasDecimal(aux))
+		{
+			m_headPosition.setX(m_headPosition.getX() - 1000.0f * timer.getElapsedTime(true));
+			m_direction = m_directionAfter;
+			for (int i = 0; i < m_snakeLength; i++)
+			{
+				pos2 = m_snake[i];
+				m_snake[i] = pos;
+				pos2.setX(pos2.getX() + 1);
+				pos = pos2;
+			}
+			m_tailPosition = pos;
+		}
+		else {
+			if (m_direction == dir_up) {
+				m_directionAfter = dir_left;
+				moveUp();
+			}
+			else if (m_direction == dir_right) {
+				m_directionAfter = dir_left;
+				moveRight();
+			}
+			else if (m_direction == dir_down) {
+				m_directionAfter = dir_left;
+				moveDown();
+			}
+		}
+	}
 }
 
 vector<Position> Snake::getVector()
@@ -130,11 +311,11 @@ void Snake::draw()
 		//2. Save the current transformation matrix
 		glPushMatrix();
 		//3. Set the transformation matrix of the quad using position, size and angle
-		glTranslatef(m_snake.at(i).getX()*0.042, m_snake.at(i).getY()*0.042, -1);
+		glTranslatef(m_snake[i].getX()*0.042, m_snake[i].getY()*0.042, -1);
 		glScalef(0.02, 0.02, 1);
 		glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
-		glTranslatef(m_snake.at(i).getX()*0.042, m_snake.at(i).getY()*0.042, -1);
+		glTranslatef(m_snake[i].getX()*0.042, m_snake[i].getY()*0.042, -1);
 		glBegin(GL_TRIANGLE_STRIP);
 		glVertex3f(-11, -11, -1);
 		glVertex3f(-9, -11, -1);

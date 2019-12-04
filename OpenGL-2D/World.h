@@ -16,8 +16,8 @@ using namespace std;
 class World:public Drawable
 {
 	 
-	int m_x;
-	int m_y;
+	float m_x;
+	float m_y;
 	//vector<Position> m_cells;
 
 	int m_width; //ancho

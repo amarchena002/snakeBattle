@@ -29,10 +29,21 @@
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="position.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Stone.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\AnimatedSprite.h" />
-    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\TextureManager.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="position.h" />
@@ -44,6 +55,9 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Stone.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="World.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="Text.h" />

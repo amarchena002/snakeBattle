@@ -33,8 +33,8 @@ namespace SnakeTest
 		{
 			Position pos = Position(1, 2);
 			Apple apple("Red", pos);
-			Assert::AreEqual(1, apple.getPosition().getX());
-			Assert::AreEqual(2, apple.getPosition().getY());
+			Assert::AreEqual(1.0f, apple.getPosition().getX());
+			Assert::AreEqual(2.0f, apple.getPosition().getY());
 
 		}
 	};
