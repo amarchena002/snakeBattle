@@ -3,11 +3,12 @@
 #include "Snake.h"
 #include "stdafx.h"
 #include "Sprite.h"
-#include "Snake.h"
 #include "InputHandler.h"
 #include "Renderer.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include "vector"
+#include "../3rd-party/SOIL/src/SOIL.h"
+#include "TextureManager.h"
 
 
 
@@ -55,8 +56,13 @@ World::World()
 				i = 0;
 			}
 		}
+		
 		m_stone[i] = new Stone(pos);
+
 	}
+
+	//Create object Texture:
+	TextureManager::getInstance()->create2DTexture("img/fondo.jpg");
 	
 }
 
@@ -166,9 +172,14 @@ void World::setApple(Apple apple, Snake snake)
 	 // NOTHING
 	}
 }
+*/
 
 void World::draw()
 {
+
+	//Use object Texture:
+	TextureManager::getInstance()->useTexture("img/fondo.jpg");
+
 	//1. Pass the object's color to OpenGL
 	glColor3f(132, 215, 91);
 	for (int i = 0; i < m_world.size(); i++)
@@ -192,6 +203,9 @@ void World::draw()
 	}
 	m_snake1->draw();
 	m_snake2->draw();
+
+	
+
 }
 
 void World::moveSnake(string snake, char t)
