@@ -28,7 +28,7 @@ namespace SnakeTest
 			Assert::AreEqual(false, apple.isTheSameColor("Blue"));
 
 		}
-		//coment
+	
 		TEST_METHOD(getPos)
 		{
 			Position pos = Position(1, 2);

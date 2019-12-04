@@ -1,6 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\AnimatedSprite.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\TextureManager.cpp" />
+    <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="position.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Stone.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="position.cpp" />
@@ -15,6 +31,8 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\AnimatedSprite.h" />
+    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(2)\project-aux-files\TextureManager.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="position.h" />
@@ -28,6 +46,10 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="World.h" />
+    <ClInclude Include="AnimatedSprite.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -36,6 +58,8 @@
     <Text Include="inputfile.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\textura manzana\RedApple.png" />
+    <Image Include="..\..\..\..\Desktop\textura manzana\GreenApple.jpg" />
     <Image Include="..\..\..\..\Desktop\Stone.jpg" />
     <Image Include="..\..\..\..\Desktop\fondo.jpg" />
   </ItemGroup>

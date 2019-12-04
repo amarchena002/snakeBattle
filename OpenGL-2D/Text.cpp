@@ -53,3 +53,4 @@ void Text2D::setText(string text)
 {
 	m_text = text;
 }
+
