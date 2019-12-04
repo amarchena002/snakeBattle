@@ -9,7 +9,7 @@ Stone::Stone(Position pos)
 {
 	m_pos = pos;
 	//texture
-	TextureManager::getInstance()->create2DTexture("Stone.jpg");
+	TextureManager::getInstance()->create2DTexture("img/Stone.jpg");
 }
 
 Stone::~Stone()
@@ -24,7 +24,7 @@ Position Stone::getPosition()
 void Stone::draw() 
 {
 	//texture
-	TextureManager::getInstance()->useTexture("Stone.jpg");
+	TextureManager::getInstance()->useTexture("img/Stone.jpg");
 	
 	//1. Pass the object's color to OpenGL
 	glColor3f(0.5, 0.5, 0.5); // 1/2 intensity gray
