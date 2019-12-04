@@ -2,10 +2,13 @@
 #include "Sprite.h"
 #include "Bomb.h"
 #include "position.h"
+#include "../3rd-party/SOIL/src/SOIL.h"
+#include "TextureManager.h"
 
 Bomb::Bomb(Position pos)
 {
 	m_pos = pos;
+	TextureManager::getInstance()->create2DTexture("img/bomb.png");
 }
 
 Bomb::~Bomb()
@@ -19,6 +22,9 @@ Position Bomb::getPosition()
 
 void Bomb::draw()
 {
+	//texture
+	TextureManager::getInstance()->useTexture("img/bomb.png");
+
 	//1. Pass the object's color to OpenGL
 	glColor3f(0, 0, 0); // black
 	//2. save the current transformation matrix
