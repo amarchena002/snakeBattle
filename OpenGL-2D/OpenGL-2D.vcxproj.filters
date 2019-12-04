@@ -13,8 +13,8 @@
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\AnimatedSprite.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\TextureManager.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\project-aux-files(1)\project-aux-files\AnimatedSprite.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\project-aux-files(1)\project-aux-files\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apple.h" />
@@ -30,8 +30,8 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\AnimatedSprite.h" />
-    <ClInclude Include="..\..\..\..\Downloads\project-aux-files\project-aux-files\TextureManager.h" />
+    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(1)\project-aux-files\AnimatedSprite.h" />
+    <ClInclude Include="..\..\..\..\Downloads\project-aux-files(1)\project-aux-files\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
