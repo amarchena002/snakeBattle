@@ -13,14 +13,14 @@ namespace TestBomb
 		
 		TEST_METHOD(GenerateBomb)
 		{
-			Position pos = Position(2, 1);
+			Position pos = Position(2.0f, 1.0f);
 			Bomb bomb(pos);
 
-			int bombX = bomb.getPosition().getX();
-			int bombY = bomb.getPosition().getY();
+			float bombX = bomb.getPosition().getX();
+			float bombY = bomb.getPosition().getY();
 
-			Assert::AreEqual(2, bombX);
-			Assert::AreEqual(1, bombY);
+			Assert::AreEqual(2.0f, bombX);
+			Assert::AreEqual(1.0f, bombY);
 		}
 
 	};

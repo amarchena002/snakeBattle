@@ -14,7 +14,7 @@ namespace SnakeTest
 		TEST_METHOD(GetColor)
 		{
 			string color = "Red";
-			Position pos = Position(1, 1);
+			Position pos = Position(1.0f, 1.0f);
 			Apple apple(color, pos);
 			Assert::AreEqual(color, apple.getColor());
 
@@ -22,7 +22,7 @@ namespace SnakeTest
 		TEST_METHOD(isTheSameColor)
 		{
 			string color = "Red";
-			Position pos = Position (1, 1);
+			Position pos = Position (1.0f, 1.0f);
 			Apple apple(color, pos);
 			Assert::AreEqual(true, apple.isTheSameColor("Red"));
 			Assert::AreEqual(false, apple.isTheSameColor("Blue"));
@@ -31,7 +31,7 @@ namespace SnakeTest
 	
 		TEST_METHOD(getPos)
 		{
-			Position pos = Position(1, 2);
+			Position pos = Position(1.0f, 2.0f);
 			Apple apple("Red", pos);
 			Assert::AreEqual(1.0f, apple.getPosition().getX());
 			Assert::AreEqual(2.0f, apple.getPosition().getY());

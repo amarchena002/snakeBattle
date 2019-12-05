@@ -1,7 +1,9 @@
 #pragma once
 #include "position.h"
-
-class Stone
+#include "Drawable.h"
+#include "Renderer.h"
+using namespace std;
+class Stone : public Drawable
 {
 	Position m_pos;
 
@@ -10,5 +12,6 @@ class Stone
 		~Stone();
 		
 		Position getPosition();
-		void draw();
+		virtual void draw();
+		virtual string getName();
 };

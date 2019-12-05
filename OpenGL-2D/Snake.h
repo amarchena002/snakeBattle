@@ -14,6 +14,7 @@ class Snake : public Drawable
 	int m_snakeLength;
 	Position m_tailPosition;
 	string m_color;
+	float m_speed;
 	char m_directionAfter;
 	char const dir_up = 'u';
 	char const dir_down = 'd';
@@ -38,6 +39,6 @@ public:
 	virtual void draw();
 	virtual string getName();
 	void updatePos();
-
+	Position getHeadPosition();
 	string getColor();
 };

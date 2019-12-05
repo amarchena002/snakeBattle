@@ -14,8 +14,8 @@
 
 World::World()
 {
-	m_width = 10;
-	m_height = 10;	
+	m_width = 20;
+	m_height = 20;	
 	
 	for (int y = 0; y < m_height; y++)
 	{
@@ -26,17 +26,17 @@ World::World()
 		}
 	}
 	Position pos = Position(m_width-2, 0);
-	m_snake1 = new Snake(pos, 'l', "red");
+	m_snake2 = new Snake(pos, 'l', "red");
 	pos = Position(1, m_height-1);
-	m_snake2 = new Snake(pos, 'r', "green");
+	m_snake1 = new Snake(pos, 'r', "green");
 	pos = Position(rand() % m_width, rand() % m_height);
-	m_apple1 = new Apple("red", pos);
+	m_apple2 = new Apple("red", pos);
 	pos = Position(rand() % m_width, rand() % m_height);
-	while (m_apple1->getPosition() == pos)
+	while (m_apple2->getPosition() == pos)
 	{
 		pos = Position(rand() % m_width, rand() % m_height);
 	}
-	m_apple2 = new Apple("green", pos);
+	m_apple1 = new Apple("green", pos);
 	pos = Position(rand() % m_width, rand() % m_height);
 	while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
 	{
@@ -57,12 +57,12 @@ World::World()
 			}
 		}
 		
-		m_stone[i] = new Stone(pos);
+		m_stone.push_back(new Stone(pos));
 
 	}
 
 	//Create object Texture:
-	TextureManager::getInstance()->create2DTexture("img/fondo.jpg");
+	TextureManager::getInstance()->create2DTexture("img/fondo.png");
 	
 }
 
@@ -71,35 +71,107 @@ string World::getName()
 	return "world";
 }
 
-void World::colision(Position posWanted, Snake snake) {
+void World::colision(string snakeColor) {
 	
 	Position posApple1 = m_apple1->getPosition();
 	Position posApple2 = m_apple2->getPosition();
 	/*Position posBomb = m_bomb->getPosition();*/
-
-	if (posWanted == posApple1)
+	vector<Position> posStones = vector<Position>();
+	for (int i = 0; i < 10; i++) 
 	{
-		snake.eatApple(m_apple1->getColor());
+		posStones.push_back(m_stone[i]->getPosition());
 	}
-	else if(posWanted == posApple2)
+	//m_snake1 is green
+	if (snakeColor == m_snake1->getColor())
 	{
-		snake.eatApple(m_apple2->getColor());
-	}
-	/*else if (posWanted == posBomb)
-	{
-		snake.eatBomb();
-	}*/
-	else
-	{
-		for (int i = 0; i < sizeof(m_stone); i++)
+		if (m_snake1->getHeadPosition().hasDecimal(posApple1)) 
 		{
-			Position posStone = m_stone[i]->getPosition();
-			if (posWanted == posStone)
+			m_snake1->eatApple(m_apple1->getColor());
+			m_apple1->~Apple();
+			setApple("green");
+		}
+		else if (m_snake1->getHeadPosition().hasDecimal(posApple2))
+		{
+			m_snake1->eatApple(m_apple2->getColor());
+			m_apple2->~Apple();
+			setApple("red");
+		}
+		else
+		{
+			for (int i = 0; i < posStones.size(); i++) 
 			{
-				snake.eatStone();
+				if (m_snake1->getHeadPosition().hasDecimal(posStones[i])) 
+				{
+					m_snake1->eatStone();
+					m_stone[i]->~Stone();
+				}
+			}
+			for (int j = 0; j < m_snake2->getVector().size(); j++)
+			{
+				if (m_snake1->getHeadPosition().hasDecimal(m_snake2->getVector()[j]))
+				{
+					m_snake1->~Snake();
+				}
 			}
 		}
 	}
+	else if (snakeColor == m_snake2->getColor())
+	{
+		if (m_snake2->getHeadPosition().hasDecimal(posApple1))
+		{
+			m_snake2->eatApple(m_apple1->getColor());
+			m_apple1->~Apple();
+			setApple("green");
+		}
+		else if (m_snake2->getHeadPosition().hasDecimal(posApple2))
+		{
+			m_snake2->eatApple(m_apple2->getColor());
+			m_apple2->~Apple();
+			setApple("red");
+		}
+		else
+		{
+			for (int i = 0; i < posStones.size(); i++)
+			{
+				if (m_snake2->getHeadPosition().hasDecimal(posStones[i]))
+				{
+					vector<Stone*> auxVector = vector<Stone*>();
+					m_snake2->eatStone();
+					m_stone[i]->~Stone();
+				}
+			}
+			for (int j = 0; j < m_snake1->getVector().size(); j++)
+			{
+				if (m_snake2->getHeadPosition().hasDecimal(m_snake1->getVector()[j]))
+				{
+					m_snake2->~Snake();
+				}
+			}
+		}
+	}
+	//if (posWanted == posApple1)
+	//{
+	//	snake.eatApple(m_apple1->getColor());
+	//}
+	//else if(posWanted == posApple2)
+	//{
+	//	snake.eatApple(m_apple2->getColor());
+	//}
+	//*else if (posWanted == posBomb)
+	//{
+	//	snake.eatBomb();
+	//}*/
+	//else
+	//{
+	//	for (int i = 0; i < sizeof(m_stone); i++)
+	//	{
+	//		Position posStone = m_stone[i]->getPosition();
+	//		if (posWanted == posStone)
+	//		{
+	//			snake.eatStone();
+	//		}
+	//	}
+	//}
 }
 
 
@@ -107,23 +179,57 @@ World::~World()
 {
 }
 
-void World::setApple(Apple apple, Snake snake)
+void World::setApple(string Color)
 {
 	//comer manzana y generar una nueva manzana del mismo color
-	string m_color = apple.getColor();
-	string s_color = snake.getColor();
-
-	if (m_color.compare(s_color) == 0) {	//comparar si la serpiente es del mismo color que la manzana
-		apple.~Apple();					// eliminar manzana
-		snake.eatApple(m_color);		//aumenta el tamaño al comer la manzana
-
+	//string m_color = apple->getColor();
+	//string s_color = snake.getColor();
+	//if (m_color.compare(s_color) == 0) {	//comparar si la serpiente es del mismo color que la manzana
+	//	apple->~Apple();					// eliminar manzana
+	//	snake.eatApple(m_color);		//aumenta el tamaño al comer la manzana
 		//crear una nueva manzana del mismo color en una posición aleatoria, previa comparación si casilla vacía
 		// Apple(string color, Position pos)
-
 		//Apple apple(m_color, posit);
-	}
-		
-
+	//}
+	Position pos = Position(rand() % m_width, rand() % m_height);
+		if (Color == "red")
+		{
+			for (int i = 0; i < m_stone.size(); i++)
+			{
+				if (pos == m_stone[i]->getPosition() || m_apple1->getPosition() == pos)
+				{
+					pos = Position(rand() % m_width, rand() % m_height);
+				}
+				for (int j = 0; j < i; j++)
+				{
+					if (m_stone[j]->getPosition() == pos && i != j || m_apple1->getPosition() == pos)
+					{
+						pos = Position(rand() % m_width, rand() % m_height);
+						i = 0;
+					}
+				}
+			}
+			m_apple2 = new Apple("red", pos);
+		}
+		else if (Color == "green")
+		{
+			for (int i = 0; i < m_stone.size(); i++)
+			{
+				if (pos == m_stone[i]->getPosition() || m_apple2->getPosition() == pos)
+				{
+					pos = Position(rand() % m_width, rand() % m_height);
+				}
+				for (int j = 0; j < i; j++)
+				{
+					if (m_stone[j]->getPosition() == pos && i != j || m_apple2->getPosition() == pos)
+					{
+						pos = Position(rand() % m_width, rand() % m_height);
+						i = 0;
+					}
+				}
+			}
+			m_apple1 = new Apple("green", pos);
+		}
 
 	// no: 
 		// dejar manzana
@@ -132,13 +238,11 @@ void World::setApple(Apple apple, Snake snake)
 
 }
 
-
-
 void World::draw()
 {
 
 	//Use object Texture:
-	TextureManager::getInstance()->useTexture("img/fondo.jpg");
+	TextureManager::getInstance()->useTexture("img/fondo.png");
 
 	//1. Pass the object's color to OpenGL
 	glColor3f(132, 215, 91);
@@ -152,30 +256,41 @@ void World::draw()
 		//glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
-		glBegin(GL_TRIANGLE_STRIP);
+		glBegin(GL_QUADS);
+		glTexCoord2f(0, 0);
 		glVertex3f(-11, -11, -2);
+		glTexCoord2f(1, 0);
 		glVertex3f(-9, -11, -2);
+		glTexCoord2f(0, 1);
 		glVertex3f(-11, -9, -2);
+		glTexCoord2f(1, 1);
 		glVertex3f(-9, -9, -2);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();
 	}
+	m_apple1->draw();
+	m_apple2->draw();
+	for (int i = 0; i < 10; i++)
+	{
+		m_stone[i]->draw();
+	}
+	colision(m_snake1->getColor());
+	colision(m_snake2->getColor());
 	m_snake1->draw();
 	m_snake2->draw();
-
-	
 
 }
 void World::moveSnake(string snake, char t)
 {
-
-	if(snake == "m_snake1"){
-		if (t=='u')
+	if(snake == "m_snake1")
+	{
+		
+		if (t == 'u')
 		{
 			m_snake1->moveUp();
 		}
-		else if (t == 'd') 
+		else if (t == 'd')
 		{
 			m_snake1->moveDown();
 		}
@@ -188,7 +303,10 @@ void World::moveSnake(string snake, char t)
 			m_snake1->moveLeft();
 		}
 	}
-	else if (snake == "m_snake2") {
+	else if (snake == "m_snake2") 
+	{
+		
+		
 		if (t == 'u')
 		{
 			m_snake2->moveUp();

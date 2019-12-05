@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "Apple.h"
-#include "position.h"
-
-
+#include "../3rd-party/freeglut3/include/GL/freeglut.h"
+#include "Sprite.h"
 Apple::Apple(string color, Position pos)
 {
 	m_appleColor = color;
@@ -52,11 +51,16 @@ void Apple::draw()
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 	glTranslatef(m_pos.getX()*0.042, m_pos.getY()*0.042, -1);
 	glBegin(GL_TRIANGLE_STRIP);
-	glVertex3f(-11, -11, -11);
-	glVertex3f(-9, -11, -11);
-	glVertex3f(-11, -9, -11);
-	glVertex3f(-9, -9, -11);
+	glVertex3f(-11, -11, -1);
+	glVertex3f(-9, -11, -1);
+	glVertex3f(-11, -9, -1);
+	glVertex3f(-9, -9, -1);
 	glEnd();
 	//5. restore the transformation matrix
 	glPopMatrix();
 }
+string Apple::getName()
+{
+	return m_appleColor;
+}
+

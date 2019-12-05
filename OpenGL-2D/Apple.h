@@ -1,9 +1,11 @@
 #pragma once
-#include "position.h"
+#include "Position.h"
 #include <string>
+#include "Drawable.h"
+#include "Renderer.h"
 using namespace std;
 
-class Apple
+class Apple:public Drawable
 {
 	string m_appleColor;
 	Position m_pos;
@@ -16,5 +18,6 @@ public:
 	string getColor();
 	Position getPosition();
 	bool isTheSameColor(string snakeColor);
-	void draw();
+	virtual void draw();
+	virtual string getName();
 };

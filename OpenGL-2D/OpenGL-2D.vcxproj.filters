@@ -13,8 +13,6 @@
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="AnimatedSprite.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="position.cpp" />
@@ -27,41 +25,105 @@
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="Apple.cpp" />
-    <ClCompile Include="Bomb.cpp" />
-    <ClCompile Include="position.cpp" />
-    <ClCompile Include="Snake.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Stone.cpp" />
-    <ClCompile Include="Text.cpp" />
-    <ClCompile Include="World.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="position.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Apple.h" />
-    <ClInclude Include="Bomb.h" />
-    <ClInclude Include="position.h" />
-    <ClInclude Include="Snake.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="Drawable.h" />
-    <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Stone.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="Text.h" />
-    <ClInclude Include="World.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="AnimatedSprite.h" />
-    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="AnimatedSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -70,8 +132,6 @@
     <Text Include="inputfile.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Desktop\Stone.jpg" />
-    <Image Include="..\..\..\..\Desktop\fondo.jpg" />
     <Image Include="img\Stone.jpg">
       <Filter>img</Filter>
     </Image>
@@ -102,10 +162,22 @@
     <Image Include="img\Stone.png">
       <Filter>img</Filter>
     </Image>
+    <Image Include="..\..\..\..\Desktop\fondo.jpg">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Stone.jpg">
+      <Filter>img</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="img">
       <UniqueIdentifier>{2b40e714-bf0d-4dcd-ad37-f65be339a00d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{525d6a12-6658-43d7-87bc-ff74a7d6c880}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{af134774-0843-4fc1-9f90-e354ca09cf8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

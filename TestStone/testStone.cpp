@@ -13,14 +13,14 @@ namespace TestStone
 		
 		TEST_METHOD(GeneratedStone)
 		{
-			Position pos = Position(1, 1);
+			Position pos = Position(1.0f, 1.0f);
 			Stone stone(pos);
 
-			int stoneX = stone.getPosition().getX();
-			int stoneY = stone.getPosition().getY();
+			float stoneX = stone.getPosition().getX();
+			float stoneY = stone.getPosition().getY();
 
-			Assert::AreEqual(1, stoneX);
-			Assert::AreEqual(1, stoneY);
+			Assert::AreEqual(1.0f, stoneX);
+			Assert::AreEqual(1.0f, stoneY);
 		}
 	};
 }
