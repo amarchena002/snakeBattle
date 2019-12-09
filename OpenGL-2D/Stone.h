@@ -8,6 +8,7 @@ class Stone : public Drawable
 	Position m_pos;
 
 	public:
+		Stone();
 		Stone(Position pos);
 		~Stone();
 		

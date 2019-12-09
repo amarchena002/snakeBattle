@@ -79,7 +79,11 @@ void World::colision(string snakeColor) {
 	vector<Position> posStones = vector<Position>();
 	for (int i = 0; i < 10; i++) 
 	{
-		posStones.push_back(m_stone[i]->getPosition());
+		if (m_stone[i] != nullptr) 
+		{
+			posStones.push_back(m_stone[i]->getPosition());
+		}
+
 	}
 	//m_snake1 is green
 	if (snakeColor == m_snake1->getColor())
@@ -103,14 +107,14 @@ void World::colision(string snakeColor) {
 				if (m_snake1->getHeadPosition().hasDecimal(posStones[i])) 
 				{
 					m_snake1->eatStone();
-					m_stone[i]->~Stone();
+					m_stone[i] = new Stone();
 				}
 			}
 			for (int j = 0; j < m_snake2->getVector().size(); j++)
 			{
 				if (m_snake1->getHeadPosition().hasDecimal(m_snake2->getVector()[j]))
 				{
-					m_snake1->~Snake();
+					m_snake1 = new Snake();
 				}
 			}
 		}
@@ -137,14 +141,14 @@ void World::colision(string snakeColor) {
 				{
 					vector<Stone*> auxVector = vector<Stone*>();
 					m_snake2->eatStone();
-					m_stone[i]->~Stone();
+					m_stone[i] = new Stone();
 				}
 			}
 			for (int j = 0; j < m_snake1->getVector().size(); j++)
 			{
 				if (m_snake2->getHeadPosition().hasDecimal(m_snake1->getVector()[j]))
 				{
-					m_snake2->~Snake();
+					m_snake2 =new Snake();
 				}
 			}
 		}
@@ -196,7 +200,7 @@ void World::setApple(string Color)
 		{
 			for (int i = 0; i < m_stone.size(); i++)
 			{
-				if (pos == m_stone[i]->getPosition() || m_apple1->getPosition() == pos)
+				if (pos == m_stone[i]->getPosition() && m_stone[i]|| m_apple1->getPosition() == pos)
 				{
 					pos = Position(rand() % m_width, rand() % m_height);
 				}
@@ -273,7 +277,11 @@ void World::draw()
 	m_apple2->draw();
 	for (int i = 0; i < 10; i++)
 	{
-		m_stone[i]->draw();
+		if (m_stone[i] != nullptr)
+		{
+			m_stone[i]->draw();
+		}
+		
 	}
 	colision(m_snake1->getColor());
 	colision(m_snake2->getColor());
@@ -285,44 +293,11 @@ void World::moveSnake(string snake, char t)
 {
 	if(snake == "m_snake1")
 	{
-		
-		if (t == 'u')
-		{
-			m_snake1->moveUp();
-		}
-		else if (t == 'd')
-		{
-			m_snake1->moveDown();
-		}
-		else if (t == 'r')
-		{
-			m_snake1->moveRight();
-		}
-		else if (t == 'l')
-		{
-			m_snake1->moveLeft();
-		}
+		m_snake1->setDirectionAfter(t);
 	}
 	else if (snake == "m_snake2") 
 	{
-		
-		
-		if (t == 'u')
-		{
-			m_snake2->moveUp();
-		}
-		else if (t == 'd')
-		{
-			m_snake2->moveDown();
-		}
-		else if (t == 'r')
-		{
-			m_snake2->moveRight();
-		}
-		else if (t == 'l')
-		{
-			m_snake2->moveLeft();
-		}
+		m_snake2->setDirectionAfter(t);
 	}
 }
 

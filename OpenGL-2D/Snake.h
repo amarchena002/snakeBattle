@@ -16,6 +16,7 @@ class Snake : public Drawable
 	string m_color;
 	float m_speed;
 	char m_directionAfter;
+	char m_dirAux;
 	char const dir_up = 'u';
 	char const dir_down = 'd';
 	char const dir_right = 'r';
@@ -23,6 +24,8 @@ class Snake : public Drawable
 	
 
 public:
+
+	Snake();
 
 	Snake(Position position, char dir,string color);
 	~Snake();
@@ -36,6 +39,8 @@ public:
 	void eatApple(string color);
 	void eatStone();
 	void eatBomb();
+	char getDirection();
+	void setDirectionAfter(char direction);
 	virtual void draw();
 	virtual string getName();
 	void updatePos();

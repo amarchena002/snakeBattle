@@ -7,6 +7,11 @@
 #include <cmath>
 using namespace std;
 
+Snake::Snake()
+{
+
+}
+
 Snake::Snake(Position position, char dir, string color)
 {
 	//Cambiar a 0.04
@@ -22,11 +27,11 @@ Snake::Snake(Position position, char dir, string color)
 	m_snake.push_back(m_tailPosition);
 	m_speed = 0.01f;
 }
+
 Snake::~Snake()
 {
 	
 }
-
 
 void Snake::moveUp()
 {
@@ -35,9 +40,9 @@ void Snake::moveUp()
 	Position pos;
 	Position pos2;
 	Position aux = m_headPosition;
-	char directionAfter2 = dir_up;
-	if (directionAfter2 == m_direction)
+	if (m_directionAfter == m_direction || m_dirAux==m_direction)
 	{
+		m_dirAux = m_directionAfter;
 		m_headPosition.setY(m_headPosition.getY() + m_speed);
 		pos = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
@@ -72,17 +77,21 @@ void Snake::moveUp()
 			}
 			m_tailPosition = pos;
 		}
-		else {
-			if (m_direction == dir_down) {
-				m_directionAfter = dir_up;
+		else
+		{
+			if (m_direction == dir_down)
+			{
+				m_dirAux = dir_down;
 				moveDown();
 			}
-			else if (m_direction == dir_left) {
-				m_directionAfter = dir_up;
+			else if (m_direction == dir_left)
+			{
+				m_dirAux = dir_left;
 				moveLeft();
 			}
-			else if (m_direction == dir_right) {
-				m_directionAfter = dir_up;
+			else if (m_direction == dir_right)
+			{
+				m_dirAux = dir_right;
 				moveRight();
 			}
 		}
@@ -96,9 +105,9 @@ void Snake::moveDown()
 	Position pos ;
 	Position pos2;
 	Position aux = m_headPosition;
-	char directionAfter2 = dir_down;
-	if (directionAfter2 == m_direction)
+	if (m_directionAfter == m_direction || m_dirAux == m_direction)
 	{
+		m_dirAux = m_directionAfter;
 		m_headPosition.setY(m_headPosition.getY() - m_speed);
 		pos = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
@@ -133,17 +142,21 @@ void Snake::moveDown()
 			}
 			m_tailPosition = pos;
 		}
-		else {
-			if (m_direction == dir_up) {
-				m_directionAfter = dir_down;
+		else
+		{
+			if (m_direction == dir_up)
+			{
+				m_dirAux = dir_up;
 				moveUp();
 			}
-			else if (m_direction == dir_left) {
-				m_directionAfter = dir_down;
+			else if (m_direction == dir_left)
+			{
+				m_dirAux = dir_left;
 				moveLeft();
 			}
-			else if (m_direction == dir_right) {
-				m_directionAfter = dir_down;
+			else if (m_direction == dir_right)
+			{
+				m_dirAux = dir_right;
 				moveRight();
 			}
 		}
@@ -158,8 +171,9 @@ void Snake::moveRight()
 	Position pos2;
 	Position aux = m_headPosition;
 	char directionAfter2 = dir_right;
-	if (directionAfter2 == m_direction)
+	if (m_directionAfter == m_direction || m_dirAux == m_direction)
 	{
+		m_dirAux = m_directionAfter;
 		m_headPosition.setX(m_headPosition.getX() + m_speed);
 		pos = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
@@ -193,18 +207,22 @@ void Snake::moveRight()
 			}
 			m_tailPosition = pos;
 		}
-		else {
-			if (m_direction == dir_up) {
-				m_directionAfter = dir_right;
-				moveUp();
+		else
+		{
+			if (m_direction == dir_down)
+			{
+				m_dirAux = dir_down;
+				moveDown();
 			}
-			else if (m_direction == dir_left) {
-				m_directionAfter = dir_right;
+			else if (m_direction == dir_left)
+			{
+				m_dirAux = dir_left;
 				moveLeft();
 			}
-			else if (m_direction == dir_down) {
-				m_directionAfter = dir_right;
-				moveDown();
+			else if (m_direction == dir_up)
+			{
+				m_dirAux = dir_up;
+				moveUp();
 			}
 		}
 	}
@@ -217,9 +235,9 @@ void Snake::moveLeft()
 	Position pos ;
 	Position pos2;
 	Position aux = m_headPosition;
-	char directionAfter2 = dir_left;
-	if (directionAfter2 == m_direction)
+	if (m_directionAfter == m_direction || m_direction == m_dirAux)
 	{
+		m_dirAux = m_directionAfter;
 		m_headPosition.setX(m_headPosition.getX() - m_speed);
 		pos = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
@@ -252,18 +270,22 @@ void Snake::moveLeft()
 			}
 			m_tailPosition = pos;
 		}
-		else {
-			if (m_direction == dir_up) {
-				m_directionAfter = dir_left;
+		else
+		{
+			if (m_direction == dir_down)
+			{
+				m_dirAux = dir_down;
+				moveDown();
+			}
+			else if (m_direction == dir_up)
+			{
+				m_dirAux = dir_up;
 				moveUp();
 			}
-			else if (m_direction == dir_right) {
-				m_directionAfter = dir_left;
+			else if (m_direction == dir_right)
+			{
+				m_dirAux = dir_right;
 				moveRight();
-			}
-			else if (m_direction == dir_down) {
-				m_directionAfter = dir_left;
-				moveDown();
 			}
 		}
 	}
@@ -342,7 +364,7 @@ string Snake::getName()
 
 void Snake::updatePos() {
 	vector<Position> positions = getVector();
-	switch (m_direction)
+	switch (m_directionAfter)
 	{
 	case 'l':
 		moveLeft();
@@ -369,4 +391,14 @@ void Snake::eatBomb()
 	//snake muere
 	m_snakeLength = 0;
 	m_snake.clear();
+}
+
+char Snake::getDirection()
+{
+	return m_direction;
+}
+
+void Snake::setDirectionAfter(char direction) 
+{
+	m_directionAfter = direction;
 }
