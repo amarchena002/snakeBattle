@@ -40,7 +40,7 @@ void Snake::moveUp()
 	Position pos;
 	Position pos2;
 	Position aux = m_headPosition;
-	if (m_directionAfter == m_direction || m_dirAux==m_directionAfter)
+	if (m_directionAfter == m_direction || m_dirAux==m_direction)
 	{
 		m_dirAux = m_directionAfter;
 		m_headPosition.setY(m_headPosition.getY() + m_speed);
