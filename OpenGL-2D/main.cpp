@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 	inputHandler.initialize();
 	renderer.addObject(&world);
 	
-	
+	world.initializeWorld();
 
 
 	while (1)
