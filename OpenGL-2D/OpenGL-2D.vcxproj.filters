@@ -168,6 +168,9 @@
     <Image Include="..\..\..\..\Desktop\Stone.jpg">
       <Filter>img</Filter>
     </Image>
+    <Image Include="Stone.png">
+      <Filter>Source Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="img">

@@ -8,7 +8,7 @@
 Bomb::Bomb(Position pos)
 {
 	m_pos = pos;
-	TextureManager::getInstance()->create2DTexture("img/bomb.png");
+	TextureManager::getInstance()->create2DTexture("bomb.png");
 }
 
 Bomb::~Bomb()

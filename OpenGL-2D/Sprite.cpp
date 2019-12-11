@@ -1,9 +1,15 @@
 #include "stdafx.h"
 #include "Sprite.h"
+#include "TextureManager.h"
 
 
 Sprite::Sprite()
 {
+}
+
+Sprite::Sprite(string filename)
+{
+	TextureManager::getInstance()->create2DTexture(filename);
 }
 
 

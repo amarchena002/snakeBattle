@@ -16,6 +16,7 @@ protected:
 	double m_angle= 0.0; //rotation angle
 public:
 	Sprite();
+	Sprite(string filename);
 	~Sprite();
 
 	virtual void draw();

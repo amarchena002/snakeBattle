@@ -47,17 +47,20 @@ void Snake::moveUp()
 		pos = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
 		{
-			pos2 = m_snake[i];
-			m_snake[i] = pos;
-			pos2.setY(pos2.getY() - 1);
-			pos = pos2;
+			if (i > 0)
+			{
+				pos2 = m_snake[i];
+				m_snake[i] = pos;
+				pos2.setY(pos2.getY() - 1);
+				pos = pos2;
+			}
 		}
 		m_tailPosition = pos;
 	}
 	else
 	{
 		if (m_direction == dir_right) {
-			aux.setX((int)aux.getX() - 1);
+			aux.setX((int)aux.getX() + 1);
 		}
 		else if (m_direction == dir_left) {
 			aux.setX((int)aux.getX());
@@ -70,10 +73,13 @@ void Snake::moveUp()
 			m_direction = m_directionAfter;
 			for (int i = 0; i < m_snakeLength; i++)
 			{
-				pos2 = m_snake[i];
-				m_snake[i] = pos;
-				pos2.setY(pos2.getY() - 1);
-				pos = pos2;
+				if (i > 0) 
+				{
+					pos2 = m_snake[i];
+					m_snake[i] = pos;
+					pos2.setY(pos2.getY() - 1);
+					pos = pos2;
+				}
 			}
 			m_tailPosition = pos;
 		}
@@ -188,10 +194,11 @@ void Snake::moveRight()
 	else
 	{
 		if (m_direction == dir_up) {
-			aux.setY((int)aux.getY());
+			
+			aux.setY((int)aux.getY() + 1);
 		}
 		else if (m_direction == dir_down) {
-			aux.setY((int)aux.getY() + 1);
+			aux.setY((int)aux.getY());
 		}
 		if (m_headPosition.hasDecimal(aux))
 		{
@@ -252,14 +259,16 @@ void Snake::moveLeft()
 	else
 	{
 		if (m_direction == dir_up) {
-			aux.setY((int)aux.getY());
+			aux.setY((int)aux.getY() + 1);
 		}
 		else if (m_direction == dir_down) {
-			aux.setY((int)aux.getY() + 1);
+		
+			aux.setY((int)aux.getY());
 		}
 		if (m_headPosition.hasDecimal(aux))
 		{
 			m_headPosition.setX(m_headPosition.getX() - m_speed);
+			pos = m_headPosition;
 			m_direction = m_directionAfter;
 			for (int i = 0; i < m_snakeLength; i++)
 			{

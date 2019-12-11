@@ -5,15 +5,17 @@
 #include "../3rd-party/SOIL/src/SOIL.h"
 #include "TextureManager.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
+
 Stone::Stone()
 {
 
 }
+
 Stone::Stone(Position pos)
 {
 	m_pos = pos;
 	//texture
-	TextureManager::getInstance()->create2DTexture("img/Stone.png");
+	TextureManager::getInstance()->create2DTexture("Stone.png");
 }
 
 Stone::~Stone()
@@ -53,6 +55,7 @@ void Stone::draw()
 	//5. restore the transformation matrix
 	glPopMatrix();
 }
+
 string Stone::getName()
 {
 	return "Stone";
