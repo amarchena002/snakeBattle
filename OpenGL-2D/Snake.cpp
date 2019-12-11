@@ -405,3 +405,10 @@ void Snake::setDirectionAfter(char direction)
 {
 	m_directionAfter = direction;
 }
+
+//choca contra pared
+void Snake::borderCollision()
+{
+	m_snakeLength = 0;
+	m_snake.clear();
+}

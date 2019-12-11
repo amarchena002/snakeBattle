@@ -176,6 +176,16 @@ void World::colision(string snakeColor) {
 	//		}
 	//	}
 	//}
+
+	//colision con los bordes del mapa
+	if (m_snake1->getHeadPosition().getX() > m_width || m_snake1->getHeadPosition().getX() <0 || m_snake1->getHeadPosition().getY() > m_height || m_snake1->getHeadPosition().getY() < 0)
+	{
+		m_snake1->borderCollision();
+	}
+	else if (m_snake2->getHeadPosition().getX() > m_width || m_snake2->getHeadPosition().getX() < 0 || m_snake2->getHeadPosition().getY() > m_height|| m_snake2->getHeadPosition().getY() < 0) 
+	{
+		m_snake2->borderCollision();
+	}
 }
 
 
