@@ -40,20 +40,17 @@ void Snake::moveUp()
 	Position pos;
 	Position pos2;
 	Position aux = m_headPosition;
-	if (m_directionAfter == m_direction || m_dirAux==m_direction)
+	if (m_directionAfter == m_direction || m_dirAux==m_directionAfter)
 	{
 		m_dirAux = m_directionAfter;
 		m_headPosition.setY(m_headPosition.getY() + m_speed);
 		pos = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
 		{
-			if (i > 0)
-			{
 				pos2 = m_snake[i];
 				m_snake[i] = pos;
 				pos2.setY(pos2.getY() - 1);
 				pos = pos2;
-			}
 		}
 		m_tailPosition = pos;
 	}
@@ -73,13 +70,10 @@ void Snake::moveUp()
 			m_direction = m_directionAfter;
 			for (int i = 0; i < m_snakeLength; i++)
 			{
-				if (i > 0) 
-				{
 					pos2 = m_snake[i];
 					m_snake[i] = pos;
 					pos2.setY(pos2.getY() - 1);
 					pos = pos2;
-				}
 			}
 			m_tailPosition = pos;
 		}
