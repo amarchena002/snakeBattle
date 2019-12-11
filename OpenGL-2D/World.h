@@ -30,6 +30,7 @@ public:
 	World();
 	~World();
 
+	void initializeWorld();
 	virtual void draw();
 	void changeCells();
 	void addPoint(char snake);

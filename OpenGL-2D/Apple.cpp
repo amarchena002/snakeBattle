@@ -6,6 +6,14 @@ Apple::Apple(string color, Position pos)
 {
 	m_appleColor = color;
 	m_pos = pos;
+	if (color == "green")
+	{
+		TextureManager::getInstance()->create2DTexture("GreenApple.png");
+	}
+	else
+	{
+		TextureManager::getInstance()->create2DTexture("RedApple.png");
+	}
 }
 
 Apple::~Apple() 
@@ -36,11 +44,13 @@ void Apple::draw()
 	//1. Pass the object's color to OpenGL
 	if (m_appleColor == "red")
 	{
-		glColor3f(1, 0, 0);
+		TextureManager::getInstance()->useTexture("RedApple.png");
+		//glColor3f(1, 0, 0);
 	}
 	else if (m_appleColor == "green")
 	{
-		glColor3f(0, 1, 0);
+		TextureManager::getInstance()->useTexture("GreenApple.png");
+		//glColor3f(0, 1, 0);
 	}
 	//2. save the current transformation matrix
 	glPushMatrix();
@@ -51,9 +61,13 @@ void Apple::draw()
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 	glTranslatef(m_pos.getX()*0.042, m_pos.getY()*0.042, -1);
 	glBegin(GL_TRIANGLE_STRIP);
+	glTexCoord2f(0, 0);
 	glVertex3f(-11, -11, -1);
+	glTexCoord2f(1, 0);
 	glVertex3f(-9, -11, -1);
+	glTexCoord2f(0, 1);
 	glVertex3f(-11, -9, -1);
+	glTexCoord2f(1, 1);
 	glVertex3f(-9, -9, -1);
 	glEnd();
 	//5. restore the transformation matrix
