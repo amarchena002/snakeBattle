@@ -244,50 +244,53 @@ void World::setApple(string Color)
 
 void World::draw()
 {
-
-	//Use object Texture:
-	TextureManager::getInstance()->useTexture("img/fondo.png");
-
-	//1. Pass the object's color to OpenGL
-	glColor3f(132, 215, 91);
-	for (int i = 0; i < m_world.size(); i++)
-	{
-		//2. Save the current transformation matrix
-		glPushMatrix();
-		//3. Set the transformation matrix of the quad using position, size and angle
-		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
-		glScalef(0.02, 0.02, 1);
-		//glRotatef(0.0, 0, 0, 1);
-		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
-		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
-		glBegin(GL_QUADS);
-		glTexCoord2f(0, 0);
-		glVertex3f(-11, -11, -2);
-		glTexCoord2f(1, 0);
-		glVertex3f(-9, -11, -2);
-		glTexCoord2f(0, 1);
-		glVertex3f(-11, -9, -2);
-		glTexCoord2f(1, 1);
-		glVertex3f(-9, -9, -2);
-		glEnd();
-		//5. Restore the transformation matrix
-		glPopMatrix();
+	if (m_snake1->getVector().size() == 0|| m_snake2->getVector().size() == 0) {
+		glColor3f(132, 215, 91);
 	}
-	m_apple1->draw();
-	m_apple2->draw();
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_stone[i] != nullptr)
+	else {
+		//Use object Texture:
+		TextureManager::getInstance()->useTexture("img/fondo.png");
+
+		//1. Pass the object's color to OpenGL
+		glColor3f(132, 215, 91);
+		for (int i = 0; i < m_world.size(); i++)
 		{
-			m_stone[i]->draw();
+			//2. Save the current transformation matrix
+			glPushMatrix();
+			//3. Set the transformation matrix of the quad using position, size and angle
+			glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
+			glScalef(0.02, 0.02, 1);
+			//glRotatef(0.0, 0, 0, 1);
+			//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
+			glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
+			glBegin(GL_QUADS);
+			glTexCoord2f(0, 0);
+			glVertex3f(-11, -11, -2);
+			glTexCoord2f(1, 0);
+			glVertex3f(-9, -11, -2);
+			glTexCoord2f(0, 1);
+			glVertex3f(-11, -9, -2);
+			glTexCoord2f(1, 1);
+			glVertex3f(-9, -9, -2);
+			glEnd();
+			//5. Restore the transformation matrix
+			glPopMatrix();
 		}
-		
-	}
-	colision(m_snake1->getColor());
-	colision(m_snake2->getColor());
-	m_snake1->draw();
-	m_snake2->draw();
+		m_apple1->draw();
+		m_apple2->draw();
+		for (int i = 0; i < 10; i++)
+		{
+			if (m_stone[i] != nullptr)
+			{
+				m_stone[i]->draw();
+			}
 
+		}
+		colision(m_snake1->getColor());
+		colision(m_snake2->getColor());
+		m_snake1->draw();
+		m_snake2->draw();
+	}
 }
 void World::moveSnake(string snake, char t)
 {
