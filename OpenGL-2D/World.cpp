@@ -14,9 +14,63 @@
 
 World::World()
 {
+	//m_width = 20;
+	//m_height = 20;	
+	//
+	//for (int y = 0; y < m_height; y++)
+	//{
+	//	for (int x = 0; x < m_width; x++)
+	//	{
+	//		Position pos = Position(x, y);
+	//		m_world.push_back(pos);
+	//	}
+	//}
+	//Position pos = Position(m_width-2, 0);
+	//m_snake2 = new Snake(pos, 'l', "red");
+	//pos = Position(1, m_height-1);
+	//m_snake1 = new Snake(pos, 'r', "green");
+	//pos = Position(rand() % m_width, rand() % m_height);
+	//m_apple2 = new Apple("red", pos);
+	//pos = Position(rand() % m_width, rand() % m_height);
+	//while (m_apple2->getPosition() == pos)
+	//{
+	//	pos = Position(rand() % m_width, rand() % m_height);
+	//}
+	//m_apple1 = new Apple("green", pos);
+	//pos = Position(rand() % m_width, rand() % m_height);
+	//while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
+	//{
+	//	pos = Position(rand() % m_width, rand() % m_height);
+	//}
+	//for (int i = 0; i <10; i++) {
+	//	pos = Position(rand() % m_width, rand() % m_height);
+	//	while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
+	//	{			
+	//		pos = Position(rand() % m_width, rand() % m_height);
+	//	}		
+	//	for (int j = 0; j < i; j++) 
+	//	{
+	//		if (m_stone[j]->getPosition() == pos && i != j)
+	//		{
+	//			pos = Position(rand() % m_width, rand() % m_height);
+	//			i = 0;
+	//		}
+	//	}
+	//	
+	//	m_stone.push_back(new Stone(pos));
+
+	//}
+
+	////Create object Texture:
+	//TextureManager::getInstance()->create2DTexture("img/fondo.png");
+	//
+}
+
+void World::initializeWorld()
+{
 	m_width = 20;
-	m_height = 20;	
-	
+	m_height = 20;
+
 	for (int y = 0; y < m_height; y++)
 	{
 		for (int x = 0; x < m_width; x++)
@@ -25,9 +79,9 @@ World::World()
 			m_world.push_back(pos);
 		}
 	}
-	Position pos = Position(m_width-2, 0);
+	Position pos = Position(m_width - 2, 0);
 	m_snake2 = new Snake(pos, 'l', "red");
-	pos = Position(1, m_height-1);
+	pos = Position(1, m_height - 1);
 	m_snake1 = new Snake(pos, 'r', "green");
 	pos = Position(rand() % m_width, rand() % m_height);
 	m_apple2 = new Apple("red", pos);
@@ -42,13 +96,13 @@ World::World()
 	{
 		pos = Position(rand() % m_width, rand() % m_height);
 	}
-	for (int i = 0; i <10; i++) {
+	for (int i = 0; i < 10; i++) {
 		pos = Position(rand() % m_width, rand() % m_height);
 		while (m_apple1->getPosition() == pos || m_apple2->getPosition() == pos)
-		{			
+		{
 			pos = Position(rand() % m_width, rand() % m_height);
-		}		
-		for (int j = 0; j < i; j++) 
+		}
+		for (int j = 0; j < i; j++)
 		{
 			if (m_stone[j]->getPosition() == pos && i != j)
 			{
@@ -56,14 +110,14 @@ World::World()
 				i = 0;
 			}
 		}
-		
+
 		m_stone.push_back(new Stone(pos));
 
 	}
 
 	//Create object Texture:
-	TextureManager::getInstance()->create2DTexture("img/fondo.png");
-	
+	TextureManager::getInstance()->create2DTexture("fondo.png");
+
 }
 
 string World::getName()
@@ -176,6 +230,16 @@ void World::colision(string snakeColor) {
 	//		}
 	//	}
 	//}
+
+	//colision con los bordes del mapa
+	if (m_snake1->getHeadPosition().getX() > m_width || m_snake1->getHeadPosition().getX() <0 || m_snake1->getHeadPosition().getY() > m_height || m_snake1->getHeadPosition().getY() < 0)
+	{
+		m_snake1->borderCollision();
+	}
+	else if (m_snake2->getHeadPosition().getX() > m_width || m_snake2->getHeadPosition().getX() < 0 || m_snake2->getHeadPosition().getY() > m_height|| m_snake2->getHeadPosition().getY() < 0) 
+	{
+		m_snake2->borderCollision();
+	}
 }
 
 
@@ -246,10 +310,10 @@ void World::draw()
 {
 
 	//Use object Texture:
-	TextureManager::getInstance()->useTexture("img/fondo.png");
+	TextureManager::getInstance()->useTexture("fondo.png");
 
 	//1. Pass the object's color to OpenGL
-	glColor3f(132, 215, 91);
+	//glColor3f(132, 215, 91);
 	for (int i = 0; i < m_world.size(); i++)
 	{
 		//2. Save the current transformation matrix
@@ -260,15 +324,16 @@ void World::draw()
 		//glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
-		glBegin(GL_QUADS);
-		glTexCoord2f(0, 0);
-		glVertex3f(-11, -11, -2);
-		glTexCoord2f(1, 0);
-		glVertex3f(-9, -11, -2);
-		glTexCoord2f(0, 1);
-		glVertex3f(-11, -9, -2);
-		glTexCoord2f(1, 1);
-		glVertex3f(-9, -9, -2);
+		//glBegin(GL_QUADS);
+		glBegin(GL_TRIANGLE_STRIP);
+		glTexCoord3f(0, 0, -3);
+		glVertex3f(-11, -11, -3);
+		glTexCoord3f(1, 0, -3);
+		glVertex3f(-9, -11, -3);
+		glTexCoord3f(0, 1, -3);
+		glVertex3f(-11, -9, -3);
+		glTexCoord3f(1, 1, -3);
+		glVertex3f(-9, -9, -3);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();

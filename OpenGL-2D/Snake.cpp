@@ -28,6 +28,16 @@ Snake::Snake(Position position, char dir, string color)
 	m_snake.push_back(m_headPosition);
 	m_snake.push_back(m_tailPosition);
 	m_speed = 0.01f;
+
+	if (color == "green")
+	{
+		TextureManager::getInstance()->create2DTexture("SnakeGreen.png");
+	}
+	else if(color == "red")
+	{
+		TextureManager::getInstance()->create2DTexture("SnakeRed.png");
+	}
+}
 	m_rotPos = vector <Position>();
 }
 
@@ -343,11 +353,13 @@ void Snake::draw()
 	//1. Pass the object's color to OpenGL
 	if (m_color == "red")
 	{
-		glColor3f(1,0,0);
+		TextureManager::getInstance()->useTexture("SnakeRed.png");
+		//glColor3f(1,0,0);
 	}
 	else if (m_color == "green")
 	{
-		glColor3f(0,1,0);
+		TextureManager::getInstance()->useTexture("SnakeGreen.png");
+		//glColor3f(0,1,0);
 	}
 	for (int i = 0; i < m_snakeLength; i++)
 	{
@@ -360,9 +372,13 @@ void Snake::draw()
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 		glTranslatef(m_snake[i].getX()*0.042, m_snake[i].getY()*0.042, -1);
 		glBegin(GL_TRIANGLE_STRIP);
+		glTexCoord2f(0, 0);
 		glVertex3f(-11, -11, -1);
+		glTexCoord2f(1, 0);
 		glVertex3f(-9, -11, -1);
+		glTexCoord2f(0, 1);
 		glVertex3f(-11, -9, -1);
+		glTexCoord2f(1, 1);
 		glVertex3f(-9, -9, -1);
 		glEnd();
 		//5. Restore the transformation matrix
@@ -414,4 +430,11 @@ char Snake::getDirection()
 void Snake::setDirectionAfter(char direction) 
 {
 	m_directionAfter = direction;
+}
+
+//choca contra pared
+void Snake::borderCollision()
+{
+	m_snakeLength = 0;
+	m_snake.clear();
 }
