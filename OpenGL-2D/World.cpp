@@ -117,6 +117,8 @@ void World::initializeWorld()
 
 	//Create object Texture:
 	TextureManager::getInstance()->create2DTexture("fondo.png");
+	TextureManager::getInstance()->create2DTexture("GanadorVerde.png");
+	TextureManager::getInstance()->create2DTexture("GanadorRojo.png");
 
 }
 
@@ -298,57 +300,79 @@ void World::setApple(string Color)
 
 void World::draw()
 {
-
-	//Use object Texture:
-	TextureManager::getInstance()->useTexture("fondo.png");
-	if (m_snake1->getVector().size() == 0|| m_snake2->getVector().size() == 0) {
-		glColor3f(132, 215, 91);
-	}
-	else {
-		//Use object Texture:
-		TextureManager::getInstance()->useTexture("img/fondo.png");
-
-	//1. Pass the object's color to OpenGL
-	//glColor3f(132, 215, 91);
-	for (int i = 0; i < m_world.size(); i++)
+	if (m_snake1->getVector().size() == 0 || m_snake2->getVector().size() == 0)
 	{
 		//2. Save the current transformation matrix
 		glPushMatrix();
 		//3. Set the transformation matrix of the quad using position, size and angle
-		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
+		glTranslatef(20, 20, -2);
 		glScalef(0.02, 0.02, 1);
 		//glRotatef(0.0, 0, 0, 1);
 		//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
-		glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
-		//glBegin(GL_QUADS);
+		glTranslatef(20, 20, -2);
 		glBegin(GL_TRIANGLE_STRIP);
-		glTexCoord3f(0, 0, -3);
-		glVertex3f(-11, -11, -3);
-		glTexCoord3f(1, 0, -3);
-		glVertex3f(-9, -11, -3);
-		glTexCoord3f(0, 1, -3);
-		glVertex3f(-11, -9, -3);
-		glTexCoord3f(1, 1, -3);
-		glVertex3f(-9, -9, -3);
+		glTexCoord2f(0, 0);
+		glVertex3f(-11, -11, -1);
 		glEnd();
 		//5. Restore the transformation matrix
 		glPopMatrix();
-	}
-	m_apple1->draw();
-	m_apple2->draw();
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_stone[i] != nullptr)
-		{
-			m_stone[i]->draw();
-		}
-		
-	}
-	colision(m_snake1->getColor());
-	colision(m_snake2->getColor());
-	m_snake1->draw();
-	m_snake2->draw();
 
+		if (m_snake1->getVector().size() == 0) 
+		{
+			TextureManager::getInstance()->useTexture("GanadorRojo.png");
+
+		}
+		else if (m_snake2->getVector().size() == 0)
+		{
+			TextureManager::getInstance()->useTexture("GanadorVerde.png");
+		}
+	}
+	else {
+
+		//Use object Texture:
+		TextureManager::getInstance()->useTexture("fondo.png");
+
+		//1. Pass the object's color to OpenGL
+		//glColor3f(132, 215, 91);
+		for (int i = 0; i < m_world.size(); i++)
+		{
+			//2. Save the current transformation matrix
+			glPushMatrix();
+			//3. Set the transformation matrix of the quad using position, size and angle
+			glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
+			glScalef(0.02, 0.02, 1);
+			//glRotatef(0.0, 0, 0, 1);
+			//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
+			glTranslatef(m_world.at(i).getX()*0.042, m_world.at(i).getY()*0.042, -2);
+			//glBegin(GL_QUADS);
+			glBegin(GL_TRIANGLE_STRIP);
+			glTexCoord3f(0, 0, -3);
+			glVertex3f(-11, -11, -3);
+			glTexCoord3f(1, 0, -3);
+			glVertex3f(-9, -11, -3);
+			glTexCoord3f(0, 1, -3);
+			glVertex3f(-11, -9, -3);
+			glTexCoord3f(1, 1, -3);
+			glVertex3f(-9, -9, -3);
+			glEnd();
+			//5. Restore the transformation matrix
+			glPopMatrix();
+		}
+		m_apple1->draw();
+		m_apple2->draw();
+		for (int i = 0; i < 10; i++)
+		{
+			if (m_stone[i] != nullptr)
+			{
+				m_stone[i]->draw();
+			}
+
+		}
+		colision(m_snake1->getColor());
+		colision(m_snake2->getColor());
+		m_snake1->draw();
+		m_snake2->draw();
+	}
 }
 void World::moveSnake(string snake, char t)
 {
