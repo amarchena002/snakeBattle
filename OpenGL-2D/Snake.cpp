@@ -16,7 +16,15 @@ Snake::Snake(Position position, char dir, string color)
 {
 	//Cambiar a 0.04
 	m_headPosition = position;
-	m_tailPosition = Position(m_headPosition.getX() - 0.042, m_headPosition.getY());
+	if (color == "red")
+	{
+		m_tailPosition = Position(m_headPosition.getX() + 1, m_headPosition.getY());
+	}
+	else if (color == "green") 
+	{
+		m_tailPosition = Position(m_headPosition.getX() - 1, m_headPosition.getY());
+	}
+	
 	m_direction = dir;
 	m_directionAfter = dir;
 	m_dirBefore = dir;
@@ -37,7 +45,6 @@ Snake::Snake(Position position, char dir, string color)
 	{
 		TextureManager::getInstance()->create2DTexture("SnakeRed.png");
 	}
-}
 	m_rotPos = vector <Position>();
 }
 
@@ -59,57 +66,90 @@ void Snake::moveUp()
 		m_dirAux = m_directionAfter;
 		m_headPosition.setY(m_headPosition.getY() + m_speed);
 		pos = m_headPosition;
+		aux = pos;
+		m_snake[0] = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
 		{
 			pos2 = m_snake[i];
-
-			if (m_dirBefore == dir_right) {
-				aux.setX((int)aux.getX() + 1);
-			}
-			else if (m_dirBefore == dir_left) {
-				aux.setX((int)aux.getX());
-
-			}
-			for (int j = 0; j < m_rotPos.size(); j++) {
-				if (aux == m_rotPos[j]) {
-					m_snake[i] = aux;
-				}
-					if (aux.getX() == m_rotPos[j].getX()) {
+			if (m_rotPos.size() > 0) {
+				
+				for (int j = 0; j < m_rotPos.size(); j++) {
+					if (m_dirBefore == dir_right && m_rotPos[j].getX() - m_snake[i].getX() < 2 && m_rotPos[j].getX() - m_snake[i].getX() > 0) {
+						aux.setX((int)pos2.getX() + 2);
+					}
+					else if (m_dirBefore == dir_right && m_rotPos[j].getX() - m_snake[i].getX() == 0) {
+						aux.setX(pos2.getX());
+					}
+					else if (m_dirBefore == dir_left && m_snake[i].getX() - m_rotPos[j].getX() < 2 && m_snake[i].getX()-m_rotPos[j].getX()>0) {
+						aux.setX((int)pos2.getX() - 1);
+					}
+					else if (m_dirBefore == dir_left && m_rotPos[j].getX() - m_snake[i].getX() == 0) {
+						aux.setX(pos2.getX());
+					}
+					if (aux == m_rotPos[j]) {
+						m_snake[i] = aux;
+					}
+					if (aux.getX() == m_rotPos[j].getX() && pos2.getY() - m_rotPos[j].getY() >= 1) {
 						pos2.setY(pos2.getY() - 1);
 
 					}
-					else if (aux.getX() < m_rotPos[j].getX()) {
+					else if (aux.getX() == m_rotPos[j].getX() && pos2.getY() - m_rotPos[j].getY() < 1 && pos2.getY() - m_rotPos[j].getY() > 0) {
+						pos2.setY(pos2.getY() - (pos2.getY() - m_rotPos[j].getY()));
+
+					}
+					else if (aux.getX() <= m_rotPos[j].getX() && m_dirBefore == dir_right) {
 						pos2.setX(pos2.getX() - 1);
 
 					}
-					else if (aux.getX() > m_rotPos[j].getX()) {
+					else if (aux.getX() >= m_rotPos[j].getX() && m_dirBefore == dir_left) {
 						pos2.setX(pos2.getX() + 1);
 
 					}
-					m_snake[i] = pos;
+					if (aux.getX() != m_rotPos[j].getX() && aux.getY() != m_rotPos[j].getY()) {
+						m_snake[i] = pos;
+					}
 
+
+				}
+			}
+			else {
+				m_snake[i] = pos;
+				if (pos2.getY() - m_tailPosition.getY() >= 1) {
+					pos2.setY(pos2.getY() - 1);
+
+				}
+				else if (pos2.getY() - m_tailPosition.getY() < 1 && pos2.getY() - m_tailPosition.getY() > 0)
+				{
+					pos2.setY(pos2.getY() - (pos2.getY() - m_tailPosition.getY()));
+				}
 			}
 			if (i != m_snakeLength - 1) {
-				pos = pos2;
-				aux = pos;
-				
-			}
+					pos = pos2;
+					aux = pos;
+
+				}
 			
 
 		}
 		m_tailPosition = pos;
-		if (m_rotPos[0] == m_tailPosition)
+		if(!m_rotPos.empty())
 		{
-			for (int i = 0; i < m_rotPos.size() - 1; i++)
+			if (m_rotPos[0] == m_tailPosition)
 			{
-				rotPosAux.push_back(m_rotPos.back());
-				m_rotPos.pop_back();
+				for (int i = 0; i < m_rotPos.size(); i++)
+				{
+					if (i != m_rotPos.size() - 1)
+					{
+						rotPosAux.push_back(m_rotPos.back());
+					}
+					m_rotPos.pop_back();
+				}
+				for (int j = 0; j < rotPosAux.size(); j++)
+				{
+					m_rotPos.push_back(rotPosAux.back());
+					rotPosAux.pop_back();
+				}
 			}
-			for (int j = 0; j < rotPosAux.size(); j++) {
-				m_rotPos.push_back(rotPosAux.back());
-				rotPosAux.pop_back();
-			}
-			
 		}
 	}
 	else
@@ -155,19 +195,94 @@ void Snake::moveDown()
 	Position pos ;
 	Position pos2;
 	Position aux = m_headPosition;
+	vector<Position> rotPosAux = vector <Position>();
 	if (m_directionAfter == m_direction || m_dirAux == dir_down)
 	{
 		m_dirAux = m_directionAfter;
 		m_headPosition.setY(m_headPosition.getY() - m_speed);
 		pos = m_headPosition;
+		aux = pos;
+		m_snake[0] = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
 		{
 			pos2 = m_snake[i];
-			m_snake[i] = pos;
-			pos2.setY(pos2.getY() + 1);
-			pos = pos2;
+			if (m_rotPos.size() > 0)
+			{
+				if (m_dirBefore == dir_right && i != 0)
+				{
+					aux.setX((int)(pos2.getX() + 1)+1);
+				}
+				else if (m_dirBefore == dir_right && i == 0)
+				{
+					aux.setX((int)pos2.getX());
+				}
+				else if (m_dirBefore == dir_left)
+				{
+					aux.setX((int)pos2.getX());
+
+				}
+				for (int j = 0; j < m_rotPos.size(); j++)
+				{
+					if (aux == m_rotPos[j]) {
+						m_snake[i] = aux;
+					}
+					if (aux.getX() == m_rotPos[j].getX() && m_rotPos[j].getY() -pos2.getY() >= 1) {
+						pos2.setY(pos2.getY() + 1);
+
+					}
+					else if (aux.getX() == m_rotPos[j].getX() && m_rotPos[j].getY()-pos2.getY() < 1 && m_rotPos[j].getY() - pos2.getY()> 0) {
+						pos2.setY(pos2.getY() + ( m_rotPos[j].getY() - pos2.getY()));
+
+					}
+					else if (aux.getX() <= m_rotPos[j].getX() && m_dirBefore == dir_right) {
+						pos2.setX(pos2.getX() - 1);
+
+					}
+					else if (aux.getX() >= m_rotPos[j].getX() && m_dirBefore == dir_left) {
+						pos2.setX(pos2.getX() + 1);
+
+					}
+					if (aux.getX() != m_rotPos[j].getX() && aux.getY() != m_rotPos[j].getY()) {
+						m_snake[i] = pos;
+					}
+				}
+			}
+			else {
+				m_snake[i] = pos;
+				if (m_tailPosition.getY() - pos2.getY() >= 1) {
+					pos2.setY(pos2.getY() + 1);
+
+				}
+				else if (m_tailPosition.getY() - pos2.getY() < 1 && m_tailPosition.getY() - pos2.getY() > 0)
+				{
+					pos2.setY(pos2.getY() + (m_tailPosition.getY() - pos2.getY()));
+				}
+			}
+			if (i != m_snakeLength - 1) {
+				pos = pos2;
+				aux = pos;
+			}
 		}
 		m_tailPosition = pos;
+		if (!m_rotPos.empty())
+		{
+			if (m_rotPos[0] == m_tailPosition)
+			{
+				for (int i = 0; i < m_rotPos.size(); i++)
+				{
+					if (i != m_rotPos.size() - 1)
+					{
+						rotPosAux.push_back(m_rotPos.back());
+					}
+					m_rotPos.pop_back();
+				}
+				for (int j = 0; j < rotPosAux.size(); j++)
+				{
+					m_rotPos.push_back(rotPosAux.back());
+					rotPosAux.pop_back();
+				}
+			}
+		}	
 	}
 	else
 	{
@@ -180,6 +295,8 @@ void Snake::moveDown()
 		}
 		if (m_headPosition.hasDecimal(aux))
 		{
+			m_rotPos.push_back(m_headPosition);
+			m_dirBefore = m_direction;
 			m_direction = m_directionAfter;
 		}
 		else
@@ -210,20 +327,94 @@ void Snake::moveRight()
 	Position pos ;
 	Position pos2;
 	Position aux = m_headPosition;
-	char directionAfter2 = dir_right;
+	vector<Position> rotPosAux = vector <Position>();
 	if (m_directionAfter == m_direction || m_dirAux == dir_right)
 	{
 		m_dirAux = m_directionAfter;
 		m_headPosition.setX(m_headPosition.getX() + m_speed);
 		pos = m_headPosition;
+		aux = pos;
+		m_snake[0] = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
 		{
 			pos2 = m_snake[i];
-			m_snake[i] = pos;
-			pos2.setX(pos2.getX() - 1);
-			pos = pos2;
+			if (m_rotPos.size() > 0) {
+				if (m_dirBefore == dir_up && i != 0) {
+					aux.setY((int)pos2.getY() + 1.2);
+				}
+				else if (m_dirBefore == dir_up && i == 0) {
+					aux.setY((int)pos2.getY());
+				}
+				else if (m_dirBefore == dir_down) {
+					aux.setY((int)pos2.getY());
+
+				}
+				for (int j = 0; j < m_rotPos.size(); j++) {
+					if (aux == m_rotPos[j]) {
+						m_snake[i] = aux;
+					}
+					if (aux.getY() == m_rotPos[j].getY() && pos2.getX() - m_rotPos[j].getX() >= 1) {
+						pos2.setX(pos2.getX() - 1);
+
+					}
+					else if (aux.getY() == m_rotPos[j].getY() && pos2.getX() - m_rotPos[j].getX() < 1 && pos2.getX() - m_rotPos[j].getX() > 0) {
+						pos2.setX(pos2.getX() - (pos2.getX() - m_rotPos[j].getX()));
+
+					}
+					else if (aux.getY() <= m_rotPos[j].getY() && m_dirBefore == dir_up) {
+						pos2.setX(pos2.getX() - 1);
+
+					}
+					else if (aux.getY() >= m_rotPos[j].getY() && m_dirBefore == dir_down) {
+						pos2.setY(pos2.getY() + 1);
+
+					}
+					if (aux.getX() != m_rotPos[j].getX() && aux.getY() != m_rotPos[j].getY()) {
+						m_snake[i] = pos;
+					}
+
+
+				}
+			}
+			else {
+				m_snake[i] = pos;
+				if (pos2.getX() - m_tailPosition.getX() >= 1) {
+					pos2.setX(pos2.getX() - 1);
+
+				}
+				else if (pos2.getX() - m_tailPosition.getX() < 1 && pos2.getX() - m_tailPosition.getX() > 0)
+				{
+					pos2.setX(pos2.getX() - (pos2.getX() - m_tailPosition.getX()));
+				}
+			}
+			if (i != m_snakeLength - 1) {
+				pos = pos2;
+				aux = pos;
+
+			}
+
+
 		}
 		m_tailPosition = pos;
+		if (!m_rotPos.empty())
+		{
+			if (m_rotPos[0] == m_tailPosition)
+			{
+				for (int i = 0; i < m_rotPos.size(); i++)
+				{
+					if (i != m_rotPos.size() - 1)
+					{
+						rotPosAux.push_back(m_rotPos.back());
+					}
+					m_rotPos.pop_back();
+				}
+				for (int j = 0; j < rotPosAux.size(); j++)
+				{
+					m_rotPos.push_back(rotPosAux.back());
+					rotPosAux.pop_back();
+				}
+			}
+		}
 	}
 	else
 	{
@@ -236,6 +427,8 @@ void Snake::moveRight()
 		}
 		if (m_headPosition.hasDecimal(aux))
 		{
+			m_rotPos.push_back(m_headPosition);
+			m_dirBefore = m_direction;
 			m_direction = m_directionAfter;
 		}
 		else
@@ -266,19 +459,94 @@ void Snake::moveLeft()
 	Position pos ;
 	Position pos2;
 	Position aux = m_headPosition;
+	vector<Position> rotPosAux = vector <Position>();
 	if (m_directionAfter == m_direction || dir_left == m_dirAux)
 	{
 		m_dirAux = m_directionAfter;
 		m_headPosition.setX(m_headPosition.getX() - m_speed);
 		pos = m_headPosition;
+		aux = pos;
+		m_snake[0] = m_headPosition;
 		for (int i = 0; i < m_snakeLength; i++)
 		{
 			pos2 = m_snake[i];
-			m_snake[i] = pos;
-			pos2.setX(pos2.getX() + 1);
-			pos = pos2;
+			if (m_rotPos.size() > 0) {
+				if (m_dirBefore == dir_up && i != 0) {
+					aux.setY((int)(pos2.getY() + 1) + 1);
+				}
+				else if (m_dirBefore == dir_up && i == 0) {
+					aux.setY((int)pos2.getY());
+				}
+				else if (m_dirBefore == dir_down) {
+					aux.setY((int)pos2.getY());
+
+				}
+				for (int j = 0; j < m_rotPos.size(); j++) {
+					if (aux == m_rotPos[j]) {
+						m_snake[i] = aux;
+					}
+					if (aux.getY() == m_rotPos[j].getY() && m_rotPos[j].getX() - pos2.getX() >= 1) {
+						pos2.setX(pos2.getX() + 1);
+
+					}
+					else if (aux.getY() == m_rotPos[j].getY() && m_rotPos[j].getX() - pos2.getX() < 1 && m_rotPos[j].getX() - pos2.getX() > 0) {
+						pos2.setX(pos2.getX() + (m_rotPos[j].getX() - pos2.getX() ));
+
+					}
+					else if (aux.getY() <= m_rotPos[j].getY() && m_dirBefore == dir_up) {
+						pos2.setX(pos2.getX() - 1);
+
+					}
+					else if (aux.getY() >= m_rotPos[j].getY() && m_dirBefore == dir_down) {
+						pos2.setY(pos2.getY() + 1);
+
+					}
+					if (aux.getX() != m_rotPos[j].getX() && aux.getY() != m_rotPos[j].getY()) {
+						m_snake[i] = pos;
+					}
+
+
+				}
+			}
+			else {
+				m_snake[i] = pos;
+				if (m_tailPosition.getX() - pos2.getX() >= 1) {
+					pos2.setX(pos2.getX() + 1);
+
+				}
+				else if (m_tailPosition.getX() - pos2.getX() < 1 && m_tailPosition.getX() - pos2.getX() > 0)
+				{
+					pos2.setX(pos2.getX() + (m_tailPosition.getX() - pos2.getX()));
+				}
+			}
+			if (i != m_snakeLength - 1) {
+				pos = pos2;
+				aux = pos;
+
+			}
+
+
 		}
 		m_tailPosition = pos;
+		if (!m_rotPos.empty())
+		{
+			if (m_rotPos[0] == m_tailPosition)
+			{
+				for (int i = 0; i < m_rotPos.size(); i++)
+				{
+					if (i != m_rotPos.size() - 1)
+					{
+						rotPosAux.push_back(m_rotPos.back());
+					}
+					m_rotPos.pop_back();
+				}
+				for (int j = 0; j < rotPosAux.size(); j++)
+				{
+					m_rotPos.push_back(rotPosAux.back());
+					rotPosAux.pop_back();
+				}
+			}
+		}
 	}
 	else
 	{
@@ -291,6 +559,8 @@ void Snake::moveLeft()
 		}
 		if (m_headPosition.hasDecimal(aux))
 		{
+			m_rotPos.push_back(m_headPosition);
+			m_dirBefore = m_direction;
 			m_direction = m_directionAfter;
 		}
 		else
