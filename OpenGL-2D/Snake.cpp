@@ -25,7 +25,7 @@ Snake::Snake(Position position, char dir, string color)
 	m_snake = vector <Position>();
 	m_snake.push_back(m_headPosition);
 	m_snake.push_back(m_tailPosition);
-	m_speed = 0.01f;
+	m_speed = 0.005f;
 
 	if (color == "green")
 	{
