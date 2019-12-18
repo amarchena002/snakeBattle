@@ -57,7 +57,6 @@
     <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Bomb.cpp" />
-    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -75,7 +74,6 @@
     <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Bomb.h" />
-    <ClInclude Include="Menu.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="Sprite.h" />

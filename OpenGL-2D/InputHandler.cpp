@@ -4,7 +4,7 @@
 #include "Snake.h"
 #include "World.h"
 #include "Renderer.h"
-#include "Menu.h"
+
 
 InputHandler* InputHandler::m_pInputHandler = nullptr;
 
@@ -24,29 +24,6 @@ void InputHandler::initialize()
 	glutKeyboardFunc(__processKeyboard);
 }
 
-
-void InputHandler::processKeyboardByMenu(unsigned char keyM) {
-	
-	Menu menu; //Utilizar la variable global--> Corregir
-	
-	switch (keyM)
-	{
-		
-		case 'm': //MENU == 0;
-			//void Menu::setState(int state)
-			menu.setState(0);
-			break;
-		case 'h': //INSTRUCCIONES == 1;
-			menu.setState(1);
-			break;
-		case 'n': //PLAYING == 2;
-			menu.setState(2);
-			break;
-		case 'q': //EXIT == 6;
-			menu.setState(6);
-			break;
-	}
-}
 
 
 
