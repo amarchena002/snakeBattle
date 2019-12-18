@@ -45,22 +45,22 @@ bool Position::operator== (Position& other)
 
 bool Position::hasDecimal(Position& other)
 {
-	if (other.getX() - getX() == 0 && other.getY() - getY() < 0.5f && other.getY() - getY() > 0)
+	if (other.getX() - getX() == 0 && other.getY() - getY() < 1 && other.getY() - getY() > 0)
 	{
 		setY(other.getY());
 		return true;
 	}
-	else if (getX() - other.getX() == 0 && getY() - other.getY() < 0.5f && getY() - other.getY() > 0)
+	else if (getX() - other.getX() == 0 && getY() - other.getY() < 1 && getY() - other.getY() > 0)
 	{
 		setY(other.getY());
 		return true;
 	}
-	else if(other.getX() - getX() < 0.5f && other.getX() - getX() > 0 && other.getY() - getY() == 0)
+	else if(other.getX() - getX() < 1 && other.getX() - getX() > 0 && other.getY() - getY() == 0)
 	{
 		setX(other.getX());
 		return true;
 	}
-	else if (getX() - other.getX() < 0.5f && getX() - other.getX() > 0 && getY() - other.getY() == 0)
+	else if (getX() - other.getX() < 1 && getX() - other.getX() > 0 && getY() - other.getY() == 0)
 	{
 		setX(other.getX());
 		return true;

@@ -21,6 +21,8 @@ class Snake : public Drawable
 	char const dir_down = 'd';
 	char const dir_right = 'r';
 	char const dir_left = 'l';
+	vector<Position> m_rotPos;
+	char m_dirBefore;
 	
 
 public:
@@ -46,4 +48,5 @@ public:
 	void updatePos();
 	Position getHeadPosition();
 	string getColor();
+	void borderCollision();
 };
