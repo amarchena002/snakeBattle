@@ -69,6 +69,8 @@ void Renderer::set2DMatrix()
 	//set modelview matrix
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	glTranslatef(-0.48, -0.48, 0.0);
+	glScalef(1.0 / 0.43, 1.0 / 0.43, 1.0);
 }
 
 

@@ -310,6 +310,7 @@ void World::setApple(string Color)
 
 void World::draw()
 {
+	
 	if (m_snake1->getSize() == 0 || m_snake2->getSize() == 0)
 	{	
 		if (m_snake1->getSize() == 0) 
@@ -321,7 +322,8 @@ void World::draw()
 		{
 			TextureManager::getInstance()->useTexture("GanadorVerde.png");
 		}
-
+		glTranslatef(0.2, 0.2, 0.0);
+		glScalef(0.5,0.5, 1.0);
 		//glColor3f(1.0, 0.0, 0.0);
 		glBegin(GL_QUADS); 
 		glTexCoord2f(1.0, 0.0); 
