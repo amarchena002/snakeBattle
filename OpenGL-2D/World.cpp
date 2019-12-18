@@ -310,14 +310,14 @@ void World::setApple(string Color)
 
 void World::draw()
 {
-	if (m_snake1->getVector().size() == 0 || m_snake2->getVector().size() == 0)
+	if (m_snake1->getSize() == 0 || m_snake2->getSize() == 0)
 	{	
-		if (m_snake1->getVector().size() == 0) 
+		if (m_snake1->getSize() == 0) 
 		{
 			TextureManager::getInstance()->useTexture("GanadorRojo.png");
 
 		}
-		else if (m_snake2->getVector().size() == 0)
+		else if (m_snake2->getSize() == 0)
 		{
 			TextureManager::getInstance()->useTexture("GanadorVerde.png");
 		}

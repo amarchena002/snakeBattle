@@ -599,9 +599,16 @@ void Snake::eatApple(string color)
 	}
 	else
 	{
-		m_snakeLength--;
-		m_snake.pop_back();
-		//m_tailPosition = m_snake[m_snakeLength - 1];
+		if (m_snakeLength == 1)
+		{
+			m_snakeLength = 0;
+		}
+		else
+		{
+			m_snakeLength--;
+			m_snake.pop_back();
+			//m_tailPosition = m_snake[m_snakeLength - 1];
+		}
 	}
 }
 
@@ -613,8 +620,15 @@ string Snake::getColor()
 void Snake::eatStone()
 {
 	//reducir array snake[snakeLength] 
-	m_snakeLength = m_snakeLength - 1;
-	m_snake.pop_back();
+	if (m_snakeLength == 1) 
+	{
+		m_snakeLength = 0;
+	}
+	else {
+		m_snakeLength = m_snakeLength - 1;
+		m_snake.pop_back();
+	}
+	
 }
 
 void Snake::draw()
@@ -689,7 +703,7 @@ void Snake::eatBomb()
 {
 	//snake muere
 	m_snakeLength = 0;
-	m_snake.clear();
+
 }
 
 char Snake::getDirection()
@@ -706,5 +720,16 @@ void Snake::setDirectionAfter(char direction)
 void Snake::borderCollision()
 {
 	m_snakeLength = 0;
-	m_snake.clear();
+}
+
+int Snake::getSize() 
+{
+	if (m_snakeLength != 0)
+	{
+		return m_snake.size();
+	}
+	else
+	{
+		return 0;
+	}
 }

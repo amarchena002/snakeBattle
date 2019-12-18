@@ -49,4 +49,5 @@ public:
 	Position getHeadPosition();
 	string getColor();
 	void borderCollision();
+	int getSize();
 };
